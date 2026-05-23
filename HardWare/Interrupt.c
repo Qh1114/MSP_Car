@@ -1,6 +1,7 @@
 #include "ti_msp_dl_config.h"
 #include "my_vl53l1x.h"
 #include "Usart.h"
+#include "IMU.h"
 
 void GROUP1_IRQHandler(void)
 {
@@ -21,4 +22,9 @@ void GROUP1_IRQHandler(void)
         my_vl53l1x_callback(2);
         DL_GPIO_clearInterruptStatus(GPIOB, LASER_GPIO2_PIN);
     }
+}
+
+void TIMER_10ms_INST_IRQHandler(void)
+{
+    IMU_Callback();
 }

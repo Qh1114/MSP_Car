@@ -8,31 +8,49 @@ SHELL = cmd.exe
 C_SRCS += \
 ../HardWare/Delay.c \
 ../HardWare/Interrupt.c \
-../HardWare/Usart.c 
+../HardWare/OLED.c \
+../HardWare/Usart.c \
+../HardWare/icm42688.c \
+../HardWare/spi.c 
 
 C_DEPS += \
 ./HardWare/Delay.d \
 ./HardWare/Interrupt.d \
-./HardWare/Usart.d 
+./HardWare/OLED.d \
+./HardWare/Usart.d \
+./HardWare/icm42688.d \
+./HardWare/spi.d 
 
 OBJS += \
 ./HardWare/Delay.o \
 ./HardWare/Interrupt.o \
-./HardWare/Usart.o 
+./HardWare/OLED.o \
+./HardWare/Usart.o \
+./HardWare/icm42688.o \
+./HardWare/spi.o 
 
 OBJS__QUOTED += \
 "HardWare\Delay.o" \
 "HardWare\Interrupt.o" \
-"HardWare\Usart.o" 
+"HardWare\OLED.o" \
+"HardWare\Usart.o" \
+"HardWare\icm42688.o" \
+"HardWare\spi.o" 
 
 C_DEPS__QUOTED += \
 "HardWare\Delay.d" \
 "HardWare\Interrupt.d" \
-"HardWare\Usart.d" 
+"HardWare\OLED.d" \
+"HardWare\Usart.d" \
+"HardWare\icm42688.d" \
+"HardWare\spi.d" 
 
 C_SRCS__QUOTED += \
 "../HardWare/Delay.c" \
 "../HardWare/Interrupt.c" \
-"../HardWare/Usart.c" 
+"../HardWare/OLED.c" \
+"../HardWare/Usart.c" \
+"../HardWare/icm42688.c" \
+"../HardWare/spi.c" 
 
 

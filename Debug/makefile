@@ -10,12 +10,15 @@ GEN_OPTS__FLAG := @"./device.opt"
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
 
 ORDERED_OBJS += \
-"./empty.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0g350x_ticlang.o" \
+"./main.o" \
 "./HardWare/Delay.o" \
 "./HardWare/Interrupt.o" \
+"./HardWare/OLED.o" \
 "./HardWare/Usart.o" \
+"./HardWare/icm42688.o" \
+"./HardWare/spi.o" \
 "./HardWare/vl53l1x/core/vl53l1_api.o" \
 "./HardWare/vl53l1x/core/vl53l1_api_calibration.o" \
 "./HardWare/vl53l1x/core/vl53l1_api_core.o" \
@@ -31,7 +34,10 @@ ORDERED_OBJS += \
 "./HardWare/vl53l1x/platform/IOI2C.o" \
 "./HardWare/vl53l1x/platform/vl53l1_platform.o" \
 "./HardWare/vl53l1x/platform/vl53l1x.o" \
+"./Middle/IMU.o" \
 "./Middle/my_vl53l1x.o" \
+"./Test/ICM_Test.o" \
+"./Test/OLED_Test.o" \
 "./Test/Uart_Test.o" \
 "./Test/vl53l1x_Test.o" \
 $(GEN_CMDS__FLAG) \
@@ -167,8 +173,8 @@ MSP_Car.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "empty.o" "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "HardWare\Delay.o" "HardWare\Interrupt.o" "HardWare\Usart.o" "HardWare\vl53l1x\core\vl53l1_api.o" "HardWare\vl53l1x\core\vl53l1_api_calibration.o" "HardWare\vl53l1x\core\vl53l1_api_core.o" "HardWare\vl53l1x\core\vl53l1_api_debug.o" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.o" "HardWare\vl53l1x\core\vl53l1_api_strings.o" "HardWare\vl53l1x\core\vl53l1_core.o" "HardWare\vl53l1x\core\vl53l1_core_support.o" "HardWare\vl53l1x\core\vl53l1_error_strings.o" "HardWare\vl53l1x\core\vl53l1_register_funcs.o" "HardWare\vl53l1x\core\vl53l1_silicon_core.o" "HardWare\vl53l1x\core\vl53l1_wait.o" "HardWare\vl53l1x\platform\IOI2C.o" "HardWare\vl53l1x\platform\vl53l1_platform.o" "HardWare\vl53l1x\platform\vl53l1x.o" "Middle\my_vl53l1x.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
-	-$(RM) "empty.d" "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "HardWare\Delay.d" "HardWare\Interrupt.d" "HardWare\Usart.d" "HardWare\vl53l1x\core\vl53l1_api.d" "HardWare\vl53l1x\core\vl53l1_api_calibration.d" "HardWare\vl53l1x\core\vl53l1_api_core.d" "HardWare\vl53l1x\core\vl53l1_api_debug.d" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.d" "HardWare\vl53l1x\core\vl53l1_api_strings.d" "HardWare\vl53l1x\core\vl53l1_core.d" "HardWare\vl53l1x\core\vl53l1_core_support.d" "HardWare\vl53l1x\core\vl53l1_error_strings.d" "HardWare\vl53l1x\core\vl53l1_register_funcs.d" "HardWare\vl53l1x\core\vl53l1_silicon_core.d" "HardWare\vl53l1x\core\vl53l1_wait.d" "HardWare\vl53l1x\platform\IOI2C.d" "HardWare\vl53l1x\platform\vl53l1_platform.d" "HardWare\vl53l1x\platform\vl53l1x.d" "Middle\my_vl53l1x.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
+	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "main.o" "HardWare\Delay.o" "HardWare\Interrupt.o" "HardWare\OLED.o" "HardWare\Usart.o" "HardWare\icm42688.o" "HardWare\spi.o" "HardWare\vl53l1x\core\vl53l1_api.o" "HardWare\vl53l1x\core\vl53l1_api_calibration.o" "HardWare\vl53l1x\core\vl53l1_api_core.o" "HardWare\vl53l1x\core\vl53l1_api_debug.o" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.o" "HardWare\vl53l1x\core\vl53l1_api_strings.o" "HardWare\vl53l1x\core\vl53l1_core.o" "HardWare\vl53l1x\core\vl53l1_core_support.o" "HardWare\vl53l1x\core\vl53l1_error_strings.o" "HardWare\vl53l1x\core\vl53l1_register_funcs.o" "HardWare\vl53l1x\core\vl53l1_silicon_core.o" "HardWare\vl53l1x\core\vl53l1_wait.o" "HardWare\vl53l1x\platform\IOI2C.o" "HardWare\vl53l1x\platform\vl53l1_platform.o" "HardWare\vl53l1x\platform\vl53l1x.o" "Middle\IMU.o" "Middle\my_vl53l1x.o" "Test\ICM_Test.o" "Test\OLED_Test.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
+	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "main.d" "HardWare\Delay.d" "HardWare\Interrupt.d" "HardWare\OLED.d" "HardWare\Usart.d" "HardWare\icm42688.d" "HardWare\spi.d" "HardWare\vl53l1x\core\vl53l1_api.d" "HardWare\vl53l1x\core\vl53l1_api_calibration.d" "HardWare\vl53l1x\core\vl53l1_api_core.d" "HardWare\vl53l1x\core\vl53l1_api_debug.d" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.d" "HardWare\vl53l1x\core\vl53l1_api_strings.d" "HardWare\vl53l1x\core\vl53l1_core.d" "HardWare\vl53l1x\core\vl53l1_core_support.d" "HardWare\vl53l1x\core\vl53l1_error_strings.d" "HardWare\vl53l1x\core\vl53l1_register_funcs.d" "HardWare\vl53l1x\core\vl53l1_silicon_core.d" "HardWare\vl53l1x\core\vl53l1_wait.d" "HardWare\vl53l1x\platform\IOI2C.d" "HardWare\vl53l1x\platform\vl53l1_platform.d" "HardWare\vl53l1x\platform\vl53l1x.d" "Middle\IMU.d" "Middle\my_vl53l1x.d" "Test\ICM_Test.d" "Test\OLED_Test.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -59,7 +59,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_PWM_Motor_init();
     SYSCFG_DL_PWM_SERVO_init();
     SYSCFG_DL_PWM_BUZZER_init();
-    SYSCFG_DL_TIMER_0_init();
+    SYSCFG_DL_TIMER_10ms_init();
     SYSCFG_DL_I2C_0_init();
     SYSCFG_DL_UART_init();
     SYSCFG_DL_UART_3_init();
@@ -115,7 +115,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_reset(PWM_Motor_INST);
     DL_TimerA_reset(PWM_SERVO_INST);
     DL_TimerA_reset(PWM_BUZZER_INST);
-    DL_TimerG_reset(TIMER_0_INST);
+    DL_TimerG_reset(TIMER_10ms_INST);
     DL_I2C_reset(I2C_0_INST);
     DL_UART_Main_reset(UART_INST);
     DL_UART_Main_reset(UART_3_INST);
@@ -130,7 +130,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_enablePower(PWM_Motor_INST);
     DL_TimerA_enablePower(PWM_SERVO_INST);
     DL_TimerA_enablePower(PWM_BUZZER_INST);
-    DL_TimerG_enablePower(TIMER_0_INST);
+    DL_TimerG_enablePower(TIMER_10ms_INST);
     DL_I2C_enablePower(I2C_0_INST);
     DL_UART_Main_enablePower(UART_INST);
     DL_UART_Main_enablePower(UART_3_INST);
@@ -190,8 +190,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
         GPIO_SPI_1_IOMUX_SCLK, GPIO_SPI_1_IOMUX_SCLK_FUNC);
     DL_GPIO_initPeripheralOutputFunction(
         GPIO_SPI_1_IOMUX_PICO, GPIO_SPI_1_IOMUX_PICO_FUNC);
-    DL_GPIO_initPeripheralInputFunction(
-        GPIO_SPI_1_IOMUX_POCI, GPIO_SPI_1_IOMUX_POCI_FUNC);
+    
+	DL_GPIO_initPeripheralInputFunctionFeatures(
+		 GPIO_SPI_1_IOMUX_POCI, GPIO_SPI_1_IOMUX_POCI_FUNC,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
     DL_GPIO_initDigitalOutput(FLASH_FLASH_CS_IOMUX);
 
@@ -203,7 +206,9 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalOutput(OLED_OLED_RES_IOMUX);
 
-    DL_GPIO_initDigitalOutput(ICM_ICM_CS_IOMUX);
+    DL_GPIO_initDigitalOutputFeatures(ICM_ICM_CS_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_DRIVE_STRENGTH_LOW, DL_GPIO_HIZ_DISABLE);
 
     DL_GPIO_initDigitalOutput(ICM_ICM_INT_IOMUX);
 
@@ -283,11 +288,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		LASER_GPIO3_PIN);
     DL_GPIO_enableInterrupt(GPIOA, LASER_GPIO1_PIN |
 		LASER_GPIO3_PIN);
-    DL_GPIO_clearPins(GPIOB, FLASH_FLASH_CS_PIN |
-		OLED_OLED_CS_PIN |
-		OLED_OLED_DC_PIN |
+    DL_GPIO_clearPins(GPIOB, OLED_OLED_DC_PIN |
 		OLED_OLED_RES_PIN |
-		ICM_ICM_CS_PIN |
 		MOTOR_MOTOR_AIN2_PIN |
 		MOTOR_MOTOR_AIN1_PIN |
 		MOTOR_PMOTOR_BIN2_PIN |
@@ -299,7 +301,10 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		GRAYSCALE_AD1_PIN |
 		BUTTON_BUTTON3_PIN |
 		BUTTON_BUTTON4_PIN);
-    DL_GPIO_setPins(GPIOB, LASER_XSHUT2_PIN |
+    DL_GPIO_setPins(GPIOB, FLASH_FLASH_CS_PIN |
+		OLED_OLED_CS_PIN |
+		ICM_ICM_CS_PIN |
+		LASER_XSHUT2_PIN |
 		LASER_XSHUT3_PIN);
     DL_GPIO_enableOutput(GPIOB, FLASH_FLASH_CS_PIN |
 		OLED_OLED_CS_PIN |
@@ -595,35 +600,35 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_BUZZER_init(void) {
 
 
 /*
- * Timer clock configuration to be sourced by BUSCLK /  (10000000 Hz)
+ * Timer clock configuration to be sourced by BUSCLK /  (5000000 Hz)
  * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
- *   10000000 Hz = 10000000 Hz / (4 * (0 + 1))
+ *   5000000 Hz = 5000000 Hz / (8 * (0 + 1))
  */
-static const DL_TimerG_ClockConfig gTIMER_0ClockConfig = {
+static const DL_TimerG_ClockConfig gTIMER_10msClockConfig = {
     .clockSel    = DL_TIMER_CLOCK_BUSCLK,
-    .divideRatio = DL_TIMER_CLOCK_DIVIDE_4,
+    .divideRatio = DL_TIMER_CLOCK_DIVIDE_8,
     .prescale    = 0U,
 };
 
 /*
  * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
- * TIMER_0_INST_LOAD_VALUE = (2ms * 10000000 Hz) - 1
+ * TIMER_10ms_INST_LOAD_VALUE = (10ms * 5000000 Hz) - 1
  */
-static const DL_TimerG_TimerConfig gTIMER_0TimerConfig = {
-    .period     = TIMER_0_INST_LOAD_VALUE,
-    .timerMode  = DL_TIMER_TIMER_MODE_ONE_SHOT,
-    .startTimer = DL_TIMER_START,
+static const DL_TimerG_TimerConfig gTIMER_10msTimerConfig = {
+    .period     = TIMER_10ms_INST_LOAD_VALUE,
+    .timerMode  = DL_TIMER_TIMER_MODE_PERIODIC,
+    .startTimer = DL_TIMER_STOP,
 };
 
-SYSCONFIG_WEAK void SYSCFG_DL_TIMER_0_init(void) {
+SYSCONFIG_WEAK void SYSCFG_DL_TIMER_10ms_init(void) {
 
-    DL_TimerG_setClockConfig(TIMER_0_INST,
-        (DL_TimerG_ClockConfig *) &gTIMER_0ClockConfig);
+    DL_TimerG_setClockConfig(TIMER_10ms_INST,
+        (DL_TimerG_ClockConfig *) &gTIMER_10msClockConfig);
 
-    DL_TimerG_initTimerMode(TIMER_0_INST,
-        (DL_TimerG_TimerConfig *) &gTIMER_0TimerConfig);
-    DL_TimerG_enableInterrupt(TIMER_0_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
-    DL_TimerG_enableClock(TIMER_0_INST);
+    DL_TimerG_initTimerMode(TIMER_10ms_INST,
+        (DL_TimerG_TimerConfig *) &gTIMER_10msTimerConfig);
+    DL_TimerG_enableInterrupt(TIMER_10ms_INST , DL_TIMERG_INTERRUPT_ZERO_EVENT);
+    DL_TimerG_enableClock(TIMER_10ms_INST);
 
 
 
@@ -807,9 +812,9 @@ SYSCONFIG_WEAK void SYSCFG_DL_SPI_1_init(void) {
     /*
      * Set the bit rate clock divider to generate the serial output clock
      *     outputBitRate = (spiInputClock) / ((1 + SCR) * 2)
-     *     8000000 = (80000000)/((1 + 4) * 2)
+     *     2000000 = (80000000)/((1 + 19) * 2)
      */
-    DL_SPI_setBitRateSerialClockDivider(SPI_1_INST, 4);
+    DL_SPI_setBitRateSerialClockDivider(SPI_1_INST, 19);
     /* Set RX and TX FIFO threshold levels */
     DL_SPI_setFIFOThreshold(SPI_1_INST, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
 

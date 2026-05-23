@@ -32,14 +32,22 @@
 
 #include "ti_msp_dl_config.h"
 #include "Usart.h"
+#include "spi.h"
 
 
 #include "Uart_Test.h"
 #include "vl53l1x_Test.h"
+#include "ICM_Test.h"
+#include "OLED_Test.h"
 int main(void)
 {
     SYSCFG_DL_init();
     Uart_Init();
+    SPI_Init();
+
+    ICM42688_Test2();
+    ICM42688_Test1();
+    OLED_Test1();
     VL53L1X_Test2();
     VL53L1X_Test1();
     //Uart_Test1();

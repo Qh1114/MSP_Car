@@ -1,6 +1,6 @@
 # FIXED
 
-.o: ../empty.c \
+HardWare/icm42688.o: ../HardWare/icm42688.c ../HardWare/icm42688.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -84,9 +84,8 @@
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h
+ ../HardWare/spi.h
+../HardWare/icm42688.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -170,6 +169,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h:
+../HardWare/spi.h:

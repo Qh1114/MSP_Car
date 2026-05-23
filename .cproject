@@ -95,22 +95,6 @@
                             </tool>
                         </toolChain>
                     </folderInfo>
-                    <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.2007834000.empty.c" name="empty.c" rcbsApplicability="disable" resourcePath="empty.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725.2035285416">
-                        <tool id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725.2035285416" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725">
-                            <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.compilerID.INCLUDE_PATH.1405270989" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.compilerID.INCLUDE_PATH" valueType="includePath">
-                                <listOptionValue value="${PROJECT_ROOT}/APP"/>
-                                <listOptionValue value="${PROJECT_ROOT}/Middle"/>
-                                <listOptionValue value="${PROJECT_ROOT}/HardWare"/>
-                                <listOptionValue value="${COM_TI_MSPM0_SDK_INCLUDE_PATH}"/>
-                                <listOptionValue value="${SYSCONFIG_TOOL_INCLUDE_PATH}"/>
-                                <listOptionValue value="${PROJECT_ROOT}/Test"/>
-                                <listOptionValue value="${PROJECT_ROOT}"/>
-                                <listOptionValue value="${PROJECT_ROOT}/${ConfigName}"/>
-                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source/third_party/CMSIS/Core/Include"/>
-                                <listOptionValue value="${COM_TI_MSPM0_SDK_INSTALL_DIR}/source"/>
-                            </option>
-                        </tool>
-                    </fileInfo>
                     <fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.2007834000.Test/Uart_Test.c" name="Uart_Test.c" rcbsApplicability="disable" resourcePath="Test/Uart_Test.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725.243329945">
                         <tool id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725.243329945" name="Arm Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.exe.compilerDebug.1967861725">
                             <option id="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.compilerID.OPT_LEVEL.1580414230" superClass="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.compilerID.OPT_LEVEL" value="com.ti.ccstudio.buildDefinitions.TMS470_TICLANG_4.0.compilerID.OPT_LEVEL.0" valueType="enumerated"/>

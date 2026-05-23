@@ -85,7 +85,8 @@ HardWare/Interrupt.o: ../HardWare/Interrupt.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
  C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/my_vl53l1x.h \
- ../HardWare/Usart.h
+ ../HardWare/Usart.h \
+ C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/IMU.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -171,3 +172,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/my_vl53l1x.h:
 ../HardWare/Usart.h:
+C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/IMU.h:

@@ -1,18 +1,18 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Mon May 18 20:55:41 2026
+>> Linked Thu May 21 18:46:37 2026
 
 OUTPUT FILE NAME:   <MSP_Car.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00008205
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000ab3d
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00020000  00009088  00016f78  R  X
-  SRAM                  20200000   00008000  00001f05  000060fb  RW X
+  FLASH                 00000000   00020000  0000d700  00012900  R  X
+  SRAM                  20200000   00008000  00004093  00003f6d  RW X
   BCR_CONFIG            41c00000   000000ff  00000000  000000ff  R   
   BSL_CONFIG            41c00100   00000080  00000000  00000080  R   
 
@@ -21,15 +21,15 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00009088   00009088    r-x
+00000000    00000000    0000d700   0000d700    r-x
   00000000    00000000    000000c0   000000c0    r-- .intvecs
-  000000c0    000000c0    00008c10   00008c10    r-x .text
-  00008cd0    00008cd0    00000300   00000300    r-- .rodata
-  00008fd0    00008fd0    000000b8   000000b8    r-- .cinit
-20200000    20200000    00001d05   00000000    rw-
-  20200000    20200000    000012d8   00000000    rw- .bss
-  202012d8    202012d8    00000800   00000000    rw- .sysmem
-  20201ad8    20201ad8    0000022d   00000000    rw- .data
+  000000c0    000000c0    0000b6e0   0000b6e0    r-x .text
+  0000b7a0    0000b7a0    00001e80   00001e80    r-- .rodata
+  0000d620    0000d620    000000e0   000000e0    r-- .cinit
+20200000    20200000    00003e93   00000000    rw-
+  20200000    20200000    000033f8   00000000    rw- .bss
+  202033f8    202033f8    00000800   00000000    rw- .sysmem
+  20203bf8    20203bf8    0000029b   00000000    rw- .data
 20207e00    20207e00    00000200   00000000    rw-
   20207e00    20207e00    00000200   00000000    rw- .stack
 
@@ -42,459 +42,580 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    000000c0     
                   00000000    000000c0     startup_mspm0g350x_ticlang.o (.intvecs)
 
-.text      0    000000c0    00008c10     
+.text      0    000000c0    0000b6e0     
                   000000c0    000009d0     libc.a : _printfi.c.obj (.text:__TI_printfi)
-                  00000a90    00000404     vl53l1_api_core.o (.text.VL53L1_get_tuning_parm)
-                  00000e94    000003d8     vl53l1_api_core.o (.text.VL53L1_init_and_start_range)
-                  0000126c    000002f6     vl53l1_api_core.o (.text.VL53L1_set_preset_mode)
-                  00001562    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
-                  00001564    00000270     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
-                  000017d4    00000220     libc.a : _printfi.c.obj (.text._pconv_a)
-                  000019f4    000001fc     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_nvm_copy_data)
-                  00001bf0    000001f0     vl53l1_api.o (.text.VL53L1_SetMeasurementTimingBudgetMicroSeconds)
-                  00001de0    000001e4     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging)
-                  00001fc4    000001dc     libc.a : _printfi.c.obj (.text._pconv_g)
-                  000021a0    000001cc     IOI2C.o (.text.IICreadBytes)
-                  0000236c    00000192     libclang_rt.builtins.a : adddf3.S.obj (.text.adddf3_subdf3)
-                  000024fe    00000002                            : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
-                  00002500    00000178     vl53l1_api.o (.text.VL53L1_GetMeasurementTimingBudgetMicroSeconds)
-                  00002678    00000174     IOI2C.o (.text.IIC_ReadOneByte)
-                  000027ec    00000164     vl53l1_api.o (.text.VL53L1_SetDistanceMode)
-                  00002950    00000162     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_static_config)
-                  00002ab2    00000002     libc.a : _lock.c.obj (.text._nop)
-                  00002ab4    00000160     vl53l1x.o (.text.VL53InitParam)
-                  00002c14    0000015c     vl53l1_api_core.o (.text.VL53L1_get_preset_mode_timing_cfg)
-                  00002d70    0000013c     libc.a : _printfi.c.obj (.text.fcvt)
-                  00002eac    00000134     vl53l1_api_core.o (.text.VL53L1_data_init)
-                  00002fe0    00000130     IOI2C.o (.text.IICwriteBytes)
-                  00003110    0000012a     vl53l1_core.o (.text.VL53L1_copy_rtn_good_spads_to_buffer)
-                  0000323a    00000002     --HOLE-- [fill = 0]
-                  0000323c    00000124     vl53l1_api_core.o (.text.VL53L1_read_p2p_data)
-                  00003360    00000120     libc.a : _printfi.c.obj (.text._pconv_e)
-                  00003480    00000118     vl53l1x.o (.text.VL53L1Init)
-                  00003598    00000114     libc.a : memory.c.obj (.text.aligned_alloc)
-                  000036ac    0000010e     vl53l1_core.o (.text.VL53L1_update_ll_driver_rd_state)
-                  000037ba    00000002     --HOLE-- [fill = 0]
-                  000037bc    0000010c     libclang_rt.builtins.a : divdf3.S.obj (.text.__divdf3)
-                  000038c8    00000104     driverlib.a : dl_timer.o (.text.DL_Timer_initFourCCPWMMode)
-                  000039cc    00000104     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_customer_nvm_managed)
-                  00003ad0    000000fc     driverlib.a : dl_timer.o (.text.DL_Timer_initTimerMode)
-                  00003bcc    000000fc     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_customer_nvm_managed)
-                  00003cc8    000000f8     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
-                  00003dc0    000000f8     libc.a : fputs.c.obj (.text.fputs)
-                  00003eb8    000000f4     vl53l1_platform.o (.text.VL53L1_WaitValueMaskEx)
-                  00003fac    000000f0     vl53l1_api.o (.text.VL53L1_StartMeasurement)
-                  0000409c    000000f0     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_general_config)
-                  0000418c    000000f0     vl53l1_api_preset_modes.o (.text.VL53L1_init_tuning_parm_storage_struct)
-                  0000427c    000000ec     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_SYSPLL_init)
-                  00004368    000000e8     libc.a : memory.c.obj (.text.free)
-                  00004450    000000e4     libclang_rt.builtins.a : muldf3.S.obj (.text.__muldf3)
-                  00004534    000000e2     vl53l1_core.o (.text.VL53L1_calc_timeout_register_values)
-                  00004616    000000e2     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_dynamic_config)
-                  000046f8    000000e0     libc.a : setvbuf.c.obj (.text.setvbuf)
-                  000047d8    000000de     vl53l1_api_core.o (.text.VL53L1_get_timeouts_us)
-                  000048b6    00000002     --HOLE-- [fill = 0]
-                  000048b8    000000dc     driverlib.a : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_configSYSPLL)
-                  00004994    000000dc     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_timing_config)
-                  00004a70    000000d8     libc.a : s_scalbn.c.obj (.text.scalbn)
-                  00004b48    000000d6     vl53l1_api.o (.text.SetPresetMode)
-                  00004c1e    000000cc     vl53l1_api.o (.text.VL53L1_DataInit)
-                  00004cea    00000002     --HOLE-- [fill = 0]
-                  00004cec    000000cc     vl53l1_core.o (.text.VL53L1_calc_range_ignore_threshold)
-                  00004db8    000000c4     vl53l1_api.o (.text.ComputeDevicePresetMode)
-                  00004e7c    000000c0     vl53l1_api.o (.text.VL53L1_SetPresetMode)
-                  00004f3c    000000be     vl53l1_core.o (.text.VL53L1_update_ll_driver_cfg_state)
-                  00004ffa    000000ba     vl53l1_api_preset_modes.o (.text.VL53L1_init_xtalk_config_struct)
-                  000050b4    000000b4     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_SERVO_init)
-                  00005168    000000b4     my_vl53l1x.o (.text.my_vl53l1x_init)
-                  0000521c    000000ac     vl53l1x_Test.o (.text.VL53L1X_Test1)
-                  000052c8    000000a2     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
-                  0000536a    000000a0     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_static_nvm_managed)
-                  0000540a    0000009e     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_static_nvm_managed)
-                  000054a8    0000009c     libc.a : fputc.c.obj (.text.fputc)
-                  00005544    00000090     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_Motor_init)
-                  000055d4    0000008e     vl53l1_api.o (.text.VL53L1_SetLimitCheckValue)
-                  00005662    0000008a     vl53l1_api.o (.text.VL53L1_SetLimitCheckEnable)
-                  000056ec    0000008a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_long_range)
-                  00005776    0000008a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_short_range)
-                  00005800    00000088     libc.a : strcmp-armv6m.S.obj (.text:strcmp)
-                  00005888    00000084     ti_msp_dl_config.o (.text.__NVIC_SetPriority)
-                  0000590c    00000080     Interrupt.o (.text.GROUP1_IRQHandler)
-                  0000598c    0000007e     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging_short_range)
-                  00005a0a    0000007e     vl53l1x.o (.text.getDistance_Simply)
-                  00005a88    0000007c     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging)
-                  00005b04    0000007c     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging_long_range)
-                  00005b80    0000007c     vl53l1_api_core.o (.text.VL53L1_set_timeouts_us)
-                  00005bfc    0000007c     libc.a : fclose.c.obj (.text.__TI_closefile)
-                  00005c78    0000007c            : copy_decompress_lzss.c.obj (.text:decompress:lzss)
-                  00005cf4    00000076     vl53l1_api_core.o (.text.VL53L1_get_sequence_config_bit)
-                  00005d6a    00000002     --HOLE-- [fill = 0]
-                  00005d6c    00000074     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
-                  00005de0    00000074     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_singleshot_ranging)
-                  00005e54    00000074     libclang_rt.builtins.a : comparedf2.c.obj (.text.__gedf2)
-                  00005ec8    00000070     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
-                  00005f38    0000006c     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
-                  00005fa4    0000006c                : hostrename.c.obj (.text.HOSTrename)
-                  00006010    0000006c     vl53l1_core.o (.text.VL53L1_low_power_auto_data_init)
-                  0000607c    0000006c     libc.a : fseek.c.obj (.text.fseeko)
-                  000060e8    0000006c            : getdevice.c.obj (.text.getdevice)
-                  00006154    00000068     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_BUZZER_init)
-                  000061bc    00000068     vl53l1_api_core.o (.text.VL53L1_get_mode_mitigation_roi)
-                  00006224    00000068     libclang_rt.builtins.a : comparedf2.c.obj (.text.__ledf2)
-                  0000628c    00000066     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_system_control)
-                  000062f2    00000066     libc.a : _printfi.c.obj (.text._mcpy)
-                  00006358    00000064     Delay.o (.text.Get_us)
-                  000063bc    00000064     libc.a : _io_perm.c.obj (.text.__TI_wrt_ok)
-                  00006420    00000064            : memory.c.obj (.text.split)
-                  00006484    00000062     vl53l1_wait.o (.text.VL53L1_poll_for_boot_completion)
-                  000064e6    00000002     --HOLE-- [fill = 0]
-                  000064e8    00000062     libclang_rt.builtins.a : aeabi_dcmp.S.obj (.text.__aeabi_dcmp)
-                  0000654a    00000002     --HOLE-- [fill = 0]
-                  0000654c    00000060     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
-                  000065ac    0000005e     driverlib.a : dl_i2c.o (.text.DL_I2C_fillControllerTXFIFO)
-                  0000660a    00000002     --HOLE-- [fill = 0]
-                  0000660c    0000005c     libc.a : s_frexp.c.obj (.text.frexp)
-                  00006668    0000005c            : printf.c.obj (.text.printf)
-                  000066c4    0000005a     vl53l1_api.o (.text.SetLimitValue)
-                  0000671e    0000005a     vl53l1_core.o (.text.VL53L1_i2c_encode_int16_t)
-                  00006778    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_long_ranging)
-                  000067d2    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_ranging)
-                  0000682c    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_short_ranging)
-                  00006886    00000002     --HOLE-- [fill = 0]
-                  00006888    00000058     libsysbm.a : hostread.c.obj (.text.HOSTread)
-                  000068e0    00000058                : hostwrite.c.obj (.text.HOSTwrite)
-                  00006938    00000058     ti_msp_dl_config.o (.text.SYSCFG_DL_I2C_0_init)
-                  00006990    00000058     vl53l1_api.o (.text.VL53L1_StaticInit)
-                  000069e8    00000058     vl53l1_core.o (.text.VL53L1_calc_macro_period_us)
-                  00006a40    00000058     libc.a : _ltoa.c.obj (.text.__TI_ltoa)
-                  00006a98    00000058            : _printfi.c.obj (.text._pconv_f)
-                  00006af0    00000056     vl53l1_api_core.o (.text.VL53L1_get_inter_measurement_period_ms)
-                  00006b46    00000056     vl53l1_core.o (.text.VL53L1_i2c_encode_uint16_t)
-                  00006b9c    00000056     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_mm1_cal)
-                  00006bf2    00000056     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_mm2_cal)
-                  00006c48    00000056     vl53l1_api_core.o (.text.VL53L1_set_inter_measurement_period_ms)
-                  00006c9e    00000002     --HOLE-- [fill = 0]
-                  00006ca0    00000056     libclang_rt.builtins.a : aeabi_idivmod.S.obj (.text.__aeabi_idivmod)
-                  00006cf6    00000002     --HOLE-- [fill = 0]
-                  00006cf8    00000054     vl53l1_core.o (.text.VL53L1_i2c_decode_int16_t)
-                  00006d4c    00000052     vl53l1_core.o (.text.VL53L1_encode_timeout)
-                  00006d9e    00000052     vl53l1_core.o (.text.VL53L1_i2c_encode_uint32_t)
-                  00006df0    00000052     libc.a : fflush.c.obj (.text.__TI_doflush)
-                  00006e42    00000052            : _printfi.c.obj (.text._ecpy)
-                  00006e94    00000050     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralInputFunctionFeatures)
-                  00006ee4    00000050     IOI2C.o (.text.DL_I2C_startControllerTransfer)
-                  00006f34    00000050     ti_msp_dl_config.o (.text.SysTick_Config)
-                  00006f84    00000050     vl53l1x_Test.o (.text.Uart0_Send)
-                  00006fd4    00000050     vl53l1_core_support.o (.text.VL53L1_decode_row_col)
-                  00007024    00000050     vl53l1_register_funcs.o (.text.VL53L1_get_nvm_copy_data)
-                  00007074    00000050     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_olt)
-                  000070c4    00000050     libsysbm.a : close.c.obj (.text.close)
-                  00007114    0000004e     vl53l1_register_funcs.o (.text.VL53L1_get_customer_nvm_managed)
-                  00007162    0000004e     vl53l1_register_funcs.o (.text.VL53L1_get_static_nvm_managed)
-                  000071b0    0000004c     ti_msp_dl_config.o (.text.DL_GPIO_initDigitalInputFeatures)
-                  000071fc    0000004c     ti_msp_dl_config.o (.text.DL_UART_setBaudRateDivisor)
-                  00007248    0000004c     vl53l1_core.o (.text.VL53L1_calc_timeout_us)
-                  00007294    0000004a     ti_msp_dl_config.o (.text.DL_ADC12_configConversionMem)
-                  000072de    0000004a     vl53l1_platform.o (.text.VL53L1_ReadMulti)
-                  00007328    0000004a     vl53l1_platform.o (.text.VL53L1_WriteMulti)
-                  00007372    00000002     --HOLE-- [fill = 0]
-                  00007374    0000004a     libclang_rt.builtins.a : fixdfsi.S.obj (.text.__fixdfsi)
-                  000073be    00000002     --HOLE-- [fill = 0]
-                  000073c0    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
-                  00007408    00000048     libsysbm.a : hostclose.c.obj (.text.HOSTclose)
-                  00007450    00000048                : hostunlink.c.obj (.text.HOSTunlink)
-                  00007498    00000046     vl53l1_platform.o (.text.VL53L1_WrByte)
-                  000074de    00000002     --HOLE-- [fill = 0]
-                  000074e0    00000044     driverlib.a : dl_spi.o (.text.DL_SPI_init)
-                  00007524    00000044                 : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK)
-                  00007568    00000044     vl53l1_api.o (.text.VL53L1_GetInterMeasurementPeriodMilliSeconds)
-                  000075ac    00000044     vl53l1_api_core.o (.text.VL53L1_set_user_zone)
-                  000075f0    00000042     vl53l1_platform.o (.text.VL53L1_RdByte)
-                  00007632    00000042     vl53l1_api.o (.text.VL53L1_SetInterMeasurementPeriodMilliSeconds)
-                  00007674    00000042     vl53l1_api_core.o (.text.VL53L1_get_user_zone)
-                  000076b6    00000002     --HOLE-- [fill = 0]
-                  000076b8    00000040     driverlib.a : dl_adc12.o (.text.DL_ADC12_setClockConfig)
-                  000076f8    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_SPI_1_init)
-                  00007738    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_3_init)
-                  00007778    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_CAMERA_init)
-                  000077b8    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_WIRELESS_init)
-                  000077f8    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_init)
-                  00007838    00000040     vl53l1_api_preset_modes.o (.text.VL53L1_init_offset_cal_config_struct)
-                  00007878    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
-                  000078b8    00000040     libc.a : atoi.c.obj (.text.atoi)
-                  000078f8    00000040            : vsnprintf.c.obj (.text.vsnprintf)
-                  00007938    0000003e     vl53l1_core.o (.text.VL53L1_init_ll_driver_state)
-                  00007976    00000002     --HOLE-- [fill = 0]
-                  00007978    0000003c     ti_msp_dl_config.o (.text.DL_Timer_setCounterControl)
-                  000079b4    0000003c     Usart.o (.text.Uart0_Send_String)
-                  000079f0    0000003c     vl53l1_core.o (.text.VL53L1_encode_row_col)
-                  00007a2c    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
-                  00007a68    0000003a     vl53l1_platform.o (.text.VL53L1_RdWord)
-                  00007aa2    0000003a     vl53l1_core.o (.text.VL53L1_i2c_decode_uint16_t)
-                  00007adc    0000003a     vl53l1_api_preset_modes.o (.text.VL53L1_init_refspadchar_config_struct)
-                  00007b16    00000002     --HOLE-- [fill = 0]
-                  00007b18    0000003a     libclang_rt.builtins.a : muldsi3.S.obj (.text.__muldsi3)
-                  00007b52    00000002     --HOLE-- [fill = 0]
-                  00007b54    00000038     vl53l1_api_preset_modes.o (.text.VL53L1_init_ssc_config_struct)
-                  00007b8c    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_BAT_ADC_init)
-                  00007bc0    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_TIMER_0_init)
-                  00007bf4    00000034     vl53l1x_Test.o (.text.VL53L1X_Test2)
-                  00007c28    00000034     vl53l1_api.o (.text.VL53L1_GetSequenceStepEnable)
-                  00007c5c    00000034     vl53l1_api.o (.text.VL53L1_SetDeviceAddress)
-                  00007c90    00000034     libc.a : fopen.c.obj (.text.__TI_cleanup)
-                  00007cc4    00000034     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
-                  00007cf8    00000034                : trgmsg.c.obj (.text.__TI_writemsg)
-                  00007d2c    00000034     libc.a : exit.c.obj (.text.exit)
-                  00007d60    00000034            : getdevice.c.obj (.text.finddevice)
-                  00007d94    00000032     Usart.o (.text.Uart0_Printf)
-                  00007dc6    00000032     vl53l1_core.o (.text.VL53L1_config_low_power_auto_mode)
-                  00007df8    00000030     ti_msp_dl_config.o (.text.DL_SPI_setFIFOThreshold)
-                  00007e28    00000030     libc.a : _printfi.c.obj (.text._fcpy)
-                  00007e58    00000030            : vsnprintf.c.obj (.text._outs)
-                  00007e88    00000030     my_vl53l1x.o (.text.my_vl53l1x_callback)
-                  00007eb8    0000002e     vl53l1_core.o (.text.VL53L1_calc_encoded_timeout)
-                  00007ee6    0000002e     vl53l1_api_core.o (.text.VL53L1_set_vhv_loopbound)
-                  00007f14    0000002c     Usart.o (.text.Uart0_Send_Char)
-                  00007f40    0000002c     vl53l1_core.o (.text.VL53L1_init_version)
-                  00007f6c    0000002c     Usart.o (.text.__NVIC_ClearPendingIRQ)
-                  00007f98    0000002c     Usart.o (.text.__NVIC_EnableIRQ)
-                  00007fc4    0000002c     my_vl53l1x.o (.text.__NVIC_EnableIRQ)
-                  00007ff0    0000002c     libclang_rt.builtins.a : floatsidf.S.obj (.text.__floatsidf)
-                  0000801c    0000002c     libsysbm.a : unlink.c.obj (.text.unlink)
-                  00008048    0000002a     vl53l1_core.o (.text.VL53L1_calc_decoded_timeout_us)
-                  00008072    00000028     IOI2C.o (.text.DL_Common_updateReg)
-                  0000809a    00000028     ti_msp_dl_config.o (.text.DL_Common_updateReg)
-                  000080c2    00000002     --HOLE-- [fill = 0]
-                  000080c4    00000028     ti_msp_dl_config.o (.text.DL_I2C_setControllerRXFIFOThreshold)
-                  000080ec    00000028     ti_msp_dl_config.o (.text.DL_I2C_setControllerTXFIFOThreshold)
-                  00008114    00000028     Delay.o (.text.Delay_ms)
-                  0000813c    00000028     Uart_Test.o (.text.Uart_Test2)
-                  00008164    00000028     vl53l1_api.o (.text.VL53L1_WaitDeviceBooted)
-                  0000818c    00000028     libc.a : memory.c.obj (.text.free_list_insert)
-                  000081b4    00000028     libsysbm.a : lseek.c.obj (.text.lseek)
-                  000081dc    00000028                : write.c.obj (.text.write)
-                  00008204    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
-                  0000822c    00000026     ti_msp_dl_config.o (.text.DL_I2C_setAnalogGlitchFilterPulseWidth)
-                  00008252    00000026     driverlib.a : dl_i2c.o (.text.DL_I2C_setClockConfig)
-                  00008278    00000026     vl53l1_platform.o (.text.VL53L1_WaitUs)
-                  0000829e    00000002     --HOLE-- [fill = 0]
-                  000082a0    00000024     ti_msp_dl_config.o (.text.DL_SPI_setBitRateSerialClockDivider)
-                  000082c4    00000024     vl53l1_api_core.o (.text.VL53L1_set_lite_min_count_rate)
-                  000082e8    00000024     vl53l1_api_core.o (.text.VL53L1_set_lite_sigma_threshold)
-                  0000830c    00000024     libclang_rt.builtins.a : floatunsidf.S.obj (.text.__floatunsidf)
-                  00008330    00000024                            : muldi3.S.obj (.text.__muldi3)
-                  00008354    00000022     IOI2C.o (.text.IICwriteByte)
-                  00008376    00000022     vl53l1_core.o (.text.VL53L1_calc_timeout_mclks)
-                  00008398    00000022     vl53l1_core.o (.text.VL53L1_decode_zone_size)
-                  000083ba    00000022     libc.a : memccpy.c.obj (.text.memccpy)
-                  000083dc    00000020     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralInputFunction)
-                  000083fc    00000020     ti_msp_dl_config.o (.text.DL_SYSCTL_setFlashWaitState)
-                  0000841c    00000020     Usart.o (.text.Uart_Init)
-                  0000843c    00000020     vl53l1_core_support.o (.text.VL53L1_calc_pll_period_us)
-                  0000845c    00000020     empty.o (.text.main)
-                  0000847c    00000020     my_vl53l1x.o (.text.my_vl53l1x_get_distance)
-                  0000849c    0000001e     ti_msp_dl_config.o (.text.DL_UART_setOversampling)
-                  000084ba    0000001e     vl53l1_core.o (.text.VL53L1_decode_timeout)
-                  000084d8    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
-                  000084f6    00000002     --HOLE-- [fill = 0]
-                  000084f8    0000001c     Interrupt.o (.text.DL_GPIO_clearInterruptStatus)
-                  00008514    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_clearInterruptStatus)
-                  00008530    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_enableHiZ)
-                  0000854c    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_enableInterrupt)
-                  00008568    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralOutputFunction)
-                  00008584    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_setLowerPinsPolarity)
-                  000085a0    0000001c     IOI2C.o (.text.DL_I2C_isControllerRXFIFOEmpty)
-                  000085bc    0000001c     driverlib.a : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_configFCC)
-                  000085d8    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setFCCPeriods)
-                  000085f4    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setSYSOSCFreq)
-                  00008610    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setULPCLKDivider)
-                  0000862c    0000001c     ti_msp_dl_config.o (.text.DL_Timer_enableInterrupt)
-                  00008648    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptCompUpdateMethod)
-                  00008664    0000001c                 : dl_timer.o (.text.DL_Timer_setClockConfig)
-                  00008680    0000001c     vl53l1_core.o (.text.VL53L1_encode_zone_size)
-                  0000869c    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
-                  000086b8    0000001a     vl53l1_core_support.o (.text.VL53L1_decode_vcsel_period)
-                  000086d2    00000002     --HOLE-- [fill = 0]
-                  000086d4    00000018     ti_msp_dl_config.o (.text.DL_ADC12_enablePower)
-                  000086ec    00000018     ti_msp_dl_config.o (.text.DL_ADC12_reset)
-                  00008704    00000018     ti_msp_dl_config.o (.text.DL_GPIO_enableOutput)
-                  0000871c    00000018     ti_msp_dl_config.o (.text.DL_GPIO_enablePower)
-                  00008734    00000018     Interrupt.o (.text.DL_GPIO_getEnabledInterruptStatus)
-                  0000874c    00000018     ti_msp_dl_config.o (.text.DL_GPIO_initDigitalOutput)
-                  00008764    00000018     ti_msp_dl_config.o (.text.DL_GPIO_reset)
-                  0000877c    00000018     my_vl53l1x.o (.text.DL_GPIO_setPins)
-                  00008794    00000018     ti_msp_dl_config.o (.text.DL_GPIO_setPins)
-                  000087ac    00000018     ti_msp_dl_config.o (.text.DL_GPIO_setUpperPinsPolarity)
-                  000087c4    00000018     IOI2C.o (.text.DL_I2C_clearInterruptStatus)
-                  000087dc    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableAnalogGlitchFilter)
-                  000087f4    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableController)
-                  0000880c    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableControllerClockStretching)
-                  00008824    00000018     ti_msp_dl_config.o (.text.DL_I2C_enablePower)
-                  0000883c    00000018     IOI2C.o (.text.DL_I2C_getRawInterruptStatus)
-                  00008854    00000018     ti_msp_dl_config.o (.text.DL_I2C_reset)
-                  0000886c    00000018     ti_msp_dl_config.o (.text.DL_I2C_setTimerPeriod)
-                  00008884    00000018     ti_msp_dl_config.o (.text.DL_SPI_enable)
-                  0000889c    00000018     ti_msp_dl_config.o (.text.DL_SPI_enablePower)
-                  000088b4    00000018     ti_msp_dl_config.o (.text.DL_SPI_reset)
-                  000088cc    00000018     ti_msp_dl_config.o (.text.DL_SYSCTL_setBORThreshold)
-                  000088e4    00000018     ti_msp_dl_config.o (.text.DL_Timer_enablePower)
-                  000088fc    00000018     ti_msp_dl_config.o (.text.DL_Timer_reset)
-                  00008914    00000018     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptureCompareOutCtl)
-                  0000892c    00000018     ti_msp_dl_config.o (.text.DL_UART_enablePower)
-                  00008944    00000018     Usart.o (.text.DL_UART_isBusy)
-                  0000895c    00000018     ti_msp_dl_config.o (.text.DL_UART_reset)
-                  00008974    00000018     libc.a : vsnprintf.c.obj (.text._outc)
-                  0000898c    00000016     ti_msp_dl_config.o (.text.DL_ADC12_enableConversions)
-                  000089a2    00000016     ti_msp_dl_config.o (.text.DL_UART_enable)
-                  000089b8    00000016     Usart.o (.text.DL_UART_transmitData)
-                  000089ce    00000014     my_vl53l1x.o (.text.DL_GPIO_clearPins)
-                  000089e2    00000014     ti_msp_dl_config.o (.text.DL_GPIO_clearPins)
-                  000089f6    00000002     --HOLE-- [fill = 0]
-                  000089f8    00000014     IOI2C.o (.text.DL_I2C_getControllerStatus)
-                  00008a0c    00000014     IOI2C.o (.text.DL_I2C_receiveControllerData)
-                  00008a20    00000014     ti_msp_dl_config.o (.text.DL_I2C_resetControllerTransfer)
-                  00008a34    00000014     ti_msp_dl_config.o (.text.DL_SYSCTL_disableSYSPLL)
-                  00008a48    00000014     ti_msp_dl_config.o (.text.DL_SYSCTL_enableSYSPLL)
-                  00008a5c    00000014     ti_msp_dl_config.o (.text.DL_Timer_enableClock)
-                  00008a70    00000014     ti_msp_dl_config.o (.text.DL_Timer_setCCPDirection)
-                  00008a84    00000014     Usart.o (.text.DL_UART_receiveData)
-                  00008a98    00000014     vl53l1_platform.o (.text.VL53L1_WaitMs)
-                  00008aac    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
-                  00008ac0    00000014     libc.a : _printfi.c.obj (.text.strchr)
-                  00008ad4    00000012     driverlib.a : dl_spi.o (.text.DL_SPI_setClockConfig)
-                  00008ae6    00000012                 : dl_uart.o (.text.DL_UART_setClockConfig)
-                  00008af8    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
-                  00008b0a    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
-                  00008b1c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_disableHFXT)
-                  00008b2c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_isFCCDone)
-                  00008b3c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_startFCC)
-                  00008b4c    00000010     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptureCompareValue)
-                  00008b5c    00000010     IOI2C.o (.text.IIC_Delay_ms)
-                  00008b6c    00000010     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSTICK_init)
-                  00008b7c    00000010     Delay.o (.text.SysTick_Handler)
-                  00008b8c    00000010     libc.a : wcslen.c.obj (.text.wcslen)
-                  00008b9c    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
-                  00008bac    0000000e            : memory.c.obj (.text.OUTLINED_FUNCTION_0)
-                  00008bba    00000002     --HOLE-- [fill = 0]
-                  00008bbc    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
-                  00008bca    0000000e     libsysbm.a : hostrename.c.obj (.text.strcpy)
-                  00008bd8    0000000e     libc.a : _printfi.c.obj (.text.strlen)
-                  00008be6    0000000e     libsysbm.a : hostrename.c.obj (.text.strlen)
-                  00008bf4    0000000e     libc.a : memset16.S.obj (.text:TI_memset_small)
-                  00008c02    00000002     --HOLE-- [fill = 0]
-                  00008c04    0000000c     ti_msp_dl_config.o (.text.DL_SYSCTL_getClockStatus)
-                  00008c10    0000000c     ti_msp_dl_config.o (.text.DL_SYSCTL_readFCC)
-                  00008c1c    0000000c     Delay.o (.text.Get_ms)
-                  00008c28    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
-                  00008c34    0000000c     libc.a : memory.c.obj (.text.malloc)
-                  00008c40    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
-                  00008c4a    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
-                  00008c54    00000010     libclang_rt.builtins.a : adddf3.S.obj (.tramp.__aeabi_dsub.1)
-                  00008c64    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_1)
-                  00008c6e    00000002     --HOLE-- [fill = 0]
-                  00008c70    00000008            : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
-                  00008c78    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
-                  00008c80    00000008     libc.a : printf.c.obj (.text._outc)
-                  00008c88    00000008            : printf.c.obj (.text._outs)
-                  00008c90    00000008            : fseek.c.obj (.text.fseek)
-                  00008c98    00000008     libsysbm.a : remove.c.obj (.text.remove)
-                  00008ca0    00000006     libc.a : exit.c.obj (.text:abort)
-                  00008ca6    00000004     startup_mspm0g350x_ticlang.o (.text.Default_Handler)
-                  00008caa    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
-                  00008cae    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
-                  00008cb2    00000002     --HOLE-- [fill = 0]
-                  00008cb4    00000010     libc.a : boot_cortex_m.c.obj (.tramp._c_int00_noargs.1)
-                  00008cc4    00000004            : pre_init.c.obj (.text._system_pre_init)
-                  00008cc8    00000008     --HOLE-- [fill = 0]
+                  00000a90    00000688     IMU.o (.text.IMU_AHRSupdate)
+                  00001118    00000404     vl53l1_api_core.o (.text.VL53L1_get_tuning_parm)
+                  0000151c    000003d8     vl53l1_api_core.o (.text.VL53L1_init_and_start_range)
+                  000018f4    00000364     libc.a : e_asin.c.obj (.text.asin)
+                  00001c58    000002f8            : s_atan.c.obj (.text.atan)
+                  00001f50    000002f6     vl53l1_api_core.o (.text.VL53L1_set_preset_mode)
+                  00002246    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_idiv0)
+                  00002248    000002e0     IMU.o (.text.calGyroVariance)
+                  00002528    00000284     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
+                  000027ac    00000220     libc.a : _printfi.c.obj (.text._pconv_a)
+                  000029cc    000001fc     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_nvm_copy_data)
+                  00002bc8    000001f0     vl53l1_api.o (.text.VL53L1_SetMeasurementTimingBudgetMicroSeconds)
+                  00002db8    000001ec     IMU.o (.text.IMU_getYawPitchRoll)
+                  00002fa4    000001e4     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging)
+                  00003188    000001dc     libc.a : _printfi.c.obj (.text._pconv_g)
+                  00003364    000001d0     OLED.o (.text.OLED_ShowChar)
+                  00003534    000001cc     IOI2C.o (.text.IICreadBytes)
+                  00003700    00000192     libclang_rt.builtins.a : adddf3.S.obj (.text.adddf3_subdf3)
+                  00003892    00000002                            : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
+                  00003894    00000188     libc.a : e_atan2.c.obj (.text.atan2)
+                  00003a1c    00000178     vl53l1_api.o (.text.VL53L1_GetMeasurementTimingBudgetMicroSeconds)
+                  00003b94    00000174     IOI2C.o (.text.IIC_ReadOneByte)
+                  00003d08    00000170     libc.a : e_sqrt.c.obj (.text.sqrt)
+                  00003e78    00000164     IMU.o (.text.IMU_getValues)
+                  00003fdc    00000164     vl53l1_api.o (.text.VL53L1_SetDistanceMode)
+                  00004140    00000162     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_static_config)
+                  000042a2    00000002     libc.a : _lock.c.obj (.text._nop)
+                  000042a4    00000160     vl53l1x.o (.text.VL53InitParam)
+                  00004404    0000015c     vl53l1_api_core.o (.text.VL53L1_get_preset_mode_timing_cfg)
+                  00004560    00000144     ICM_Test.o (.text.ICM42688_Test1)
+                  000046a4    0000013c     libc.a : _printfi.c.obj (.text.fcvt)
+                  000047e0    00000134     vl53l1_api_core.o (.text.VL53L1_data_init)
+                  00004914    00000130     IOI2C.o (.text.IICwriteBytes)
+                  00004a44    0000012a     vl53l1_core.o (.text.VL53L1_copy_rtn_good_spads_to_buffer)
+                  00004b6e    00000002     --HOLE-- [fill = 0]
+                  00004b70    00000124     vl53l1_api_core.o (.text.VL53L1_read_p2p_data)
+                  00004c94    00000120     libc.a : _printfi.c.obj (.text._pconv_e)
+                  00004db4    00000118     vl53l1x.o (.text.VL53L1Init)
+                  00004ecc    00000114     OLED.o (.text.OLED_Init)
+                  00004fe0    00000114     libc.a : memory.c.obj (.text.aligned_alloc)
+                  000050f4    0000010e     vl53l1_core.o (.text.VL53L1_update_ll_driver_rd_state)
+                  00005202    00000002     --HOLE-- [fill = 0]
+                  00005204    0000010c     libclang_rt.builtins.a : divdf3.S.obj (.text.__divdf3)
+                  00005310    00000108     icm42688.o (.text.bsp_IcmGetRawData)
+                  00005418    00000104     driverlib.a : dl_timer.o (.text.DL_Timer_initFourCCPWMMode)
+                  0000551c    00000104     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_customer_nvm_managed)
+                  00005620    000000fc     driverlib.a : dl_timer.o (.text.DL_Timer_initTimerMode)
+                  0000571c    000000fc     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_customer_nvm_managed)
+                  00005818    000000f8     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
+                  00005910    000000f8     libc.a : fputs.c.obj (.text.fputs)
+                  00005a08    000000f4     vl53l1_platform.o (.text.VL53L1_WaitValueMaskEx)
+                  00005afc    000000f0     vl53l1_api.o (.text.VL53L1_StartMeasurement)
+                  00005bec    000000f0     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_general_config)
+                  00005cdc    000000f0     vl53l1_api_preset_modes.o (.text.VL53L1_init_tuning_parm_storage_struct)
+                  00005dcc    000000ec     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_SYSPLL_init)
+                  00005eb8    000000e8     libc.a : memory.c.obj (.text.free)
+                  00005fa0    000000e4     libclang_rt.builtins.a : muldf3.S.obj (.text.__muldf3)
+                  00006084    000000e2     vl53l1_core.o (.text.VL53L1_calc_timeout_register_values)
+                  00006166    000000e2     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_dynamic_config)
+                  00006248    000000e0     libc.a : setvbuf.c.obj (.text.setvbuf)
+                  00006328    000000de     vl53l1_api_core.o (.text.VL53L1_get_timeouts_us)
+                  00006406    00000002     --HOLE-- [fill = 0]
+                  00006408    000000dc     driverlib.a : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_configSYSPLL)
+                  000064e4    000000dc     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_timing_config)
+                  000065c0    000000d8     libc.a : s_scalbn.c.obj (.text.scalbn)
+                  00006698    000000d8     libclang_rt.builtins.a : addsf3.S.obj (.text)
+                  00006770    000000d6     vl53l1_api.o (.text.SetPresetMode)
+                  00006846    000000cc     vl53l1_api.o (.text.VL53L1_DataInit)
+                  00006912    00000002     --HOLE-- [fill = 0]
+                  00006914    000000cc     vl53l1_core.o (.text.VL53L1_calc_range_ignore_threshold)
+                  000069e0    000000c4     vl53l1_api.o (.text.ComputeDevicePresetMode)
+                  00006aa4    000000c0     vl53l1_api.o (.text.VL53L1_SetPresetMode)
+                  00006b64    000000c0     icm42688.o (.text.bsp_Icm42688RegCfg)
+                  00006c24    000000be     vl53l1_core.o (.text.VL53L1_update_ll_driver_cfg_state)
+                  00006ce2    000000ba     vl53l1_api_preset_modes.o (.text.VL53L1_init_xtalk_config_struct)
+                  00006d9c    000000b4     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_SERVO_init)
+                  00006e50    000000b4     my_vl53l1x.o (.text.my_vl53l1x_init)
+                  00006f04    000000ac     vl53l1x_Test.o (.text.VL53L1X_Test1)
+                  00006fb0    000000a8     icm42688.o (.text.bsp_Icm42688GetGres)
+                  00007058    000000a4     icm42688.o (.text.bsp_IcmGetAccelerometer)
+                  000070fc    000000a4     icm42688.o (.text.bsp_IcmGetGyroscope)
+                  000071a0    000000a2     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
+                  00007242    000000a0     vl53l1_register_funcs.o (.text.VL53L1_i2c_decode_static_nvm_managed)
+                  000072e2    0000009e     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_static_nvm_managed)
+                  00007380    0000009c     libc.a : fputc.c.obj (.text.fputc)
+                  0000741c    0000009a     OLED.o (.text.OLED_ShowString)
+                  000074b6    00000002     --HOLE-- [fill = 0]
+                  000074b8    00000090     OLED.o (.text.OLED_DrawPoint)
+                  00007548    00000090     OLED.o (.text.OLED_WR_Byte)
+                  000075d8    00000090     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_Motor_init)
+                  00007668    0000008e     vl53l1_api.o (.text.VL53L1_SetLimitCheckValue)
+                  000076f6    00000002     --HOLE-- [fill = 0]
+                  000076f8    0000008c     spi.o (.text.SPI_CS)
+                  00007784    0000008c     libclang_rt.builtins.a : mulsf3.S.obj (.text.__mulsf3)
+                  00007810    0000008a     vl53l1_api.o (.text.VL53L1_SetLimitCheckEnable)
+                  0000789a    0000008a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_long_range)
+                  00007924    0000008a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_short_range)
+                  000079ae    00000002     --HOLE-- [fill = 0]
+                  000079b0    00000088     libc.a : strcmp-armv6m.S.obj (.text:strcmp)
+                  00007a38    00000084     ti_msp_dl_config.o (.text.__NVIC_SetPriority)
+                  00007abc    00000082     libclang_rt.builtins.a : divsf3.S.obj (.text.__divsf3)
+                  00007b3e    00000002     --HOLE-- [fill = 0]
+                  00007b40    00000080     Interrupt.o (.text.GROUP1_IRQHandler)
+                  00007bc0    0000007e     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging_short_range)
+                  00007c3e    0000007e     vl53l1x.o (.text.getDistance_Simply)
+                  00007cbc    0000007c     IMU.o (.text.IMU_Callback)
+                  00007d38    0000007c     OLED.o (.text.OLED_Refresh)
+                  00007db4    0000007c     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging)
+                  00007e30    0000007c     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_timed_ranging_long_range)
+                  00007eac    0000007c     vl53l1_api_core.o (.text.VL53L1_set_timeouts_us)
+                  00007f28    0000007c     libc.a : fclose.c.obj (.text.__TI_closefile)
+                  00007fa4    0000007c            : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  00008020    00000076     vl53l1_api_core.o (.text.VL53L1_get_sequence_config_bit)
+                  00008096    00000002     --HOLE-- [fill = 0]
+                  00008098    00000074     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
+                  0000810c    00000074     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_singleshot_ranging)
+                  00008180    00000074     libclang_rt.builtins.a : comparedf2.c.obj (.text.__gedf2)
+                  000081f4    0000000c     ti_msp_dl_config.o (.text.DL_SYSCTL_getClockStatus)
+                  00008200    00000074     libclang_rt.builtins.a : truncdfsf2.S.obj (.text.__truncdfsf2)
+                  00008274    00000070     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
+                  000082e4    0000006c     libsysbm.a : hostlseek.c.obj (.text.HOSTlseek)
+                  00008350    0000006c                : hostrename.c.obj (.text.HOSTrename)
+                  000083bc    0000006c     vl53l1_core.o (.text.VL53L1_low_power_auto_data_init)
+                  00008428    0000006c     libc.a : fseek.c.obj (.text.fseeko)
+                  00008494    0000006c            : getdevice.c.obj (.text.getdevice)
+                  00008500    00000068     ti_msp_dl_config.o (.text.SYSCFG_DL_PWM_BUZZER_init)
+                  00008568    00000068     vl53l1_api_core.o (.text.VL53L1_get_mode_mitigation_roi)
+                  000085d0    00000068     libclang_rt.builtins.a : comparedf2.c.obj (.text.__ledf2)
+                  00008638    00000068     icm42688.o (.text.bsp_Icm42688GetAres)
+                  000086a0    00000066     vl53l1_register_funcs.o (.text.VL53L1_i2c_encode_system_control)
+                  00008706    00000066     libc.a : _printfi.c.obj (.text._mcpy)
+                  0000876c    00000064     Delay.o (.text.Get_us)
+                  000087d0    00000064     libc.a : _io_perm.c.obj (.text.__TI_wrt_ok)
+                  00008834    00000064            : memory.c.obj (.text.split)
+                  00008898    00000062     vl53l1_wait.o (.text.VL53L1_poll_for_boot_completion)
+                  000088fa    00000002     --HOLE-- [fill = 0]
+                  000088fc    00000062     libclang_rt.builtins.a : aeabi_dcmp.S.obj (.text.__aeabi_dcmp)
+                  0000895e    00000002     --HOLE-- [fill = 0]
+                  00008960    00000062                            : aeabi_fcmp.S.obj (.text.__aeabi_fcmp)
+                  000089c2    00000002     --HOLE-- [fill = 0]
+                  000089c4    00000060     libsysbm.a : hostopen.c.obj (.text.HOSTopen)
+                  00008a24    00000060     IMU.o (.text.IMU_init)
+                  00008a84    0000005e     driverlib.a : dl_i2c.o (.text.DL_I2C_fillControllerTXFIFO)
+                  00008ae2    00000002     --HOLE-- [fill = 0]
+                  00008ae4    0000005c     libc.a : s_frexp.c.obj (.text.frexp)
+                  00008b40    0000005c            : printf.c.obj (.text.printf)
+                  00008b9c    0000005a     vl53l1_api.o (.text.SetLimitValue)
+                  00008bf6    0000005a     vl53l1_core.o (.text.VL53L1_i2c_encode_int16_t)
+                  00008c50    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_long_ranging)
+                  00008caa    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_ranging)
+                  00008d04    0000005a     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_low_power_auto_short_ranging)
+                  00008d5e    00000002     --HOLE-- [fill = 0]
+                  00008d60    00000058     libsysbm.a : hostread.c.obj (.text.HOSTread)
+                  00008db8    00000058                : hostwrite.c.obj (.text.HOSTwrite)
+                  00008e10    00000058     OLED.o (.text.OLED_Clear)
+                  00008e68    00000058     ti_msp_dl_config.o (.text.SYSCFG_DL_I2C_0_init)
+                  00008ec0    00000058     vl53l1_api.o (.text.VL53L1_StaticInit)
+                  00008f18    00000058     vl53l1_core.o (.text.VL53L1_calc_macro_period_us)
+                  00008f70    00000058     libc.a : _ltoa.c.obj (.text.__TI_ltoa)
+                  00008fc8    00000058            : _printfi.c.obj (.text._pconv_f)
+                  00009020    00000058     IMU.o (.text.invSqrt1)
+                  00009078    00000056     vl53l1_api_core.o (.text.VL53L1_get_inter_measurement_period_ms)
+                  000090ce    00000056     vl53l1_core.o (.text.VL53L1_i2c_encode_uint16_t)
+                  00009124    00000056     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_mm1_cal)
+                  0000917a    00000056     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_standard_ranging_mm2_cal)
+                  000091d0    00000056     vl53l1_api_core.o (.text.VL53L1_set_inter_measurement_period_ms)
+                  00009226    00000002     --HOLE-- [fill = 0]
+                  00009228    00000056     libclang_rt.builtins.a : aeabi_idivmod.S.obj (.text.__aeabi_idivmod)
+                  0000927e    00000002     --HOLE-- [fill = 0]
+                  00009280    00000054     vl53l1_core.o (.text.VL53L1_i2c_decode_int16_t)
+                  000092d4    00000054     icm42688.o (.text.bsp_IcmGetTemperature)
+                  00009328    00000052     vl53l1_core.o (.text.VL53L1_encode_timeout)
+                  0000937a    00000052     vl53l1_core.o (.text.VL53L1_i2c_encode_uint32_t)
+                  000093cc    00000052     libc.a : fflush.c.obj (.text.__TI_doflush)
+                  0000941e    00000052            : _printfi.c.obj (.text._ecpy)
+                  00009470    00000050     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralInputFunctionFeatures)
+                  000094c0    00000050     IOI2C.o (.text.DL_I2C_startControllerTransfer)
+                  00009510    00000050     ICM_Test.o (.text.ICM42688_Test2)
+                  00009560    00000050     ti_msp_dl_config.o (.text.SysTick_Config)
+                  000095b0    00000050     vl53l1x_Test.o (.text.Uart0_Send)
+                  00009600    00000050     vl53l1_core_support.o (.text.VL53L1_decode_row_col)
+                  00009650    00000050     vl53l1_register_funcs.o (.text.VL53L1_get_nvm_copy_data)
+                  000096a0    00000050     vl53l1_api_preset_modes.o (.text.VL53L1_preset_mode_olt)
+                  000096f0    00000050     libsysbm.a : close.c.obj (.text.close)
+                  00009740    0000004e     vl53l1_register_funcs.o (.text.VL53L1_get_customer_nvm_managed)
+                  0000978e    0000004e     vl53l1_register_funcs.o (.text.VL53L1_get_static_nvm_managed)
+                  000097dc    0000004e     icm42688.o (.text.icm42688_read_regs)
+                  0000982a    00000002     --HOLE-- [fill = 0]
+                  0000982c    0000004c     ti_msp_dl_config.o (.text.DL_GPIO_initDigitalInputFeatures)
+                  00009878    0000004c     ti_msp_dl_config.o (.text.DL_UART_setBaudRateDivisor)
+                  000098c4    0000004c     vl53l1_core.o (.text.VL53L1_calc_timeout_us)
+                  00009910    0000004a     ti_msp_dl_config.o (.text.DL_ADC12_configConversionMem)
+                  0000995a    0000004a     vl53l1_platform.o (.text.VL53L1_ReadMulti)
+                  000099a4    0000004a     vl53l1_platform.o (.text.VL53L1_WriteMulti)
+                  000099ee    00000002     --HOLE-- [fill = 0]
+                  000099f0    0000004a     libclang_rt.builtins.a : fixdfsi.S.obj (.text.__fixdfsi)
+                  00009a3a    00000002     --HOLE-- [fill = 0]
+                  00009a3c    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
+                  00009a84    00000048     libsysbm.a : hostclose.c.obj (.text.HOSTclose)
+                  00009acc    00000048                : hostunlink.c.obj (.text.HOSTunlink)
+                  00009b14    00000046     vl53l1_platform.o (.text.VL53L1_WrByte)
+                  00009b5a    00000002     --HOLE-- [fill = 0]
+                  00009b5c    00000044     driverlib.a : dl_spi.o (.text.DL_SPI_init)
+                  00009ba0    00000044                 : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK)
+                  00009be4    00000044     vl53l1_api.o (.text.VL53L1_GetInterMeasurementPeriodMilliSeconds)
+                  00009c28    00000044     vl53l1_api_core.o (.text.VL53L1_set_user_zone)
+                  00009c6c    00000042     vl53l1_platform.o (.text.VL53L1_RdByte)
+                  00009cae    00000042     vl53l1_api.o (.text.VL53L1_SetInterMeasurementPeriodMilliSeconds)
+                  00009cf0    00000042     vl53l1_api_core.o (.text.VL53L1_get_user_zone)
+                  00009d32    00000002     --HOLE-- [fill = 0]
+                  00009d34    00000040     driverlib.a : dl_adc12.o (.text.DL_ADC12_setClockConfig)
+                  00009d74    00000040     spi.o (.text.SPI_Init)
+                  00009db4    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_SPI_1_init)
+                  00009df4    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_3_init)
+                  00009e34    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_CAMERA_init)
+                  00009e74    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_WIRELESS_init)
+                  00009eb4    00000040     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_init)
+                  00009ef4    00000040     vl53l1_api_preset_modes.o (.text.VL53L1_init_offset_cal_config_struct)
+                  00009f34    00000040     libclang_rt.builtins.a : aeabi_uidivmod.S.obj (.text.__aeabi_uidivmod)
+                  00009f74    00000040                            : extendsfdf2.S.obj (.text.__extendsfdf2)
+                  00009fb4    00000040     libc.a : atoi.c.obj (.text.atoi)
+                  00009ff4    00000040            : vsnprintf.c.obj (.text.vsnprintf)
+                  0000a034    0000003e     vl53l1_core.o (.text.VL53L1_init_ll_driver_state)
+                  0000a072    00000002     --HOLE-- [fill = 0]
+                  0000a074    0000003c     ti_msp_dl_config.o (.text.DL_Timer_setCounterControl)
+                  0000a0b0    0000003c     Usart.o (.text.Uart0_Send_String)
+                  0000a0ec    0000003c     vl53l1_core.o (.text.VL53L1_encode_row_col)
+                  0000a128    0000003c     libclang_rt.builtins.a : floatsisf.S.obj (.text.__floatsisf)
+                  0000a164    0000003c                            : comparesf2.S.obj (.text.__gtsf2)
+                  0000a1a0    0000003c     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  0000a1dc    0000003a     vl53l1_platform.o (.text.VL53L1_RdWord)
+                  0000a216    0000003a     vl53l1_core.o (.text.VL53L1_i2c_decode_uint16_t)
+                  0000a250    0000003a     vl53l1_api_preset_modes.o (.text.VL53L1_init_refspadchar_config_struct)
+                  0000a28a    00000002     --HOLE-- [fill = 0]
+                  0000a28c    0000003a     libclang_rt.builtins.a : comparesf2.S.obj (.text.__eqsf2)
+                  0000a2c6    00000002     --HOLE-- [fill = 0]
+                  0000a2c8    0000003a                            : muldsi3.S.obj (.text.__muldsi3)
+                  0000a302    00000002     --HOLE-- [fill = 0]
+                  0000a304    00000038     vl53l1_api_preset_modes.o (.text.VL53L1_init_ssc_config_struct)
+                  0000a33c    00000038     libclang_rt.builtins.a : fixsfsi.S.obj (.text.__fixsfsi)
+                  0000a374    00000038     icm42688.o (.text.icm42688_read_reg)
+                  0000a3ac    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_BAT_ADC_init)
+                  0000a3e0    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_TIMER_10ms_init)
+                  0000a414    00000034     vl53l1x_Test.o (.text.VL53L1X_Test2)
+                  0000a448    00000034     vl53l1_api.o (.text.VL53L1_GetSequenceStepEnable)
+                  0000a47c    00000034     vl53l1_api.o (.text.VL53L1_SetDeviceAddress)
+                  0000a4b0    00000034     libc.a : fopen.c.obj (.text.__TI_cleanup)
+                  0000a4e4    00000034     libsysbm.a : trgmsg.c.obj (.text.__TI_readmsg)
+                  0000a518    00000034                : trgmsg.c.obj (.text.__TI_writemsg)
+                  0000a54c    00000034     libc.a : exit.c.obj (.text.exit)
+                  0000a580    00000034            : getdevice.c.obj (.text.finddevice)
+                  0000a5b4    00000032     Usart.o (.text.Uart0_Printf)
+                  0000a5e6    00000032     vl53l1_core.o (.text.VL53L1_config_low_power_auto_mode)
+                  0000a618    00000032     icm42688.o (.text.icm42688_write_reg)
+                  0000a64a    00000002     --HOLE-- [fill = 0]
+                  0000a64c    00000030     ti_msp_dl_config.o (.text.DL_GPIO_initDigitalOutputFeatures)
+                  0000a67c    00000030     ti_msp_dl_config.o (.text.DL_SPI_setFIFOThreshold)
+                  0000a6ac    00000030     libc.a : _printfi.c.obj (.text._fcpy)
+                  0000a6dc    00000030            : vsnprintf.c.obj (.text._outs)
+                  0000a70c    00000030     icm42688.o (.text.icm_spi_transfer_byte)
+                  0000a73c    00000030     main.o (.text.main)
+                  0000a76c    00000030     my_vl53l1x.o (.text.my_vl53l1x_callback)
+                  0000a79c    0000002e     vl53l1_core.o (.text.VL53L1_calc_encoded_timeout)
+                  0000a7ca    0000002e     vl53l1_api_core.o (.text.VL53L1_set_vhv_loopbound)
+                  0000a7f8    0000002c     Usart.o (.text.Uart0_Send_Char)
+                  0000a824    0000002c     vl53l1_core.o (.text.VL53L1_init_version)
+                  0000a850    0000002c     Usart.o (.text.__NVIC_ClearPendingIRQ)
+                  0000a87c    0000002c     IMU.o (.text.__NVIC_EnableIRQ)
+                  0000a8a8    0000002c     Usart.o (.text.__NVIC_EnableIRQ)
+                  0000a8d4    0000002c     my_vl53l1x.o (.text.__NVIC_EnableIRQ)
+                  0000a900    0000002c     libclang_rt.builtins.a : floatsidf.S.obj (.text.__floatsidf)
+                  0000a92c    0000002c     libsysbm.a : unlink.c.obj (.text.unlink)
+                  0000a958    0000002a     vl53l1_core.o (.text.VL53L1_calc_decoded_timeout_us)
+                  0000a982    00000028     IOI2C.o (.text.DL_Common_updateReg)
+                  0000a9aa    00000028     ti_msp_dl_config.o (.text.DL_Common_updateReg)
+                  0000a9d2    00000002     --HOLE-- [fill = 0]
+                  0000a9d4    00000028     ti_msp_dl_config.o (.text.DL_I2C_setControllerRXFIFOThreshold)
+                  0000a9fc    00000028     ti_msp_dl_config.o (.text.DL_I2C_setControllerTXFIFOThreshold)
+                  0000aa24    00000028     Delay.o (.text.Delay_ms)
+                  0000aa4c    00000028     OLED_Test.o (.text.OLED_Test1)
+                  0000aa74    00000028     Uart_Test.o (.text.Uart_Test2)
+                  0000aa9c    00000028     vl53l1_api.o (.text.VL53L1_WaitDeviceBooted)
+                  0000aac4    00000028     libc.a : memory.c.obj (.text.free_list_insert)
+                  0000aaec    00000028     libsysbm.a : lseek.c.obj (.text.lseek)
+                  0000ab14    00000028                : write.c.obj (.text.write)
+                  0000ab3c    00000028     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  0000ab64    00000026     ti_msp_dl_config.o (.text.DL_I2C_setAnalogGlitchFilterPulseWidth)
+                  0000ab8a    00000026     driverlib.a : dl_i2c.o (.text.DL_I2C_setClockConfig)
+                  0000abb0    00000026     vl53l1_platform.o (.text.VL53L1_WaitUs)
+                  0000abd6    00000002     --HOLE-- [fill = 0]
+                  0000abd8    00000024     ti_msp_dl_config.o (.text.DL_SPI_setBitRateSerialClockDivider)
+                  0000abfc    00000024     vl53l1_api_core.o (.text.VL53L1_set_lite_min_count_rate)
+                  0000ac20    00000024     vl53l1_api_core.o (.text.VL53L1_set_lite_sigma_threshold)
+                  0000ac44    00000024     libclang_rt.builtins.a : floatunsidf.S.obj (.text.__floatunsidf)
+                  0000ac68    00000024                            : muldi3.S.obj (.text.__muldi3)
+                  0000ac8c    00000022     IOI2C.o (.text.IICwriteByte)
+                  0000acae    00000022     vl53l1_core.o (.text.VL53L1_calc_timeout_mclks)
+                  0000acd0    00000022     vl53l1_core.o (.text.VL53L1_decode_zone_size)
+                  0000acf2    00000022     libc.a : memccpy.c.obj (.text.memccpy)
+                  0000ad14    00000020     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralInputFunction)
+                  0000ad34    00000020     ti_msp_dl_config.o (.text.DL_SYSCTL_setFlashWaitState)
+                  0000ad54    00000020     Usart.o (.text.Uart_Init)
+                  0000ad74    00000020     vl53l1_core_support.o (.text.VL53L1_calc_pll_period_us)
+                  0000ad94    00000020     my_vl53l1x.o (.text.my_vl53l1x_get_distance)
+                  0000adb4    0000001e     ti_msp_dl_config.o (.text.DL_UART_setOversampling)
+                  0000add2    0000001e     vl53l1_core.o (.text.VL53L1_decode_timeout)
+                  0000adf0    0000001e     libclang_rt.builtins.a : ashldi3.S.obj (.text.__ashldi3)
+                  0000ae0e    0000001e     icm42688.o (.text.bsp_IcmGetWhoAmI)
+                  0000ae2c    0000001c     Interrupt.o (.text.DL_GPIO_clearInterruptStatus)
+                  0000ae48    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_clearInterruptStatus)
+                  0000ae64    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_enableHiZ)
+                  0000ae80    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_enableInterrupt)
+                  0000ae9c    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_initPeripheralOutputFunction)
+                  0000aeb8    0000001c     ti_msp_dl_config.o (.text.DL_GPIO_setLowerPinsPolarity)
+                  0000aed4    0000001c     IOI2C.o (.text.DL_I2C_isControllerRXFIFOEmpty)
+                  0000aef0    0000001c     driverlib.a : dl_sysctl_mspm0g1x0x_g3x0x.o (.text.DL_SYSCTL_configFCC)
+                  0000af0c    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setFCCPeriods)
+                  0000af28    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setSYSOSCFreq)
+                  0000af44    0000001c     ti_msp_dl_config.o (.text.DL_SYSCTL_setULPCLKDivider)
+                  0000af60    0000001c     ti_msp_dl_config.o (.text.DL_Timer_enableInterrupt)
+                  0000af7c    0000001c     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptCompUpdateMethod)
+                  0000af98    0000001c                 : dl_timer.o (.text.DL_Timer_setClockConfig)
+                  0000afb4    0000001c     vl53l1_core.o (.text.VL53L1_encode_zone_size)
+                  0000afd0    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
+                  0000afec    0000001a     vl53l1_core_support.o (.text.VL53L1_decode_vcsel_period)
+                  0000b006    00000002     --HOLE-- [fill = 0]
+                  0000b008    00000018     ti_msp_dl_config.o (.text.DL_ADC12_enablePower)
+                  0000b020    00000018     ti_msp_dl_config.o (.text.DL_ADC12_reset)
+                  0000b038    00000018     ti_msp_dl_config.o (.text.DL_GPIO_enableOutput)
+                  0000b050    00000018     ti_msp_dl_config.o (.text.DL_GPIO_enablePower)
+                  0000b068    00000018     Interrupt.o (.text.DL_GPIO_getEnabledInterruptStatus)
+                  0000b080    00000018     ti_msp_dl_config.o (.text.DL_GPIO_initDigitalOutput)
+                  0000b098    00000018     ti_msp_dl_config.o (.text.DL_GPIO_reset)
+                  0000b0b0    00000018     OLED.o (.text.DL_GPIO_setPins)
+                  0000b0c8    00000018     my_vl53l1x.o (.text.DL_GPIO_setPins)
+                  0000b0e0    00000018     spi.o (.text.DL_GPIO_setPins)
+                  0000b0f8    00000018     ti_msp_dl_config.o (.text.DL_GPIO_setPins)
+                  0000b110    00000018     ti_msp_dl_config.o (.text.DL_GPIO_setUpperPinsPolarity)
+                  0000b128    00000018     IOI2C.o (.text.DL_I2C_clearInterruptStatus)
+                  0000b140    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableAnalogGlitchFilter)
+                  0000b158    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableController)
+                  0000b170    00000018     ti_msp_dl_config.o (.text.DL_I2C_enableControllerClockStretching)
+                  0000b188    00000018     ti_msp_dl_config.o (.text.DL_I2C_enablePower)
+                  0000b1a0    00000018     IOI2C.o (.text.DL_I2C_getRawInterruptStatus)
+                  0000b1b8    00000018     ti_msp_dl_config.o (.text.DL_I2C_reset)
+                  0000b1d0    00000018     ti_msp_dl_config.o (.text.DL_I2C_setTimerPeriod)
+                  0000b1e8    00000018     ti_msp_dl_config.o (.text.DL_SPI_enable)
+                  0000b200    00000018     ti_msp_dl_config.o (.text.DL_SPI_enablePower)
+                  0000b218    00000018     OLED.o (.text.DL_SPI_isBusy)
+                  0000b230    00000018     icm42688.o (.text.DL_SPI_isBusy)
+                  0000b248    00000018     ti_msp_dl_config.o (.text.DL_SPI_reset)
+                  0000b260    00000018     ti_msp_dl_config.o (.text.DL_SYSCTL_setBORThreshold)
+                  0000b278    00000018     ti_msp_dl_config.o (.text.DL_Timer_enablePower)
+                  0000b290    00000018     ti_msp_dl_config.o (.text.DL_Timer_reset)
+                  0000b2a8    00000018     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptureCompareOutCtl)
+                  0000b2c0    00000018     IMU.o (.text.DL_Timer_startCounter)
+                  0000b2d8    00000018     ti_msp_dl_config.o (.text.DL_UART_enablePower)
+                  0000b2f0    00000018     Usart.o (.text.DL_UART_isBusy)
+                  0000b308    00000018     ti_msp_dl_config.o (.text.DL_UART_reset)
+                  0000b320    00000018     libc.a : vsnprintf.c.obj (.text._outc)
+                  0000b338    00000018     icm42688.o (.text.delay_ms)
+                  0000b350    00000016     ti_msp_dl_config.o (.text.DL_ADC12_enableConversions)
+                  0000b366    00000016     OLED.o (.text.DL_SPI_transmitData8)
+                  0000b37c    00000016     icm42688.o (.text.DL_SPI_transmitData8)
+                  0000b392    00000016     ti_msp_dl_config.o (.text.DL_UART_enable)
+                  0000b3a8    00000016     Usart.o (.text.DL_UART_transmitData)
+                  0000b3be    00000014     OLED.o (.text.DL_GPIO_clearPins)
+                  0000b3d2    00000014     my_vl53l1x.o (.text.DL_GPIO_clearPins)
+                  0000b3e6    00000014     spi.o (.text.DL_GPIO_clearPins)
+                  0000b3fa    00000014     ti_msp_dl_config.o (.text.DL_GPIO_clearPins)
+                  0000b40e    00000002     --HOLE-- [fill = 0]
+                  0000b410    00000014     IOI2C.o (.text.DL_I2C_getControllerStatus)
+                  0000b424    00000014     IOI2C.o (.text.DL_I2C_receiveControllerData)
+                  0000b438    00000014     ti_msp_dl_config.o (.text.DL_I2C_resetControllerTransfer)
+                  0000b44c    00000014     OLED.o (.text.DL_SPI_receiveData8)
+                  0000b460    00000014     icm42688.o (.text.DL_SPI_receiveData8)
+                  0000b474    00000014     ti_msp_dl_config.o (.text.DL_SYSCTL_disableSYSPLL)
+                  0000b488    00000014     ti_msp_dl_config.o (.text.DL_SYSCTL_enableSYSPLL)
+                  0000b49c    00000014     ti_msp_dl_config.o (.text.DL_Timer_enableClock)
+                  0000b4b0    00000014     ti_msp_dl_config.o (.text.DL_Timer_setCCPDirection)
+                  0000b4c4    00000014     Usart.o (.text.DL_UART_receiveData)
+                  0000b4d8    00000014     vl53l1_platform.o (.text.VL53L1_WaitMs)
+                  0000b4ec    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  0000b500    00000014     libc.a : _printfi.c.obj (.text.strchr)
+                  0000b514    00000012     driverlib.a : dl_spi.o (.text.DL_SPI_setClockConfig)
+                  0000b526    00000012                 : dl_uart.o (.text.DL_UART_setClockConfig)
+                  0000b538    00000012     libc.a : memcpy16.S.obj (.text:TI_memcpy_small)
+                  0000b54a    00000012            : copy_decompress_none.c.obj (.text:decompress:none)
+                  0000b55c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_disableHFXT)
+                  0000b56c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_isFCCDone)
+                  0000b57c    00000010     ti_msp_dl_config.o (.text.DL_SYSCTL_startFCC)
+                  0000b58c    00000010     driverlib.a : dl_timer.o (.text.DL_Timer_setCaptureCompareValue)
+                  0000b59c    00000010     IOI2C.o (.text.IIC_Delay_ms)
+                  0000b5ac    00000010     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSTICK_init)
+                  0000b5bc    00000010     Delay.o (.text.SysTick_Handler)
+                  0000b5cc    00000010     libc.a : wcslen.c.obj (.text.wcslen)
+                  0000b5dc    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
+                  0000b5ec    0000000e            : memory.c.obj (.text.OUTLINED_FUNCTION_0)
+                  0000b5fa    00000002     --HOLE-- [fill = 0]
+                  0000b5fc    0000000e     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  0000b60a    0000000e     libsysbm.a : hostrename.c.obj (.text.strcpy)
+                  0000b618    0000000e     libc.a : _printfi.c.obj (.text.strlen)
+                  0000b626    0000000e     libsysbm.a : hostrename.c.obj (.text.strlen)
+                  0000b634    0000000e     libc.a : memset16.S.obj (.text:TI_memset_small)
+                  0000b642    00000002     --HOLE-- [fill = 0]
+                  0000b644    0000000c     ti_msp_dl_config.o (.text.DL_SYSCTL_readFCC)
+                  0000b650    0000000c     Delay.o (.text.Get_ms)
+                  0000b65c    0000000c     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  0000b668    0000000c     icm42688.o (.text.icm_cs_high)
+                  0000b674    0000000c     icm42688.o (.text.icm_cs_low)
+                  0000b680    0000000c     libc.a : memory.c.obj (.text.malloc)
+                  0000b68c    0000000a     driverlib.a : dl_common.o (.text.DL_Common_delayCycles)
+                  0000b696    0000000a     libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
+                  0000b6a0    00000010     libclang_rt.builtins.a : adddf3.S.obj (.tramp.__aeabi_dsub.1)
+                  0000b6b0    0000000a     libc.a : e_asin.c.obj (.text.OUTLINED_FUNCTION_0)
+                  0000b6ba    00000002     --HOLE-- [fill = 0]
+                  0000b6bc    00000010     libclang_rt.builtins.a : muldf3.S.obj (.tramp.__aeabi_dmul.1)
+                  0000b6cc    0000000a     libc.a : s_atan.c.obj (.text.OUTLINED_FUNCTION_0)
+                  0000b6d6    0000000a            : _printfi.c.obj (.text.OUTLINED_FUNCTION_1)
+                  0000b6e0    0000000a            : e_asin.c.obj (.text.OUTLINED_FUNCTION_1)
+                  0000b6ea    0000000a            : e_asin.c.obj (.text.OUTLINED_FUNCTION_3)
+                  0000b6f4    00000010     libclang_rt.builtins.a : divdf3.S.obj (.tramp.__aeabi_ddiv.1)
+                  0000b704    00000008     libc.a : s_atan.c.obj (.text.OUTLINED_FUNCTION_2)
+                  0000b70c    00000008     Interrupt.o (.text.TIMG0_IRQHandler)
+                  0000b714    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  0000b71c    00000008     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  0000b724    00000008     libc.a : printf.c.obj (.text._outc)
+                  0000b72c    00000008            : printf.c.obj (.text._outs)
+                  0000b734    00000008     icm42688.o (.text.bsp_Icm42688Init)
+                  0000b73c    00000008     libc.a : fseek.c.obj (.text.fseek)
+                  0000b744    00000008     libsysbm.a : remove.c.obj (.text.remove)
+                  0000b74c    00000006     libc.a : s_atan.c.obj (.text.OUTLINED_FUNCTION_1)
+                  0000b752    00000002     --HOLE-- [fill = 0]
+                  0000b754    00000010     libclang_rt.builtins.a : adddf3.S.obj (.tramp.__aeabi_dadd.1)
+                  0000b764    00000006     libc.a : e_asin.c.obj (.text.OUTLINED_FUNCTION_2)
+                  0000b76a    00000006            : exit.c.obj (.text:abort)
+                  0000b770    00000004     startup_mspm0g350x_ticlang.o (.text.Default_Handler)
+                  0000b774    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  0000b778    00000004     libc.a : e_asin.c.obj (.text.OUTLINED_FUNCTION_4)
+                  0000b77c    00000004     startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
+                  0000b780    00000010     libc.a : boot_cortex_m.c.obj (.tramp._c_int00_noargs.1)
+                  0000b790    00000004            : pre_init.c.obj (.text._system_pre_init)
+                  0000b794    0000000c     --HOLE-- [fill = 0]
 
-.cinit     0    00008fd0    000000b8     
-                  00008fd0    00000090     (.cinit..data.load) [load image, compression = lzss]
-                  00009060    0000000c     (__TI_handler_table)
-                  0000906c    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00009074    00000010     (__TI_cinit_table)
-                  00009084    00000004     --HOLE-- [fill = 0]
+.cinit     0    0000d620    000000e0     
+                  0000d620    000000b7     (.cinit..data.load) [load image, compression = lzss]
+                  0000d6d7    00000001     --HOLE-- [fill = 0]
+                  0000d6d8    0000000c     (__TI_handler_table)
+                  0000d6e4    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  0000d6ec    00000010     (__TI_cinit_table)
+                  0000d6fc    00000004     --HOLE-- [fill = 0]
 
-.rodata    0    00008cd0    00000300     
-                  00008cd0    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
-                  00008dd1    00000032     vl53l1x_Test.o (.rodata.str1.15819855695198313757.1)
-                  00008e03    00000030     vl53l1x.o (.rodata.str1.8665556936548998902.1)
-                  00008e33    00000001     --HOLE-- [fill = 0]
-                  00008e34    00000028     ti_msp_dl_config.o (.rodata.gSYSPLLConfig)
-                  00008e5c    0000001c     vl53l1x.o (.rodata.str1.12793480914977007934.1)
-                  00008e78    0000001c     vl53l1x.o (.rodata.str1.9889896138451333030.1)
-                  00008e94    0000001b     vl53l1x.o (.rodata.str1.3978240886075957214.1)
-                  00008eaf    00000017     vl53l1x_Test.o (.rodata.str1.10952281665346510433.1)
-                  00008ec6    00000016     vl53l1x.o (.rodata.str1.6185141677119688064.1)
-                  00008edc    00000014     ti_msp_dl_config.o (.rodata.gTIMER_0TimerConfig)
-                  00008ef0    00000013     vl53l1x.o (.rodata.str1.18438805956943837306.1)
-                  00008f03    00000011     libc.a : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
-                  00008f14    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
-                  00008f25    00000011     vl53l1x_Test.o (.rodata.str1.784680880869378880.1)
-                  00008f36    0000000e     vl53l1x_Test.o (.rodata.str1.16621539580981254400.1)
-                  00008f44    0000000c     Uart_Test.o (.rodata.str1.14504840162625008916.1)
-                  00008f50    0000000a     ti_msp_dl_config.o (.rodata.gSPI_1_config)
-                  00008f5a    0000000a     ti_msp_dl_config.o (.rodata.gUARTConfig)
-                  00008f64    0000000a     ti_msp_dl_config.o (.rodata.gUART_3Config)
-                  00008f6e    0000000a     ti_msp_dl_config.o (.rodata.gUART_CAMERAConfig)
-                  00008f78    0000000a     ti_msp_dl_config.o (.rodata.gUART_WIRELESSConfig)
-                  00008f82    0000000a     Uart_Test.o (.rodata.str1.10152111140166146408.1)
-                  00008f8c    00000008     ti_msp_dl_config.o (.rodata.gBAT_ADCClockConfig)
-                  00008f94    00000008     ti_msp_dl_config.o (.rodata.gPWM_BUZZERConfig)
-                  00008f9c    00000008     ti_msp_dl_config.o (.rodata.gPWM_MotorConfig)
-                  00008fa4    00000008     ti_msp_dl_config.o (.rodata.gPWM_SERVOConfig)
-                  00008fac    00000003     ti_msp_dl_config.o (.rodata.gPWM_BUZZERClockConfig)
-                  00008faf    00000003     ti_msp_dl_config.o (.rodata.gPWM_MotorClockConfig)
-                  00008fb2    00000003     ti_msp_dl_config.o (.rodata.gPWM_SERVOClockConfig)
-                  00008fb5    00000003     ti_msp_dl_config.o (.rodata.gTIMER_0ClockConfig)
-                  00008fb8    00000002     ti_msp_dl_config.o (.rodata.gI2C_0ClockConfig)
-                  00008fba    00000002     ti_msp_dl_config.o (.rodata.gSPI_1_clockConfig)
-                  00008fbc    00000002     ti_msp_dl_config.o (.rodata.gUARTClockConfig)
-                  00008fbe    00000002     ti_msp_dl_config.o (.rodata.gUART_3ClockConfig)
-                  00008fc0    00000002     ti_msp_dl_config.o (.rodata.gUART_CAMERAClockConfig)
-                  00008fc2    00000002     ti_msp_dl_config.o (.rodata.gUART_WIRELESSClockConfig)
-                  00008fc4    0000000c     --HOLE-- [fill = 0]
+.rodata    0    0000b7a0    00001e80     
+                  0000b7a0    00000d5c     OLED.o (.rodata.asc2_2412)
+                  0000c4fc    000005f0     OLED.o (.rodata.asc2_1608)
+                  0000caec    00000474     OLED.o (.rodata.asc2_1206)
+                  0000cf60    00000228     OLED.o (.rodata.asc2_0806)
+                  0000d188    00000008     ti_msp_dl_config.o (.rodata.gBAT_ADCClockConfig)
+                  0000d190    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
+                  0000d291    00000003     ti_msp_dl_config.o (.rodata.gPWM_BUZZERClockConfig)
+                  0000d294    00000003     ti_msp_dl_config.o (.rodata.gPWM_MotorClockConfig)
+                  0000d297    00000001     --HOLE-- [fill = 0]
+                  0000d298    00000040     libc.a : s_atan.c.obj (.rodata.cst32)
+                  0000d2d8    0000003e     ICM_Test.o (.rodata.str1.3318929658856415440.1)
+                  0000d316    0000003d     ICM_Test.o (.rodata.str1.14508133981236302045.1)
+                  0000d353    00000035     ICM_Test.o (.rodata.str1.9102904528692852946.1)
+                  0000d388    00000032     vl53l1x_Test.o (.rodata.str1.15819855695198313757.1)
+                  0000d3ba    00000030     vl53l1x.o (.rodata.str1.8665556936548998902.1)
+                  0000d3ea    0000002f     ICM_Test.o (.rodata.str1.3668019700171052297.1)
+                  0000d419    00000029     ICM_Test.o (.rodata.str1.17276630036601735024.1)
+                  0000d442    00000002     ti_msp_dl_config.o (.rodata.gI2C_0ClockConfig)
+                  0000d444    00000028     ti_msp_dl_config.o (.rodata.gSYSPLLConfig)
+                  0000d46c    00000025     ICM_Test.o (.rodata.str1.13094285626225783814.1)
+                  0000d491    00000021     ICM_Test.o (.rodata.str1.13739229678662884612.1)
+                  0000d4b2    0000001c     vl53l1x.o (.rodata.str1.12793480914977007934.1)
+                  0000d4ce    0000001c     vl53l1x.o (.rodata.str1.9889896138451333030.1)
+                  0000d4ea    0000001b     vl53l1x.o (.rodata.str1.3978240886075957214.1)
+                  0000d505    00000017     vl53l1x_Test.o (.rodata.str1.10952281665346510433.1)
+                  0000d51c    00000016     vl53l1x.o (.rodata.str1.6185141677119688064.1)
+                  0000d532    00000002     ti_msp_dl_config.o (.rodata.gSPI_1_clockConfig)
+                  0000d534    00000014     ti_msp_dl_config.o (.rodata.gTIMER_10msTimerConfig)
+                  0000d548    00000013     vl53l1x.o (.rodata.str1.18438805956943837306.1)
+                  0000d55b    00000011     libc.a : _printfi.c.obj (.rodata.str1.10348868589481759720.1)
+                  0000d56c    00000011            : _printfi.c.obj (.rodata.str1.15363888844622738466.1)
+                  0000d57d    00000011     vl53l1x_Test.o (.rodata.str1.784680880869378880.1)
+                  0000d58e    0000000e     vl53l1x_Test.o (.rodata.str1.16621539580981254400.1)
+                  0000d59c    0000000d     OLED_Test.o (.rodata.str1.14401795109115830494.1)
+                  0000d5a9    0000000c     Uart_Test.o (.rodata.str1.14504840162625008916.1)
+                  0000d5b5    00000001     --HOLE-- [fill = 0]
+                  0000d5b6    0000000a     ti_msp_dl_config.o (.rodata.gSPI_1_config)
+                  0000d5c0    0000000a     ti_msp_dl_config.o (.rodata.gUARTConfig)
+                  0000d5ca    0000000a     ti_msp_dl_config.o (.rodata.gUART_3Config)
+                  0000d5d4    0000000a     ti_msp_dl_config.o (.rodata.gUART_CAMERAConfig)
+                  0000d5de    0000000a     ti_msp_dl_config.o (.rodata.gUART_WIRELESSConfig)
+                  0000d5e8    0000000a     Uart_Test.o (.rodata.str1.10152111140166146408.1)
+                  0000d5f2    00000002     ti_msp_dl_config.o (.rodata.gUARTClockConfig)
+                  0000d5f4    00000008     ti_msp_dl_config.o (.rodata.gPWM_BUZZERConfig)
+                  0000d5fc    00000008     ti_msp_dl_config.o (.rodata.gPWM_MotorConfig)
+                  0000d604    00000008     ti_msp_dl_config.o (.rodata.gPWM_SERVOConfig)
+                  0000d60c    00000003     ti_msp_dl_config.o (.rodata.gPWM_SERVOClockConfig)
+                  0000d60f    00000003     ti_msp_dl_config.o (.rodata.gTIMER_10msClockConfig)
+                  0000d612    00000002     ti_msp_dl_config.o (.rodata.gUART_3ClockConfig)
+                  0000d614    00000002     ti_msp_dl_config.o (.rodata.gUART_CAMERAClockConfig)
+                  0000d616    00000002     ti_msp_dl_config.o (.rodata.gUART_WIRELESSClockConfig)
+                  0000d618    00000008     --HOLE-- [fill = 0]
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
 .binit     0    00000000    00000000     
 
-.bss       0    20200000    000012d8     UNINITIALIZED
-                  20200000    00000aec     (.common:VL53_)
-                  20200aec    000003a4     (.common:VL53)
-                  20200e90    00000120     libsysbm.a : trgmsg.c.obj (.bss:_CIOBUF_)
-                  20200fb0    000000bc     (.common:gPWM_BUZZERBackup)
-                  2020106c    000000bc     (.common:gPWM_SERVOBackup)
-                  20201128    000000a0     libc.a : defs.c.obj (.bss.__TI_tmpnams)
-                  202011c8    000000a0     (.common:gPWM_MotorBackup)
-                  20201268    00000030     (.common:gUART_3Backup)
-                  20201298    00000028     (.common:gSPI_1Backup)
-                  202012c0    0000000c     (.common:distance_)
-                  202012cc    00000008     libsysbm.a : hostopen.c.obj (.bss.parmbuf)
-                  202012d4    00000004     libc.a : memory.c.obj (.bss.sys_free)
+.bss       0    20200000    000033f8     UNINITIALIZED
+                  20200000    00001c20     IMU.o (.bss.Gyro_fill)
+                  20201c20    00000aec     (.common:VL53_)
+                  2020270c    00000480     (.common:OLED_GRAM)
+                  20202b8c    000003a4     (.common:VL53)
+                  20202f30    00000120     libsysbm.a : trgmsg.c.obj (.bss:_CIOBUF_)
+                  20203050    000000bc     (.common:gPWM_BUZZERBackup)
+                  2020310c    000000bc     (.common:gPWM_SERVOBackup)
+                  202031c8    000000a0     libc.a : defs.c.obj (.bss.__TI_tmpnams)
+                  20203268    000000a0     (.common:gPWM_MotorBackup)
+                  20203308    00000030     (.common:gUART_3Backup)
+                  20203338    00000028     (.common:gSPI_1Backup)
+                  20203360    0000001c     (.common:TTangles_gyro)
+                  2020337c    00000004            : memory.c.obj (.bss.sys_free)
+                  20203380    00000018     IMU.o (.bss.Gyro_total)
+                  20203398    00000018     IMU.o (.bss.sqrGyro_total)
+                  202033b0    0000000c     (.common:distance_)
+                  202033bc    0000000c     (.common:north)
+                  202033c8    0000000c     (.common:west)
+                  202033d4    00000008     libsysbm.a : hostopen.c.obj (.bss.parmbuf)
+                  202033dc    00000004     (.common:exInt)
+                  202033e0    00000004     (.common:eyInt)
+                  202033e4    00000004     (.common:ezInt)
+                  202033e8    00000004     (.common:q0)
+                  202033ec    00000004     (.common:q1)
+                  202033f0    00000004     (.common:q2)
+                  202033f4    00000004     (.common:q3)
 
-.sysmem    0    202012d8    00000800     UNINITIALIZED
-                  202012d8    00000010     libc.a : memory.c.obj (.sysmem)
-                  202012e8    000007f0     --HOLE--
+.sysmem    0    202033f8    00000800     UNINITIALIZED
+                  202033f8    00000010     libc.a : memory.c.obj (.sysmem)
+                  20203408    000007f0     --HOLE--
 
-.data      0    20201ad8    0000022d     UNINITIALIZED
-                  20201ad8    000000f0     libc.a : defs.c.obj (.data._ftable)
-                  20201bc8    00000078     libsysbm.a : host_device.c.obj (.data._device)
-                  20201c40    00000050                : host_device.c.obj (.data._stream)
-                  20201c90    00000040     vl53l1x.o (.data.Mode_data)
-                  20201cd0    00000008     libc.a : exit.c.obj (.data..L_MergedGlobals)
-                  20201cd8    00000004     Delay.o (.data.MS)
-                  20201cdc    00000004     Delay.o (.data.US)
-                  20201ce0    00000004     vl53l1x_Test.o (.data.Uart0_Send.lastTick)
-                  20201ce4    00000004     libc.a : defs.c.obj (.data.__TI_ft_end)
-                  20201ce8    00000004            : aeabi_portable.c.obj (.data.__aeabi_errno)
-                  20201cec    00000004            : _lock.c.obj (.data._lock)
-                  20201cf0    00000004            : _lock.c.obj (.data._unlock)
-                  20201cf4    00000004     vl53l1x_Test.o (.data.distance1)
-                  20201cf8    00000004     vl53l1x_Test.o (.data.distance2)
-                  20201cfc    00000004     vl53l1x_Test.o (.data.distance3)
-                  20201d00    00000004     Delay.o (.data.now_tick)
-                  20201d04    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+.data      0    20203bf8    0000029b     UNINITIALIZED
+                  20203bf8    000000f0     libc.a : defs.c.obj (.data._ftable)
+                  20203ce8    00000078     libsysbm.a : host_device.c.obj (.data._device)
+                  20203d60    00000050                : host_device.c.obj (.data._stream)
+                  20203db0    00000040     vl53l1x.o (.data.Mode_data)
+                  20203df0    00000024     IMU.o (.data.mygetqval_1)
+                  20203e14    00000024     spi.o (.data.spi_devices)
+                  20203e38    0000000c     IMU.o (.data.gyro_offset)
+                  20203e44    00000008     libc.a : exit.c.obj (.data..L_MergedGlobals)
+                  20203e4c    00000004     IMU.o (.data.CalCount)
+                  20203e50    00000004     IMU.o (.data.GyroCount)
+                  20203e54    00000004     IMU.o (.data.GyroinitFlag)
+                  20203e58    00000004     IMU.o (.data.Kp)
+                  20203e5c    00000004     Delay.o (.data.MS)
+                  20203e60    00000004     Delay.o (.data.US)
+                  20203e64    00000004     vl53l1x_Test.o (.data.Uart0_Send.lastTick)
+                  20203e68    00000004     libc.a : defs.c.obj (.data.__TI_ft_end)
+                  20203e6c    00000004            : aeabi_portable.c.obj (.data.__aeabi_errno)
+                  20203e70    00000004            : _lock.c.obj (.data._lock)
+                  20203e74    00000004            : _lock.c.obj (.data._unlock)
+                  20203e78    00000004     icm42688.o (.data.accSensitivity)
+                  20203e7c    00000004     vl53l1x_Test.o (.data.distance1)
+                  20203e80    00000004     vl53l1x_Test.o (.data.distance2)
+                  20203e84    00000004     vl53l1x_Test.o (.data.distance3)
+                  20203e88    00000004     icm42688.o (.data.gyroSensitivity)
+                  20203e8c    00000004     Delay.o (.data.now_tick)
+                  20203e90    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+                  20203e91    00000001     spi.o (.data.spi_cs_locked)
+                  20203e92    00000001     spi.o (.data.spi_cs_locked_channel)
 
 .stack     0    20207e00    00000200     UNINITIALIZED
                   20207e00    00000004     libc.a : boot_cortex_m.c.obj (.stack)
@@ -511,18 +632,21 @@ MODULE SUMMARY
        Module                         code    ro data   rw data
        ------                         ----    -------   -------
     .\
-       ti_msp_dl_config.o             4222    166       624    
+       ti_msp_dl_config.o             4290    166       624    
        startup_mspm0g350x_ticlang.o   8       192       0      
-       empty.o                        32      0         0      
+       main.o                         48      0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         4262    358       624    
+       Total:                         4346    358       624    
                                                                
     .\HardWare\
+       OLED.o                         1504    6632      1152   
+       icm42688.o                     1524    0         8      
        Usart.o                        340     0         0      
+       spi.o                          248     0         38     
+       Interrupt.o                    188     0         0      
        Delay.o                        168     0         12     
-       Interrupt.o                    180     0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         688     0         12     
+       Total:                         3972    6632      1210   
                                                                
     .\HardWare\vl53l1x\core\
        vl53l1_api_core.o              4710    0         0      
@@ -543,15 +667,18 @@ MODULE SUMMARY
        Total:                         2824    172       996    
                                                                
     .\Middle\
+       IMU.o                          3632    0         7392   
        my_vl53l1x.o                   348     0         2808   
     +--+------------------------------+-------+---------+---------+
-       Total:                         348     0         2808   
+       Total:                         3980    0         10200  
                                                                
     .\Test\
+       ICM_Test.o                     404     334       0      
        vl53l1x_Test.o                 304     104       16     
        Uart_Test.o                    40      22        0      
+       OLED_Test.o                    40      13        0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         344     126       16     
+       Total:                         788     473       16     
                                                                
     C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/lib/ticlang/m0p/mspm0g1x0x_g3x0x/driverlib.a
        dl_timer.o                     608     0         0      
@@ -566,8 +693,12 @@ MODULE SUMMARY
                                                                
     D:\TI\ccs2041\ccs\tools\compiler\ti-cgt-armllvm_4.0.4.LTS\lib\armv6m-ti-none-eabi/c/libc.a
        _printfi.c.obj                 4510    34        0      
+       e_asin.c.obj                   908     0         0      
+       s_atan.c.obj                   784     64        0      
        memory.c.obj                   702     0         5      
        defs.c.obj                     0       0         404    
+       e_atan2.c.obj                  392     0         0      
+       e_sqrt.c.obj                   368     0         0      
        aeabi_ctype.S.obj              0       257       0      
        fputs.c.obj                    248     0         0      
        setvbuf.c.obj                  224     0         0      
@@ -599,7 +730,7 @@ MODULE SUMMARY
        _lock.c.obj                    2       0         8      
        pre_init.c.obj                 4       0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         7742    291       429    
+       Total:                         10194   355       429    
                                                                
     D:\TI\ccs2041\ccs\tools\compiler\ti-cgt-armllvm_4.0.4.LTS\lib\armv6m-ti-none-eabi/c/libsysbm.a
        trgmsg.c.obj                   104     0         288    
@@ -621,16 +752,25 @@ MODULE SUMMARY
        Total:                         980     0         496    
                                                                
     D:\TI\ccs2041\ccs\tools\compiler\ti-cgt-armllvm_4.0.4.LTS\lib\armv6m-ti-none-eabi/libclang_rt.builtins.a
-       adddf3.S.obj                   418     0         0      
-       divdf3.S.obj                   268     0         0      
-       muldf3.S.obj                   228     0         0      
+       adddf3.S.obj                   434     0         0      
+       divdf3.S.obj                   284     0         0      
+       muldf3.S.obj                   244     0         0      
        comparedf2.c.obj               220     0         0      
+       addsf3.S.obj                   216     0         0      
        udivmoddi4.S.obj               162     0         0      
+       mulsf3.S.obj                   140     0         0      
+       divsf3.S.obj                   130     0         0      
+       comparesf2.S.obj               118     0         0      
+       truncdfsf2.S.obj               116     0         0      
        aeabi_dcmp.S.obj               98      0         0      
+       aeabi_fcmp.S.obj               98      0         0      
        aeabi_idivmod.S.obj            86      0         0      
        fixdfsi.S.obj                  74      0         0      
        aeabi_uidivmod.S.obj           64      0         0      
+       extendsfdf2.S.obj              64      0         0      
+       floatsisf.S.obj                60      0         0      
        muldsi3.S.obj                  58      0         0      
+       fixsfsi.S.obj                  56      0         0      
        floatsidf.S.obj                44      0         0      
        floatunsidf.S.obj              36      0         0      
        muldi3.S.obj                   36      0         0      
@@ -640,25 +780,25 @@ MODULE SUMMARY
        aeabi_memcpy.S.obj             8       0         0      
        aeabi_div0.c.obj               4       0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         1880    0         0      
+       Total:                         2926    0         0      
                                                                
        Heap:                          0       0         2048   
        Stack:                         0       0         512    
-       Linker Generated:              0       180       0      
+       Linker Generated:              0       219       0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   35794   1127      7941   
+       Grand Total:                   46736   8209      16531  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00009074 records: 2, size/record: 8, table size: 16
-	.data: load addr=00008fd0, load size=00000090 bytes, run addr=20201ad8, run size=0000022d bytes, compression=lzss
-	.bss: load addr=0000906c, load size=00000008 bytes, run addr=20200000, run size=000012d8 bytes, compression=zero_init
+__TI_cinit_table @ 0000d6ec records: 2, size/record: 8, table size: 16
+	.data: load addr=0000d620, load size=000000b7 bytes, run addr=20203bf8, run size=0000029b bytes, compression=lzss
+	.bss: load addr=0000d6e4, load size=00000008 bytes, run addr=20200000, run size=000033f8 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00009060 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 0000d6d8 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -670,217 +810,249 @@ callee name               trampoline name
    callee addr  tramp addr   call addr  call info
 --------------  -----------  ---------  ----------------
 __aeabi_dsub              $Tramp$TT$L$PI$$__aeabi_dsub
-   0000236d     00008c54     00008c52   libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
+   00003701     0000b6a0     0000b69e   libc.a : _printfi.c.obj (.text.OUTLINED_FUNCTION_0)
+__aeabi_dmul              $Tramp$TT$L$PI$$__aeabi_dmul
+   00005fa1     0000b6bc     0000b6b8   libc.a : e_asin.c.obj (.text.OUTLINED_FUNCTION_0)
+                             0000b6d4          : s_atan.c.obj (.text.OUTLINED_FUNCTION_0)
+                             0000b6e8          : e_asin.c.obj (.text.OUTLINED_FUNCTION_1)
+                             0000b70a          : s_atan.c.obj (.text.OUTLINED_FUNCTION_2)
+                             0000b768          : e_asin.c.obj (.text.OUTLINED_FUNCTION_2)
+__aeabi_ddiv              $Tramp$TT$L$PI$$__aeabi_ddiv
+   00005205     0000b6f4     0000b6f2   libc.a : e_asin.c.obj (.text.OUTLINED_FUNCTION_3)
+__aeabi_dadd              $Tramp$TT$L$PI$$__aeabi_dadd
+   0000370b     0000b754     0000b750   libc.a : s_atan.c.obj (.text.OUTLINED_FUNCTION_1)
+                             0000b77a          : e_asin.c.obj (.text.OUTLINED_FUNCTION_4)
 _c_int00_noargs           $Tramp$TT$L$PI$$_c_int00_noargs
-   00008205     00008cb4     00008cae   startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
+   0000ab3d     0000b780     0000b77c   startup_mspm0g350x_ticlang.o (.text.Reset_Handler)
 
-[2 trampolines]
-[2 trampoline calls]
+[5 trampolines]
+[10 trampoline calls]
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                                           
 -------   ----                                           
-00008ca7  ADC0_IRQHandler                                
-00008ca7  ADC1_IRQHandler                                
-00008ca7  AES_IRQHandler                                 
-00008caa  C$$EXIT                                        
-00007d25  C$$IO$$                                        
-00008ca7  CANFD0_IRQHandler                              
-00008ca7  DAC0_IRQHandler                                
-000076b9  DL_ADC12_setClockConfig                        
-00008c41  DL_Common_delayCycles                          
-000065ad  DL_I2C_fillControllerTXFIFO                    
-00008253  DL_I2C_setClockConfig                          
-000074e1  DL_SPI_init                                    
-00008ad5  DL_SPI_setClockConfig                          
-000085bd  DL_SYSCTL_configFCC                            
-000048b9  DL_SYSCTL_configSYSPLL                         
-00007525  DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK          
-000038c9  DL_Timer_initFourCCPWMMode                     
-00003ad1  DL_Timer_initTimerMode                         
-00008649  DL_Timer_setCaptCompUpdateMethod               
-00008915  DL_Timer_setCaptureCompareOutCtl               
-00008b4d  DL_Timer_setCaptureCompareValue                
-00008665  DL_Timer_setClockConfig                        
-000073c1  DL_UART_init                                   
-00008ae7  DL_UART_setClockConfig                         
-00008ca7  DMA_IRQHandler                                 
-00008ca7  Default_Handler                                
-00008115  Delay_ms                                       
-00008ca7  GROUP0_IRQHandler                              
-0000590d  GROUP1_IRQHandler                              
-00008c1d  Get_ms                                         
-00006359  Get_us                                         
-00007409  HOSTclose                                      
-00008cab  HOSTexit                                       
-00005f39  HOSTlseek                                      
-0000654d  HOSTopen                                       
-00006889  HOSTread                                       
-00005fa5  HOSTrename                                     
-00007451  HOSTunlink                                     
-000068e1  HOSTwrite                                      
-00008ca7  HardFault_Handler                              
-00008ca7  I2C0_IRQHandler                                
-00008ca7  I2C1_IRQHandler                                
-00008b5d  IIC_Delay_ms                                   
-00002679  IIC_ReadOneByte                                
-000021a1  IICreadBytes                                   
-00008355  IICwriteByte                                   
-00002fe1  IICwriteBytes                                  
-20201cd8  MS                                             
-20201c90  Mode_data                                      
-00008ca7  NMI_Handler                                    
-00008ca7  PendSV_Handler                                 
-00008ca7  RTC_IRQHandler                                 
-00008caf  Reset_Handler                                  
-00008ca7  SPI0_IRQHandler                                
-00008ca7  SPI1_IRQHandler                                
-00008ca7  SVC_Handler                                    
-00007b8d  SYSCFG_DL_BAT_ADC_init                         
-00001565  SYSCFG_DL_GPIO_init                            
-00006939  SYSCFG_DL_I2C_0_init                           
-00006155  SYSCFG_DL_PWM_BUZZER_init                      
-00005545  SYSCFG_DL_PWM_Motor_init                       
-000050b5  SYSCFG_DL_PWM_SERVO_init                       
-000076f9  SYSCFG_DL_SPI_1_init                           
-0000427d  SYSCFG_DL_SYSCTL_SYSPLL_init                   
-00005ec9  SYSCFG_DL_SYSCTL_init                          
-00008b6d  SYSCFG_DL_SYSTICK_init                         
-00007bc1  SYSCFG_DL_TIMER_0_init                         
-00007739  SYSCFG_DL_UART_3_init                          
-00007779  SYSCFG_DL_UART_CAMERA_init                     
-000077b9  SYSCFG_DL_UART_WIRELESS_init                   
-000077f9  SYSCFG_DL_UART_init                            
-00005d6d  SYSCFG_DL_init                                 
-00003cc9  SYSCFG_DL_initPower                            
-00008b7d  SysTick_Handler                                
-00008ca7  TIMA0_IRQHandler                               
-00008ca7  TIMA1_IRQHandler                               
-00008ca7  TIMG0_IRQHandler                               
-00008ca7  TIMG12_IRQHandler                              
-00008ca7  TIMG6_IRQHandler                               
-00008ca7  TIMG7_IRQHandler                               
-00008ca7  TIMG8_IRQHandler                               
-00008af9  TI_memcpy_small                                
-00008bf5  TI_memset_small                                
-00008ca7  UART0_IRQHandler                               
-00008ca7  UART1_IRQHandler                               
-00008ca7  UART2_IRQHandler                               
-00008ca7  UART3_IRQHandler                               
-20201cdc  US                                             
-00007d95  Uart0_Printf                                   
-00007f15  Uart0_Send_Char                                
-000079b5  Uart0_Send_String                              
-0000841d  Uart_Init                                      
-0000813d  Uart_Test2                                     
-20200aec  VL53                                           
-00002ab5  VL53InitParam                                  
-00003481  VL53L1Init                                     
-0000521d  VL53L1X_Test1                                  
-00007bf5  VL53L1X_Test2                                  
-00004c1f  VL53L1_DataInit                                
-00007569  VL53L1_GetInterMeasurementPeriodMilliSeconds   
-00002501  VL53L1_GetMeasurementTimingBudgetMicroSeconds  
-00007c29  VL53L1_GetSequenceStepEnable                   
-000075f1  VL53L1_RdByte                                  
-00007a69  VL53L1_RdWord                                  
-000072df  VL53L1_ReadMulti                               
-00007c5d  VL53L1_SetDeviceAddress                        
-000027ed  VL53L1_SetDistanceMode                         
-00007633  VL53L1_SetInterMeasurementPeriodMilliSeconds   
-00005663  VL53L1_SetLimitCheckEnable                     
-000055d5  VL53L1_SetLimitCheckValue                      
-00001bf1  VL53L1_SetMeasurementTimingBudgetMicroSeconds  
-00004e7d  VL53L1_SetPresetMode                           
-00003fad  VL53L1_StartMeasurement                        
-00006991  VL53L1_StaticInit                              
-00008165  VL53L1_WaitDeviceBooted                        
-00008a99  VL53L1_WaitMs                                  
-00008279  VL53L1_WaitUs                                  
-00003eb9  VL53L1_WaitValueMaskEx                         
-00007499  VL53L1_WrByte                                  
-00007329  VL53L1_WriteMulti                              
-00008049  VL53L1_calc_decoded_timeout_us                 
-00007eb9  VL53L1_calc_encoded_timeout                    
-000069e9  VL53L1_calc_macro_period_us                    
-0000843d  VL53L1_calc_pll_period_us                      
-00004ced  VL53L1_calc_range_ignore_threshold             
-00008377  VL53L1_calc_timeout_mclks                      
-00004535  VL53L1_calc_timeout_register_values            
-00007249  VL53L1_calc_timeout_us                         
-00007dc7  VL53L1_config_low_power_auto_mode              
-00003111  VL53L1_copy_rtn_good_spads_to_buffer           
-00002ead  VL53L1_data_init                               
-00006fd5  VL53L1_decode_row_col                          
-000084bb  VL53L1_decode_timeout                          
-000086b9  VL53L1_decode_vcsel_period                     
-00008399  VL53L1_decode_zone_size                        
-000079f1  VL53L1_encode_row_col                          
-00006d4d  VL53L1_encode_timeout                          
-00008681  VL53L1_encode_zone_size                        
-00007115  VL53L1_get_customer_nvm_managed                
-00006af1  VL53L1_get_inter_measurement_period_ms         
-000061bd  VL53L1_get_mode_mitigation_roi                 
-00007025  VL53L1_get_nvm_copy_data                       
-00002c15  VL53L1_get_preset_mode_timing_cfg              
-00005cf5  VL53L1_get_sequence_config_bit                 
-00007163  VL53L1_get_static_nvm_managed                  
-000047d9  VL53L1_get_timeouts_us                         
-00000a91  VL53L1_get_tuning_parm                         
-00007675  VL53L1_get_user_zone                           
-000039cd  VL53L1_i2c_decode_customer_nvm_managed         
-00006cf9  VL53L1_i2c_decode_int16_t                      
-000019f5  VL53L1_i2c_decode_nvm_copy_data                
-0000536b  VL53L1_i2c_decode_static_nvm_managed           
-00007aa3  VL53L1_i2c_decode_uint16_t                     
-00003bcd  VL53L1_i2c_encode_customer_nvm_managed         
-00004617  VL53L1_i2c_encode_dynamic_config               
-0000409d  VL53L1_i2c_encode_general_config               
-0000671f  VL53L1_i2c_encode_int16_t                      
-00002951  VL53L1_i2c_encode_static_config                
-0000540b  VL53L1_i2c_encode_static_nvm_managed           
-0000628d  VL53L1_i2c_encode_system_control               
-00004995  VL53L1_i2c_encode_timing_config                
-00006b47  VL53L1_i2c_encode_uint16_t                     
-00006d9f  VL53L1_i2c_encode_uint32_t                     
-00000e95  VL53L1_init_and_start_range                    
-00007939  VL53L1_init_ll_driver_state                    
-00007839  VL53L1_init_offset_cal_config_struct           
-00007add  VL53L1_init_refspadchar_config_struct          
-00007b55  VL53L1_init_ssc_config_struct                  
-0000418d  VL53L1_init_tuning_parm_storage_struct         
-00007f41  VL53L1_init_version                            
-00004ffb  VL53L1_init_xtalk_config_struct                
-00006011  VL53L1_low_power_auto_data_init                
-00006485  VL53L1_poll_for_boot_completion                
-00006779  VL53L1_preset_mode_low_power_auto_long_ranging 
-000067d3  VL53L1_preset_mode_low_power_auto_ranging      
-0000682d  VL53L1_preset_mode_low_power_auto_short_ranging
-00007075  VL53L1_preset_mode_olt                         
-00005de1  VL53L1_preset_mode_singleshot_ranging          
-00001de1  VL53L1_preset_mode_standard_ranging            
-000056ed  VL53L1_preset_mode_standard_ranging_long_range 
-00006b9d  VL53L1_preset_mode_standard_ranging_mm1_cal    
-00006bf3  VL53L1_preset_mode_standard_ranging_mm2_cal    
-00005777  VL53L1_preset_mode_standard_ranging_short_range
-00005a89  VL53L1_preset_mode_timed_ranging               
-00005b05  VL53L1_preset_mode_timed_ranging_long_range    
-0000598d  VL53L1_preset_mode_timed_ranging_short_range   
-0000323d  VL53L1_read_p2p_data                           
-00006c49  VL53L1_set_inter_measurement_period_ms         
-000082c5  VL53L1_set_lite_min_count_rate                 
-000082e9  VL53L1_set_lite_sigma_threshold                
-0000126d  VL53L1_set_preset_mode                         
-00005b81  VL53L1_set_timeouts_us                         
-000075ad  VL53L1_set_user_zone                           
-00007ee7  VL53L1_set_vhv_loopbound                       
-00004f3d  VL53L1_update_ll_driver_cfg_state              
-000036ad  VL53L1_update_ll_driver_rd_state               
-20200000  VL53_                                          
-20200e90  _CIOBUF_                                       
-20200e90  __CIOBUF_                                      
+0000b771  ADC0_IRQHandler                                
+0000b771  ADC1_IRQHandler                                
+0000b771  AES_IRQHandler                                 
+0000b774  C$$EXIT                                        
+0000a545  C$$IO$$                                        
+0000b771  CANFD0_IRQHandler                              
+20203e4c  CalCount                                       
+0000b771  DAC0_IRQHandler                                
+00009d35  DL_ADC12_setClockConfig                        
+0000b68d  DL_Common_delayCycles                          
+00008a85  DL_I2C_fillControllerTXFIFO                    
+0000ab8b  DL_I2C_setClockConfig                          
+00009b5d  DL_SPI_init                                    
+0000b515  DL_SPI_setClockConfig                          
+0000aef1  DL_SYSCTL_configFCC                            
+00006409  DL_SYSCTL_configSYSPLL                         
+00009ba1  DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK          
+00005419  DL_Timer_initFourCCPWMMode                     
+00005621  DL_Timer_initTimerMode                         
+0000af7d  DL_Timer_setCaptCompUpdateMethod               
+0000b2a9  DL_Timer_setCaptureCompareOutCtl               
+0000b58d  DL_Timer_setCaptureCompareValue                
+0000af99  DL_Timer_setClockConfig                        
+00009a3d  DL_UART_init                                   
+0000b527  DL_UART_setClockConfig                         
+0000b771  DMA_IRQHandler                                 
+0000b771  Default_Handler                                
+0000aa25  Delay_ms                                       
+0000b771  GROUP0_IRQHandler                              
+00007b41  GROUP1_IRQHandler                              
+0000b651  Get_ms                                         
+0000876d  Get_us                                         
+00009a85  HOSTclose                                      
+0000b775  HOSTexit                                       
+000082e5  HOSTlseek                                      
+000089c5  HOSTopen                                       
+00008d61  HOSTread                                       
+00008351  HOSTrename                                     
+00009acd  HOSTunlink                                     
+00008db9  HOSTwrite                                      
+0000b771  HardFault_Handler                              
+0000b771  I2C0_IRQHandler                                
+0000b771  I2C1_IRQHandler                                
+00004561  ICM42688_Test1                                 
+00009511  ICM42688_Test2                                 
+0000b59d  IIC_Delay_ms                                   
+00003b95  IIC_ReadOneByte                                
+00003535  IICreadBytes                                   
+0000ac8d  IICwriteByte                                   
+00004915  IICwriteBytes                                  
+00000a91  IMU_AHRSupdate                                 
+00007cbd  IMU_Callback                                   
+00003e79  IMU_getValues                                  
+00002db9  IMU_getYawPitchRoll                            
+00008a25  IMU_init                                       
+20203e58  Kp                                             
+20203e5c  MS                                             
+20203db0  Mode_data                                      
+0000b771  NMI_Handler                                    
+00008e11  OLED_Clear                                     
+000074b9  OLED_DrawPoint                                 
+2020270c  OLED_GRAM                                      
+00004ecd  OLED_Init                                      
+00007d39  OLED_Refresh                                   
+00003365  OLED_ShowChar                                  
+0000741d  OLED_ShowString                                
+0000aa4d  OLED_Test1                                     
+00007549  OLED_WR_Byte                                   
+0000b771  PendSV_Handler                                 
+0000b771  RTC_IRQHandler                                 
+0000b77d  Reset_Handler                                  
+0000b771  SPI0_IRQHandler                                
+0000b771  SPI1_IRQHandler                                
+000076f9  SPI_CS                                         
+00009d75  SPI_Init                                       
+0000b771  SVC_Handler                                    
+0000a3ad  SYSCFG_DL_BAT_ADC_init                         
+00002529  SYSCFG_DL_GPIO_init                            
+00008e69  SYSCFG_DL_I2C_0_init                           
+00008501  SYSCFG_DL_PWM_BUZZER_init                      
+000075d9  SYSCFG_DL_PWM_Motor_init                       
+00006d9d  SYSCFG_DL_PWM_SERVO_init                       
+00009db5  SYSCFG_DL_SPI_1_init                           
+00005dcd  SYSCFG_DL_SYSCTL_SYSPLL_init                   
+00008275  SYSCFG_DL_SYSCTL_init                          
+0000b5ad  SYSCFG_DL_SYSTICK_init                         
+0000a3e1  SYSCFG_DL_TIMER_10ms_init                      
+00009df5  SYSCFG_DL_UART_3_init                          
+00009e35  SYSCFG_DL_UART_CAMERA_init                     
+00009e75  SYSCFG_DL_UART_WIRELESS_init                   
+00009eb5  SYSCFG_DL_UART_init                            
+00008099  SYSCFG_DL_init                                 
+00005819  SYSCFG_DL_initPower                            
+0000b5bd  SysTick_Handler                                
+0000b771  TIMA0_IRQHandler                               
+0000b771  TIMA1_IRQHandler                               
+0000b70d  TIMG0_IRQHandler                               
+0000b771  TIMG12_IRQHandler                              
+0000b771  TIMG6_IRQHandler                               
+0000b771  TIMG7_IRQHandler                               
+0000b771  TIMG8_IRQHandler                               
+0000b539  TI_memcpy_small                                
+0000b635  TI_memset_small                                
+20203360  TTangles_gyro                                  
+0000b771  UART0_IRQHandler                               
+0000b771  UART1_IRQHandler                               
+0000b771  UART2_IRQHandler                               
+0000b771  UART3_IRQHandler                               
+20203e60  US                                             
+0000a5b5  Uart0_Printf                                   
+0000a7f9  Uart0_Send_Char                                
+0000a0b1  Uart0_Send_String                              
+0000ad55  Uart_Init                                      
+0000aa75  Uart_Test2                                     
+20202b8c  VL53                                           
+000042a5  VL53InitParam                                  
+00004db5  VL53L1Init                                     
+00006f05  VL53L1X_Test1                                  
+0000a415  VL53L1X_Test2                                  
+00006847  VL53L1_DataInit                                
+00009be5  VL53L1_GetInterMeasurementPeriodMilliSeconds   
+00003a1d  VL53L1_GetMeasurementTimingBudgetMicroSeconds  
+0000a449  VL53L1_GetSequenceStepEnable                   
+00009c6d  VL53L1_RdByte                                  
+0000a1dd  VL53L1_RdWord                                  
+0000995b  VL53L1_ReadMulti                               
+0000a47d  VL53L1_SetDeviceAddress                        
+00003fdd  VL53L1_SetDistanceMode                         
+00009caf  VL53L1_SetInterMeasurementPeriodMilliSeconds   
+00007811  VL53L1_SetLimitCheckEnable                     
+00007669  VL53L1_SetLimitCheckValue                      
+00002bc9  VL53L1_SetMeasurementTimingBudgetMicroSeconds  
+00006aa5  VL53L1_SetPresetMode                           
+00005afd  VL53L1_StartMeasurement                        
+00008ec1  VL53L1_StaticInit                              
+0000aa9d  VL53L1_WaitDeviceBooted                        
+0000b4d9  VL53L1_WaitMs                                  
+0000abb1  VL53L1_WaitUs                                  
+00005a09  VL53L1_WaitValueMaskEx                         
+00009b15  VL53L1_WrByte                                  
+000099a5  VL53L1_WriteMulti                              
+0000a959  VL53L1_calc_decoded_timeout_us                 
+0000a79d  VL53L1_calc_encoded_timeout                    
+00008f19  VL53L1_calc_macro_period_us                    
+0000ad75  VL53L1_calc_pll_period_us                      
+00006915  VL53L1_calc_range_ignore_threshold             
+0000acaf  VL53L1_calc_timeout_mclks                      
+00006085  VL53L1_calc_timeout_register_values            
+000098c5  VL53L1_calc_timeout_us                         
+0000a5e7  VL53L1_config_low_power_auto_mode              
+00004a45  VL53L1_copy_rtn_good_spads_to_buffer           
+000047e1  VL53L1_data_init                               
+00009601  VL53L1_decode_row_col                          
+0000add3  VL53L1_decode_timeout                          
+0000afed  VL53L1_decode_vcsel_period                     
+0000acd1  VL53L1_decode_zone_size                        
+0000a0ed  VL53L1_encode_row_col                          
+00009329  VL53L1_encode_timeout                          
+0000afb5  VL53L1_encode_zone_size                        
+00009741  VL53L1_get_customer_nvm_managed                
+00009079  VL53L1_get_inter_measurement_period_ms         
+00008569  VL53L1_get_mode_mitigation_roi                 
+00009651  VL53L1_get_nvm_copy_data                       
+00004405  VL53L1_get_preset_mode_timing_cfg              
+00008021  VL53L1_get_sequence_config_bit                 
+0000978f  VL53L1_get_static_nvm_managed                  
+00006329  VL53L1_get_timeouts_us                         
+00001119  VL53L1_get_tuning_parm                         
+00009cf1  VL53L1_get_user_zone                           
+0000551d  VL53L1_i2c_decode_customer_nvm_managed         
+00009281  VL53L1_i2c_decode_int16_t                      
+000029cd  VL53L1_i2c_decode_nvm_copy_data                
+00007243  VL53L1_i2c_decode_static_nvm_managed           
+0000a217  VL53L1_i2c_decode_uint16_t                     
+0000571d  VL53L1_i2c_encode_customer_nvm_managed         
+00006167  VL53L1_i2c_encode_dynamic_config               
+00005bed  VL53L1_i2c_encode_general_config               
+00008bf7  VL53L1_i2c_encode_int16_t                      
+00004141  VL53L1_i2c_encode_static_config                
+000072e3  VL53L1_i2c_encode_static_nvm_managed           
+000086a1  VL53L1_i2c_encode_system_control               
+000064e5  VL53L1_i2c_encode_timing_config                
+000090cf  VL53L1_i2c_encode_uint16_t                     
+0000937b  VL53L1_i2c_encode_uint32_t                     
+0000151d  VL53L1_init_and_start_range                    
+0000a035  VL53L1_init_ll_driver_state                    
+00009ef5  VL53L1_init_offset_cal_config_struct           
+0000a251  VL53L1_init_refspadchar_config_struct          
+0000a305  VL53L1_init_ssc_config_struct                  
+00005cdd  VL53L1_init_tuning_parm_storage_struct         
+0000a825  VL53L1_init_version                            
+00006ce3  VL53L1_init_xtalk_config_struct                
+000083bd  VL53L1_low_power_auto_data_init                
+00008899  VL53L1_poll_for_boot_completion                
+00008c51  VL53L1_preset_mode_low_power_auto_long_ranging 
+00008cab  VL53L1_preset_mode_low_power_auto_ranging      
+00008d05  VL53L1_preset_mode_low_power_auto_short_ranging
+000096a1  VL53L1_preset_mode_olt                         
+0000810d  VL53L1_preset_mode_singleshot_ranging          
+00002fa5  VL53L1_preset_mode_standard_ranging            
+0000789b  VL53L1_preset_mode_standard_ranging_long_range 
+00009125  VL53L1_preset_mode_standard_ranging_mm1_cal    
+0000917b  VL53L1_preset_mode_standard_ranging_mm2_cal    
+00007925  VL53L1_preset_mode_standard_ranging_short_range
+00007db5  VL53L1_preset_mode_timed_ranging               
+00007e31  VL53L1_preset_mode_timed_ranging_long_range    
+00007bc1  VL53L1_preset_mode_timed_ranging_short_range   
+00004b71  VL53L1_read_p2p_data                           
+000091d1  VL53L1_set_inter_measurement_period_ms         
+0000abfd  VL53L1_set_lite_min_count_rate                 
+0000ac21  VL53L1_set_lite_sigma_threshold                
+00001f51  VL53L1_set_preset_mode                         
+00007ead  VL53L1_set_timeouts_us                         
+00009c29  VL53L1_set_user_zone                           
+0000a7cb  VL53L1_set_vhv_loopbound                       
+00006c25  VL53L1_update_ll_driver_cfg_state              
+000050f5  VL53L1_update_ll_driver_rd_state               
+20201c20  VL53_                                          
+20202f30  _CIOBUF_                                       
+20202f30  __CIOBUF_                                      
 20208000  __STACK_END                                    
 00000200  __STACK_SIZE                                   
 00000800  __SYSMEM_SIZE                                  
@@ -893,147 +1065,212 @@ address   name
 00000000  __TI_ATRegion2_region_sz                       
 00000000  __TI_ATRegion2_src_addr                        
 00000000  __TI_ATRegion2_trg_addr                        
-00009074  __TI_CINIT_Base                                
-00009084  __TI_CINIT_Limit                               
-00009084  __TI_CINIT_Warm                                
-00009060  __TI_Handler_Table_Base                        
-0000906c  __TI_Handler_Table_Limit                       
-00007a2d  __TI_auto_init_nobinit_nopinit                 
-00007c91  __TI_cleanup                                   
-20201cd0  __TI_cleanup_ptr                               
-00005bfd  __TI_closefile                                 
-00005c79  __TI_decompress_lzss                           
-00008b0b  __TI_decompress_none                           
-00006df1  __TI_doflush                                   
-20201cd4  __TI_dtors_ptr                                 
-20201ce4  __TI_ft_end                                    
-00006a41  __TI_ltoa                                      
+0000d6ec  __TI_CINIT_Base                                
+0000d6fc  __TI_CINIT_Limit                               
+0000d6fc  __TI_CINIT_Warm                                
+0000d6d8  __TI_Handler_Table_Base                        
+0000d6e4  __TI_Handler_Table_Limit                       
+0000a1a1  __TI_auto_init_nobinit_nopinit                 
+0000a4b1  __TI_cleanup                                   
+20203e44  __TI_cleanup_ptr                               
+00007f29  __TI_closefile                                 
+00007fa5  __TI_decompress_lzss                           
+0000b54b  __TI_decompress_none                           
+000093cd  __TI_doflush                                   
+20203e48  __TI_dtors_ptr                                 
+20203e68  __TI_ft_end                                    
+00008f71  __TI_ltoa                                      
 ffffffff  __TI_pprof_out_hndl                            
 000000c1  __TI_printfi                                   
 ffffffff  __TI_prof_data_size                            
 ffffffff  __TI_prof_data_start                           
-00007cc5  __TI_readmsg                                   
+0000a4e5  __TI_readmsg                                   
 00000000  __TI_static_base__                             
-20201128  __TI_tmpnams                                   
-00007cf9  __TI_writemsg                                  
-000063bd  __TI_wrt_ok                                    
-00008b9d  __TI_zero_init                                 
-00002377  __adddf3                                       
-00008cd0  __aeabi_ctype_table_                           
-00008cd0  __aeabi_ctype_table_C                          
-00007375  __aeabi_d2iz                                   
-00002377  __aeabi_dadd                                   
-000064e9  __aeabi_dcmpeq                                 
-00006525  __aeabi_dcmpge                                 
-00006539  __aeabi_dcmpgt                                 
-00006511  __aeabi_dcmple                                 
-000064fd  __aeabi_dcmplt                                 
-000037bd  __aeabi_ddiv                                   
-00004451  __aeabi_dmul                                   
-0000236d  __aeabi_dsub                                   
-20201ce8  __aeabi_errno                                  
-00008c71  __aeabi_errno_addr                             
-00007ff1  __aeabi_i2d                                    
-00006ca1  __aeabi_idiv                                   
-00001563  __aeabi_idiv0                                  
-00006ca1  __aeabi_idivmod                                
-000024ff  __aeabi_ldiv0                                  
-000084d9  __aeabi_llsl                                   
-00008331  __aeabi_lmul                                   
-00008c29  __aeabi_memclr                                 
-00008c29  __aeabi_memclr4                                
-00008c29  __aeabi_memclr8                                
-00008c79  __aeabi_memcpy                                 
-00008c79  __aeabi_memcpy4                                
-00008c79  __aeabi_memcpy8                                
-00008bbd  __aeabi_memset                                 
-00008bbd  __aeabi_memset4                                
-00008bbd  __aeabi_memset8                                
-0000830d  __aeabi_ui2d                                   
-00007879  __aeabi_uidiv                                  
-00007879  __aeabi_uidivmod                               
-00008aad  __aeabi_uldivmod                               
-000084d9  __ashldi3                                      
+202031c8  __TI_tmpnams                                   
+0000a519  __TI_writemsg                                  
+000087d1  __TI_wrt_ok                                    
+0000b5dd  __TI_zero_init                                 
+0000370b  __adddf3                                       
+000066a3  __addsf3                                       
+0000d190  __aeabi_ctype_table_                           
+0000d190  __aeabi_ctype_table_C                          
+00008201  __aeabi_d2f                                    
+000099f1  __aeabi_d2iz                                   
+0000370b  __aeabi_dadd                                   
+000088fd  __aeabi_dcmpeq                                 
+00008939  __aeabi_dcmpge                                 
+0000894d  __aeabi_dcmpgt                                 
+00008925  __aeabi_dcmple                                 
+00008911  __aeabi_dcmplt                                 
+00005205  __aeabi_ddiv                                   
+00005fa1  __aeabi_dmul                                   
+00003701  __aeabi_dsub                                   
+20203e6c  __aeabi_errno                                  
+0000b715  __aeabi_errno_addr                             
+00009f75  __aeabi_f2d                                    
+0000a33d  __aeabi_f2iz                                   
+000066a3  __aeabi_fadd                                   
+00008961  __aeabi_fcmpeq                                 
+0000899d  __aeabi_fcmpge                                 
+000089b1  __aeabi_fcmpgt                                 
+00008989  __aeabi_fcmple                                 
+00008975  __aeabi_fcmplt                                 
+00007abd  __aeabi_fdiv                                   
+00007785  __aeabi_fmul                                   
+00006699  __aeabi_fsub                                   
+0000a901  __aeabi_i2d                                    
+0000a129  __aeabi_i2f                                    
+00009229  __aeabi_idiv                                   
+00002247  __aeabi_idiv0                                  
+00009229  __aeabi_idivmod                                
+00003893  __aeabi_ldiv0                                  
+0000adf1  __aeabi_llsl                                   
+0000ac69  __aeabi_lmul                                   
+0000b65d  __aeabi_memclr                                 
+0000b65d  __aeabi_memclr4                                
+0000b65d  __aeabi_memclr8                                
+0000b71d  __aeabi_memcpy                                 
+0000b71d  __aeabi_memcpy4                                
+0000b71d  __aeabi_memcpy8                                
+0000b5fd  __aeabi_memset                                 
+0000b5fd  __aeabi_memset4                                
+0000b5fd  __aeabi_memset8                                
+0000ac45  __aeabi_ui2d                                   
+00009f35  __aeabi_uidiv                                  
+00009f35  __aeabi_uidivmod                               
+0000b4ed  __aeabi_uldivmod                               
+0000adf1  __ashldi3                                      
 ffffffff  __binit__                                      
-00006225  __cmpdf2                                       
-000037bd  __divdf3                                       
-00006225  __eqdf2                                        
-00007375  __fixdfsi                                      
-00007ff1  __floatsidf                                    
-0000830d  __floatunsidf                                  
-00005e55  __gedf2                                        
-00005e55  __gtdf2                                        
-00006225  __ledf2                                        
-00006225  __ltdf2                                        
+000085d1  __cmpdf2                                       
+0000a28d  __cmpsf2                                       
+00005205  __divdf3                                       
+00007abd  __divsf3                                       
+000085d1  __eqdf2                                        
+0000a28d  __eqsf2                                        
+00009f75  __extendsfdf2                                  
+000099f1  __fixdfsi                                      
+0000a33d  __fixsfsi                                      
+0000a901  __floatsidf                                    
+0000a129  __floatsisf                                    
+0000ac45  __floatunsidf                                  
+00008181  __gedf2                                        
+0000a165  __gesf2                                        
+00008181  __gtdf2                                        
+0000a165  __gtsf2                                        
+000085d1  __ledf2                                        
+0000a28d  __lesf2                                        
+000085d1  __ltdf2                                        
+0000a28d  __ltsf2                                        
 UNDEFED   __mpu_init                                     
-00004451  __muldf3                                       
-00008331  __muldi3                                       
-00007b19  __muldsi3                                      
-00006225  __nedf2                                        
+00005fa1  __muldf3                                       
+0000ac69  __muldi3                                       
+0000a2c9  __muldsi3                                      
+00007785  __mulsf3                                       
+000085d1  __nedf2                                        
+0000a28d  __nesf2                                        
 20207e00  __stack                                        
 20200000  __start___llvm_prf_bits                        
 20200000  __start___llvm_prf_cnts                        
 20200000  __stop___llvm_prf_bits                         
 20200000  __stop___llvm_prf_cnts                         
-0000236d  __subdf3                                       
-000052c9  __udivmoddi4                                   
-00008205  _c_int00_noargs                                
-20201bc8  _device                                        
-20201ad8  _ftable                                        
-20201cec  _lock                                          
-00002ab3  _nop                                           
-20201c40  _stream                                        
-202012d8  _sys_memory                                    
+00003701  __subdf3                                       
+00006699  __subsf3                                       
+00008201  __truncdfsf2                                   
+000071a1  __udivmoddi4                                   
+0000ab3d  _c_int00_noargs                                
+20203ce8  _device                                        
+20203bf8  _ftable                                        
+20203e70  _lock                                          
+000042a3  _nop                                           
+20203d60  _stream                                        
+202033f8  _sys_memory                                    
 UNDEFED   _system_post_cinit                             
-00008cc5  _system_pre_init                               
-20201cf0  _unlock                                        
-00008ca1  abort                                          
-00003599  aligned_alloc                                  
-000078b9  atoi                                           
+0000b791  _system_pre_init                               
+20203e74  _unlock                                        
+0000b76b  abort                                          
+00004fe1  aligned_alloc                                  
+0000cf60  asc2_0806                                      
+0000caec  asc2_1206                                      
+0000c4fc  asc2_1608                                      
+0000b7a0  asc2_2412                                      
+000018f5  asin                                           
+000018f5  asinl                                          
+00001c59  atan                                           
+00003895  atan2                                          
+00003895  atan2l                                         
+00001c59  atanl                                          
+00009fb5  atoi                                           
 ffffffff  binit                                          
-000070c5  close                                          
-20201cf4  distance1                                      
-20201cf8  distance2                                      
-20201cfc  distance3                                      
-202012c0  distance_                                      
-00007d2d  exit                                           
-00007d61  finddevice                                     
-000054a9  fputc                                          
-00003dc1  fputs                                          
-00004369  free                                           
-0000660d  frexp                                          
-0000660d  frexpl                                         
-00008c91  fseek                                          
-0000607d  fseeko                                         
-20200fb0  gPWM_BUZZERBackup                              
-202011c8  gPWM_MotorBackup                               
-2020106c  gPWM_SERVOBackup                               
-20201298  gSPI_1Backup                                   
-20201268  gUART_3Backup                                  
-00005a0b  getDistance_Simply                             
-000060e9  getdevice                                      
+00008639  bsp_Icm42688GetAres                            
+00006fb1  bsp_Icm42688GetGres                            
+0000b735  bsp_Icm42688Init                               
+00006b65  bsp_Icm42688RegCfg                             
+00007059  bsp_IcmGetAccelerometer                        
+000070fd  bsp_IcmGetGyroscope                            
+00005311  bsp_IcmGetRawData                              
+000092d5  bsp_IcmGetTemperature                          
+0000ae0f  bsp_IcmGetWhoAmI                               
+00002249  calGyroVariance                                
+000096f1  close                                          
+0000b339  delay_ms                                       
+20203e7c  distance1                                      
+20203e80  distance2                                      
+20203e84  distance3                                      
+202033b0  distance_                                      
+202033dc  exInt                                          
+0000a54d  exit                                           
+202033e0  eyInt                                          
+202033e4  ezInt                                          
+0000a581  finddevice                                     
+00007381  fputc                                          
+00005911  fputs                                          
+00005eb9  free                                           
+00008ae5  frexp                                          
+00008ae5  frexpl                                         
+0000b73d  fseek                                          
+00008429  fseeko                                         
+20203050  gPWM_BUZZERBackup                              
+20203268  gPWM_MotorBackup                               
+2020310c  gPWM_SERVOBackup                               
+20203338  gSPI_1Backup                                   
+20203308  gUART_3Backup                                  
+00007c3f  getDistance_Simply                             
+00008495  getdevice                                      
+20203e38  gyro_offset                                    
 00000000  interruptVectors                               
-00004a71  ldexp                                          
-00004a71  ldexpl                                         
-000081b5  lseek                                          
-0000845d  main                                           
-00008c35  malloc                                         
-00003599  memalign                                       
-000083bb  memccpy                                        
-00007e89  my_vl53l1x_callback                            
-0000847d  my_vl53l1x_get_distance                        
-00005169  my_vl53l1x_init                                
-202012cc  parmbuf                                        
-00006669  printf                                         
-00008c99  remove                                         
-00004a71  scalbn                                         
-00004a71  scalbnl                                        
-000046f9  setvbuf                                        
-00005801  strcmp                                         
-0000801d  unlink                                         
-000078f9  vsnprintf                                      
-00008b8d  wcslen                                         
-000081dd  write                                          
+00009021  invSqrt1                                       
+000065c1  ldexp                                          
+000065c1  ldexpl                                         
+0000aaed  lseek                                          
+0000a73d  main                                           
+0000b681  malloc                                         
+00004fe1  memalign                                       
+0000acf3  memccpy                                        
+0000a76d  my_vl53l1x_callback                            
+0000ad95  my_vl53l1x_get_distance                        
+00006e51  my_vl53l1x_init                                
+20203df0  mygetqval_1                                    
+202033bc  north                                          
+202033d4  parmbuf                                        
+00008b41  printf                                         
+202033e8  q0                                             
+202033ec  q1                                             
+202033f0  q2                                             
+202033f4  q3                                             
+0000b745  remove                                         
+000065c1  scalbn                                         
+000065c1  scalbnl                                        
+00006249  setvbuf                                        
+20203e91  spi_cs_locked                                  
+20203e92  spi_cs_locked_channel                          
+00003d09  sqrt                                           
+00003d09  sqrtl                                          
+000079b1  strcmp                                         
+0000a92d  unlink                                         
+00009ff5  vsnprintf                                      
+0000b5cd  wcslen                                         
+202033c8  west                                           
+0000ab15  write                                          
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -1054,335 +1291,421 @@ address   name
 000000c1  __TI_printfi                                   
 00000200  __STACK_SIZE                                   
 00000800  __SYSMEM_SIZE                                  
-00000a91  VL53L1_get_tuning_parm                         
-00000e95  VL53L1_init_and_start_range                    
-0000126d  VL53L1_set_preset_mode                         
-00001563  __aeabi_idiv0                                  
-00001565  SYSCFG_DL_GPIO_init                            
-000019f5  VL53L1_i2c_decode_nvm_copy_data                
-00001bf1  VL53L1_SetMeasurementTimingBudgetMicroSeconds  
-00001de1  VL53L1_preset_mode_standard_ranging            
-000021a1  IICreadBytes                                   
-0000236d  __aeabi_dsub                                   
-0000236d  __subdf3                                       
-00002377  __adddf3                                       
-00002377  __aeabi_dadd                                   
-000024ff  __aeabi_ldiv0                                  
-00002501  VL53L1_GetMeasurementTimingBudgetMicroSeconds  
-00002679  IIC_ReadOneByte                                
-000027ed  VL53L1_SetDistanceMode                         
-00002951  VL53L1_i2c_encode_static_config                
-00002ab3  _nop                                           
-00002ab5  VL53InitParam                                  
-00002c15  VL53L1_get_preset_mode_timing_cfg              
-00002ead  VL53L1_data_init                               
-00002fe1  IICwriteBytes                                  
-00003111  VL53L1_copy_rtn_good_spads_to_buffer           
-0000323d  VL53L1_read_p2p_data                           
-00003481  VL53L1Init                                     
-00003599  aligned_alloc                                  
-00003599  memalign                                       
-000036ad  VL53L1_update_ll_driver_rd_state               
-000037bd  __aeabi_ddiv                                   
-000037bd  __divdf3                                       
-000038c9  DL_Timer_initFourCCPWMMode                     
-000039cd  VL53L1_i2c_decode_customer_nvm_managed         
-00003ad1  DL_Timer_initTimerMode                         
-00003bcd  VL53L1_i2c_encode_customer_nvm_managed         
-00003cc9  SYSCFG_DL_initPower                            
-00003dc1  fputs                                          
-00003eb9  VL53L1_WaitValueMaskEx                         
-00003fad  VL53L1_StartMeasurement                        
-0000409d  VL53L1_i2c_encode_general_config               
-0000418d  VL53L1_init_tuning_parm_storage_struct         
-0000427d  SYSCFG_DL_SYSCTL_SYSPLL_init                   
-00004369  free                                           
-00004451  __aeabi_dmul                                   
-00004451  __muldf3                                       
-00004535  VL53L1_calc_timeout_register_values            
-00004617  VL53L1_i2c_encode_dynamic_config               
-000046f9  setvbuf                                        
-000047d9  VL53L1_get_timeouts_us                         
-000048b9  DL_SYSCTL_configSYSPLL                         
-00004995  VL53L1_i2c_encode_timing_config                
-00004a71  ldexp                                          
-00004a71  ldexpl                                         
-00004a71  scalbn                                         
-00004a71  scalbnl                                        
-00004c1f  VL53L1_DataInit                                
-00004ced  VL53L1_calc_range_ignore_threshold             
-00004e7d  VL53L1_SetPresetMode                           
-00004f3d  VL53L1_update_ll_driver_cfg_state              
-00004ffb  VL53L1_init_xtalk_config_struct                
-000050b5  SYSCFG_DL_PWM_SERVO_init                       
-00005169  my_vl53l1x_init                                
-0000521d  VL53L1X_Test1                                  
-000052c9  __udivmoddi4                                   
-0000536b  VL53L1_i2c_decode_static_nvm_managed           
-0000540b  VL53L1_i2c_encode_static_nvm_managed           
-000054a9  fputc                                          
-00005545  SYSCFG_DL_PWM_Motor_init                       
-000055d5  VL53L1_SetLimitCheckValue                      
-00005663  VL53L1_SetLimitCheckEnable                     
-000056ed  VL53L1_preset_mode_standard_ranging_long_range 
-00005777  VL53L1_preset_mode_standard_ranging_short_range
-00005801  strcmp                                         
-0000590d  GROUP1_IRQHandler                              
-0000598d  VL53L1_preset_mode_timed_ranging_short_range   
-00005a0b  getDistance_Simply                             
-00005a89  VL53L1_preset_mode_timed_ranging               
-00005b05  VL53L1_preset_mode_timed_ranging_long_range    
-00005b81  VL53L1_set_timeouts_us                         
-00005bfd  __TI_closefile                                 
-00005c79  __TI_decompress_lzss                           
-00005cf5  VL53L1_get_sequence_config_bit                 
-00005d6d  SYSCFG_DL_init                                 
-00005de1  VL53L1_preset_mode_singleshot_ranging          
-00005e55  __gedf2                                        
-00005e55  __gtdf2                                        
-00005ec9  SYSCFG_DL_SYSCTL_init                          
-00005f39  HOSTlseek                                      
-00005fa5  HOSTrename                                     
-00006011  VL53L1_low_power_auto_data_init                
-0000607d  fseeko                                         
-000060e9  getdevice                                      
-00006155  SYSCFG_DL_PWM_BUZZER_init                      
-000061bd  VL53L1_get_mode_mitigation_roi                 
-00006225  __cmpdf2                                       
-00006225  __eqdf2                                        
-00006225  __ledf2                                        
-00006225  __ltdf2                                        
-00006225  __nedf2                                        
-0000628d  VL53L1_i2c_encode_system_control               
-00006359  Get_us                                         
-000063bd  __TI_wrt_ok                                    
-00006485  VL53L1_poll_for_boot_completion                
-000064e9  __aeabi_dcmpeq                                 
-000064fd  __aeabi_dcmplt                                 
-00006511  __aeabi_dcmple                                 
-00006525  __aeabi_dcmpge                                 
-00006539  __aeabi_dcmpgt                                 
-0000654d  HOSTopen                                       
-000065ad  DL_I2C_fillControllerTXFIFO                    
-0000660d  frexp                                          
-0000660d  frexpl                                         
-00006669  printf                                         
-0000671f  VL53L1_i2c_encode_int16_t                      
-00006779  VL53L1_preset_mode_low_power_auto_long_ranging 
-000067d3  VL53L1_preset_mode_low_power_auto_ranging      
-0000682d  VL53L1_preset_mode_low_power_auto_short_ranging
-00006889  HOSTread                                       
-000068e1  HOSTwrite                                      
-00006939  SYSCFG_DL_I2C_0_init                           
-00006991  VL53L1_StaticInit                              
-000069e9  VL53L1_calc_macro_period_us                    
-00006a41  __TI_ltoa                                      
-00006af1  VL53L1_get_inter_measurement_period_ms         
-00006b47  VL53L1_i2c_encode_uint16_t                     
-00006b9d  VL53L1_preset_mode_standard_ranging_mm1_cal    
-00006bf3  VL53L1_preset_mode_standard_ranging_mm2_cal    
-00006c49  VL53L1_set_inter_measurement_period_ms         
-00006ca1  __aeabi_idiv                                   
-00006ca1  __aeabi_idivmod                                
-00006cf9  VL53L1_i2c_decode_int16_t                      
-00006d4d  VL53L1_encode_timeout                          
-00006d9f  VL53L1_i2c_encode_uint32_t                     
-00006df1  __TI_doflush                                   
-00006fd5  VL53L1_decode_row_col                          
-00007025  VL53L1_get_nvm_copy_data                       
-00007075  VL53L1_preset_mode_olt                         
-000070c5  close                                          
-00007115  VL53L1_get_customer_nvm_managed                
-00007163  VL53L1_get_static_nvm_managed                  
-00007249  VL53L1_calc_timeout_us                         
-000072df  VL53L1_ReadMulti                               
-00007329  VL53L1_WriteMulti                              
-00007375  __aeabi_d2iz                                   
-00007375  __fixdfsi                                      
-000073c1  DL_UART_init                                   
-00007409  HOSTclose                                      
-00007451  HOSTunlink                                     
-00007499  VL53L1_WrByte                                  
-000074e1  DL_SPI_init                                    
-00007525  DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK          
-00007569  VL53L1_GetInterMeasurementPeriodMilliSeconds   
-000075ad  VL53L1_set_user_zone                           
-000075f1  VL53L1_RdByte                                  
-00007633  VL53L1_SetInterMeasurementPeriodMilliSeconds   
-00007675  VL53L1_get_user_zone                           
-000076b9  DL_ADC12_setClockConfig                        
-000076f9  SYSCFG_DL_SPI_1_init                           
-00007739  SYSCFG_DL_UART_3_init                          
-00007779  SYSCFG_DL_UART_CAMERA_init                     
-000077b9  SYSCFG_DL_UART_WIRELESS_init                   
-000077f9  SYSCFG_DL_UART_init                            
-00007839  VL53L1_init_offset_cal_config_struct           
-00007879  __aeabi_uidiv                                  
-00007879  __aeabi_uidivmod                               
-000078b9  atoi                                           
-000078f9  vsnprintf                                      
-00007939  VL53L1_init_ll_driver_state                    
-000079b5  Uart0_Send_String                              
-000079f1  VL53L1_encode_row_col                          
-00007a2d  __TI_auto_init_nobinit_nopinit                 
-00007a69  VL53L1_RdWord                                  
-00007aa3  VL53L1_i2c_decode_uint16_t                     
-00007add  VL53L1_init_refspadchar_config_struct          
-00007b19  __muldsi3                                      
-00007b55  VL53L1_init_ssc_config_struct                  
-00007b8d  SYSCFG_DL_BAT_ADC_init                         
-00007bc1  SYSCFG_DL_TIMER_0_init                         
-00007bf5  VL53L1X_Test2                                  
-00007c29  VL53L1_GetSequenceStepEnable                   
-00007c5d  VL53L1_SetDeviceAddress                        
-00007c91  __TI_cleanup                                   
-00007cc5  __TI_readmsg                                   
-00007cf9  __TI_writemsg                                  
-00007d25  C$$IO$$                                        
-00007d2d  exit                                           
-00007d61  finddevice                                     
-00007d95  Uart0_Printf                                   
-00007dc7  VL53L1_config_low_power_auto_mode              
-00007e89  my_vl53l1x_callback                            
-00007eb9  VL53L1_calc_encoded_timeout                    
-00007ee7  VL53L1_set_vhv_loopbound                       
-00007f15  Uart0_Send_Char                                
-00007f41  VL53L1_init_version                            
-00007ff1  __aeabi_i2d                                    
-00007ff1  __floatsidf                                    
-0000801d  unlink                                         
-00008049  VL53L1_calc_decoded_timeout_us                 
-00008115  Delay_ms                                       
-0000813d  Uart_Test2                                     
-00008165  VL53L1_WaitDeviceBooted                        
-000081b5  lseek                                          
-000081dd  write                                          
-00008205  _c_int00_noargs                                
-00008253  DL_I2C_setClockConfig                          
-00008279  VL53L1_WaitUs                                  
-000082c5  VL53L1_set_lite_min_count_rate                 
-000082e9  VL53L1_set_lite_sigma_threshold                
-0000830d  __aeabi_ui2d                                   
-0000830d  __floatunsidf                                  
-00008331  __aeabi_lmul                                   
-00008331  __muldi3                                       
-00008355  IICwriteByte                                   
-00008377  VL53L1_calc_timeout_mclks                      
-00008399  VL53L1_decode_zone_size                        
-000083bb  memccpy                                        
-0000841d  Uart_Init                                      
-0000843d  VL53L1_calc_pll_period_us                      
-0000845d  main                                           
-0000847d  my_vl53l1x_get_distance                        
-000084bb  VL53L1_decode_timeout                          
-000084d9  __aeabi_llsl                                   
-000084d9  __ashldi3                                      
-000085bd  DL_SYSCTL_configFCC                            
-00008649  DL_Timer_setCaptCompUpdateMethod               
-00008665  DL_Timer_setClockConfig                        
-00008681  VL53L1_encode_zone_size                        
-000086b9  VL53L1_decode_vcsel_period                     
-00008915  DL_Timer_setCaptureCompareOutCtl               
-00008a99  VL53L1_WaitMs                                  
-00008aad  __aeabi_uldivmod                               
-00008ad5  DL_SPI_setClockConfig                          
-00008ae7  DL_UART_setClockConfig                         
-00008af9  TI_memcpy_small                                
-00008b0b  __TI_decompress_none                           
-00008b4d  DL_Timer_setCaptureCompareValue                
-00008b5d  IIC_Delay_ms                                   
-00008b6d  SYSCFG_DL_SYSTICK_init                         
-00008b7d  SysTick_Handler                                
-00008b8d  wcslen                                         
-00008b9d  __TI_zero_init                                 
-00008bbd  __aeabi_memset                                 
-00008bbd  __aeabi_memset4                                
-00008bbd  __aeabi_memset8                                
-00008bf5  TI_memset_small                                
-00008c1d  Get_ms                                         
-00008c29  __aeabi_memclr                                 
-00008c29  __aeabi_memclr4                                
-00008c29  __aeabi_memclr8                                
-00008c35  malloc                                         
-00008c41  DL_Common_delayCycles                          
-00008c71  __aeabi_errno_addr                             
-00008c79  __aeabi_memcpy                                 
-00008c79  __aeabi_memcpy4                                
-00008c79  __aeabi_memcpy8                                
-00008c91  fseek                                          
-00008c99  remove                                         
-00008ca1  abort                                          
-00008ca7  ADC0_IRQHandler                                
-00008ca7  ADC1_IRQHandler                                
-00008ca7  AES_IRQHandler                                 
-00008ca7  CANFD0_IRQHandler                              
-00008ca7  DAC0_IRQHandler                                
-00008ca7  DMA_IRQHandler                                 
-00008ca7  Default_Handler                                
-00008ca7  GROUP0_IRQHandler                              
-00008ca7  HardFault_Handler                              
-00008ca7  I2C0_IRQHandler                                
-00008ca7  I2C1_IRQHandler                                
-00008ca7  NMI_Handler                                    
-00008ca7  PendSV_Handler                                 
-00008ca7  RTC_IRQHandler                                 
-00008ca7  SPI0_IRQHandler                                
-00008ca7  SPI1_IRQHandler                                
-00008ca7  SVC_Handler                                    
-00008ca7  TIMA0_IRQHandler                               
-00008ca7  TIMA1_IRQHandler                               
-00008ca7  TIMG0_IRQHandler                               
-00008ca7  TIMG12_IRQHandler                              
-00008ca7  TIMG6_IRQHandler                               
-00008ca7  TIMG7_IRQHandler                               
-00008ca7  TIMG8_IRQHandler                               
-00008ca7  UART0_IRQHandler                               
-00008ca7  UART1_IRQHandler                               
-00008ca7  UART2_IRQHandler                               
-00008ca7  UART3_IRQHandler                               
-00008caa  C$$EXIT                                        
-00008cab  HOSTexit                                       
-00008caf  Reset_Handler                                  
-00008cc5  _system_pre_init                               
-00008cd0  __aeabi_ctype_table_                           
-00008cd0  __aeabi_ctype_table_C                          
-00009060  __TI_Handler_Table_Base                        
-0000906c  __TI_Handler_Table_Limit                       
-00009074  __TI_CINIT_Base                                
-00009084  __TI_CINIT_Limit                               
-00009084  __TI_CINIT_Warm                                
-20200000  VL53_                                          
+00000a91  IMU_AHRSupdate                                 
+00001119  VL53L1_get_tuning_parm                         
+0000151d  VL53L1_init_and_start_range                    
+000018f5  asin                                           
+000018f5  asinl                                          
+00001c59  atan                                           
+00001c59  atanl                                          
+00001f51  VL53L1_set_preset_mode                         
+00002247  __aeabi_idiv0                                  
+00002249  calGyroVariance                                
+00002529  SYSCFG_DL_GPIO_init                            
+000029cd  VL53L1_i2c_decode_nvm_copy_data                
+00002bc9  VL53L1_SetMeasurementTimingBudgetMicroSeconds  
+00002db9  IMU_getYawPitchRoll                            
+00002fa5  VL53L1_preset_mode_standard_ranging            
+00003365  OLED_ShowChar                                  
+00003535  IICreadBytes                                   
+00003701  __aeabi_dsub                                   
+00003701  __subdf3                                       
+0000370b  __adddf3                                       
+0000370b  __aeabi_dadd                                   
+00003893  __aeabi_ldiv0                                  
+00003895  atan2                                          
+00003895  atan2l                                         
+00003a1d  VL53L1_GetMeasurementTimingBudgetMicroSeconds  
+00003b95  IIC_ReadOneByte                                
+00003d09  sqrt                                           
+00003d09  sqrtl                                          
+00003e79  IMU_getValues                                  
+00003fdd  VL53L1_SetDistanceMode                         
+00004141  VL53L1_i2c_encode_static_config                
+000042a3  _nop                                           
+000042a5  VL53InitParam                                  
+00004405  VL53L1_get_preset_mode_timing_cfg              
+00004561  ICM42688_Test1                                 
+000047e1  VL53L1_data_init                               
+00004915  IICwriteBytes                                  
+00004a45  VL53L1_copy_rtn_good_spads_to_buffer           
+00004b71  VL53L1_read_p2p_data                           
+00004db5  VL53L1Init                                     
+00004ecd  OLED_Init                                      
+00004fe1  aligned_alloc                                  
+00004fe1  memalign                                       
+000050f5  VL53L1_update_ll_driver_rd_state               
+00005205  __aeabi_ddiv                                   
+00005205  __divdf3                                       
+00005311  bsp_IcmGetRawData                              
+00005419  DL_Timer_initFourCCPWMMode                     
+0000551d  VL53L1_i2c_decode_customer_nvm_managed         
+00005621  DL_Timer_initTimerMode                         
+0000571d  VL53L1_i2c_encode_customer_nvm_managed         
+00005819  SYSCFG_DL_initPower                            
+00005911  fputs                                          
+00005a09  VL53L1_WaitValueMaskEx                         
+00005afd  VL53L1_StartMeasurement                        
+00005bed  VL53L1_i2c_encode_general_config               
+00005cdd  VL53L1_init_tuning_parm_storage_struct         
+00005dcd  SYSCFG_DL_SYSCTL_SYSPLL_init                   
+00005eb9  free                                           
+00005fa1  __aeabi_dmul                                   
+00005fa1  __muldf3                                       
+00006085  VL53L1_calc_timeout_register_values            
+00006167  VL53L1_i2c_encode_dynamic_config               
+00006249  setvbuf                                        
+00006329  VL53L1_get_timeouts_us                         
+00006409  DL_SYSCTL_configSYSPLL                         
+000064e5  VL53L1_i2c_encode_timing_config                
+000065c1  ldexp                                          
+000065c1  ldexpl                                         
+000065c1  scalbn                                         
+000065c1  scalbnl                                        
+00006699  __aeabi_fsub                                   
+00006699  __subsf3                                       
+000066a3  __addsf3                                       
+000066a3  __aeabi_fadd                                   
+00006847  VL53L1_DataInit                                
+00006915  VL53L1_calc_range_ignore_threshold             
+00006aa5  VL53L1_SetPresetMode                           
+00006b65  bsp_Icm42688RegCfg                             
+00006c25  VL53L1_update_ll_driver_cfg_state              
+00006ce3  VL53L1_init_xtalk_config_struct                
+00006d9d  SYSCFG_DL_PWM_SERVO_init                       
+00006e51  my_vl53l1x_init                                
+00006f05  VL53L1X_Test1                                  
+00006fb1  bsp_Icm42688GetGres                            
+00007059  bsp_IcmGetAccelerometer                        
+000070fd  bsp_IcmGetGyroscope                            
+000071a1  __udivmoddi4                                   
+00007243  VL53L1_i2c_decode_static_nvm_managed           
+000072e3  VL53L1_i2c_encode_static_nvm_managed           
+00007381  fputc                                          
+0000741d  OLED_ShowString                                
+000074b9  OLED_DrawPoint                                 
+00007549  OLED_WR_Byte                                   
+000075d9  SYSCFG_DL_PWM_Motor_init                       
+00007669  VL53L1_SetLimitCheckValue                      
+000076f9  SPI_CS                                         
+00007785  __aeabi_fmul                                   
+00007785  __mulsf3                                       
+00007811  VL53L1_SetLimitCheckEnable                     
+0000789b  VL53L1_preset_mode_standard_ranging_long_range 
+00007925  VL53L1_preset_mode_standard_ranging_short_range
+000079b1  strcmp                                         
+00007abd  __aeabi_fdiv                                   
+00007abd  __divsf3                                       
+00007b41  GROUP1_IRQHandler                              
+00007bc1  VL53L1_preset_mode_timed_ranging_short_range   
+00007c3f  getDistance_Simply                             
+00007cbd  IMU_Callback                                   
+00007d39  OLED_Refresh                                   
+00007db5  VL53L1_preset_mode_timed_ranging               
+00007e31  VL53L1_preset_mode_timed_ranging_long_range    
+00007ead  VL53L1_set_timeouts_us                         
+00007f29  __TI_closefile                                 
+00007fa5  __TI_decompress_lzss                           
+00008021  VL53L1_get_sequence_config_bit                 
+00008099  SYSCFG_DL_init                                 
+0000810d  VL53L1_preset_mode_singleshot_ranging          
+00008181  __gedf2                                        
+00008181  __gtdf2                                        
+00008201  __aeabi_d2f                                    
+00008201  __truncdfsf2                                   
+00008275  SYSCFG_DL_SYSCTL_init                          
+000082e5  HOSTlseek                                      
+00008351  HOSTrename                                     
+000083bd  VL53L1_low_power_auto_data_init                
+00008429  fseeko                                         
+00008495  getdevice                                      
+00008501  SYSCFG_DL_PWM_BUZZER_init                      
+00008569  VL53L1_get_mode_mitigation_roi                 
+000085d1  __cmpdf2                                       
+000085d1  __eqdf2                                        
+000085d1  __ledf2                                        
+000085d1  __ltdf2                                        
+000085d1  __nedf2                                        
+00008639  bsp_Icm42688GetAres                            
+000086a1  VL53L1_i2c_encode_system_control               
+0000876d  Get_us                                         
+000087d1  __TI_wrt_ok                                    
+00008899  VL53L1_poll_for_boot_completion                
+000088fd  __aeabi_dcmpeq                                 
+00008911  __aeabi_dcmplt                                 
+00008925  __aeabi_dcmple                                 
+00008939  __aeabi_dcmpge                                 
+0000894d  __aeabi_dcmpgt                                 
+00008961  __aeabi_fcmpeq                                 
+00008975  __aeabi_fcmplt                                 
+00008989  __aeabi_fcmple                                 
+0000899d  __aeabi_fcmpge                                 
+000089b1  __aeabi_fcmpgt                                 
+000089c5  HOSTopen                                       
+00008a25  IMU_init                                       
+00008a85  DL_I2C_fillControllerTXFIFO                    
+00008ae5  frexp                                          
+00008ae5  frexpl                                         
+00008b41  printf                                         
+00008bf7  VL53L1_i2c_encode_int16_t                      
+00008c51  VL53L1_preset_mode_low_power_auto_long_ranging 
+00008cab  VL53L1_preset_mode_low_power_auto_ranging      
+00008d05  VL53L1_preset_mode_low_power_auto_short_ranging
+00008d61  HOSTread                                       
+00008db9  HOSTwrite                                      
+00008e11  OLED_Clear                                     
+00008e69  SYSCFG_DL_I2C_0_init                           
+00008ec1  VL53L1_StaticInit                              
+00008f19  VL53L1_calc_macro_period_us                    
+00008f71  __TI_ltoa                                      
+00009021  invSqrt1                                       
+00009079  VL53L1_get_inter_measurement_period_ms         
+000090cf  VL53L1_i2c_encode_uint16_t                     
+00009125  VL53L1_preset_mode_standard_ranging_mm1_cal    
+0000917b  VL53L1_preset_mode_standard_ranging_mm2_cal    
+000091d1  VL53L1_set_inter_measurement_period_ms         
+00009229  __aeabi_idiv                                   
+00009229  __aeabi_idivmod                                
+00009281  VL53L1_i2c_decode_int16_t                      
+000092d5  bsp_IcmGetTemperature                          
+00009329  VL53L1_encode_timeout                          
+0000937b  VL53L1_i2c_encode_uint32_t                     
+000093cd  __TI_doflush                                   
+00009511  ICM42688_Test2                                 
+00009601  VL53L1_decode_row_col                          
+00009651  VL53L1_get_nvm_copy_data                       
+000096a1  VL53L1_preset_mode_olt                         
+000096f1  close                                          
+00009741  VL53L1_get_customer_nvm_managed                
+0000978f  VL53L1_get_static_nvm_managed                  
+000098c5  VL53L1_calc_timeout_us                         
+0000995b  VL53L1_ReadMulti                               
+000099a5  VL53L1_WriteMulti                              
+000099f1  __aeabi_d2iz                                   
+000099f1  __fixdfsi                                      
+00009a3d  DL_UART_init                                   
+00009a85  HOSTclose                                      
+00009acd  HOSTunlink                                     
+00009b15  VL53L1_WrByte                                  
+00009b5d  DL_SPI_init                                    
+00009ba1  DL_SYSCTL_switchMCLKfromSYSOSCtoHSCLK          
+00009be5  VL53L1_GetInterMeasurementPeriodMilliSeconds   
+00009c29  VL53L1_set_user_zone                           
+00009c6d  VL53L1_RdByte                                  
+00009caf  VL53L1_SetInterMeasurementPeriodMilliSeconds   
+00009cf1  VL53L1_get_user_zone                           
+00009d35  DL_ADC12_setClockConfig                        
+00009d75  SPI_Init                                       
+00009db5  SYSCFG_DL_SPI_1_init                           
+00009df5  SYSCFG_DL_UART_3_init                          
+00009e35  SYSCFG_DL_UART_CAMERA_init                     
+00009e75  SYSCFG_DL_UART_WIRELESS_init                   
+00009eb5  SYSCFG_DL_UART_init                            
+00009ef5  VL53L1_init_offset_cal_config_struct           
+00009f35  __aeabi_uidiv                                  
+00009f35  __aeabi_uidivmod                               
+00009f75  __aeabi_f2d                                    
+00009f75  __extendsfdf2                                  
+00009fb5  atoi                                           
+00009ff5  vsnprintf                                      
+0000a035  VL53L1_init_ll_driver_state                    
+0000a0b1  Uart0_Send_String                              
+0000a0ed  VL53L1_encode_row_col                          
+0000a129  __aeabi_i2f                                    
+0000a129  __floatsisf                                    
+0000a165  __gesf2                                        
+0000a165  __gtsf2                                        
+0000a1a1  __TI_auto_init_nobinit_nopinit                 
+0000a1dd  VL53L1_RdWord                                  
+0000a217  VL53L1_i2c_decode_uint16_t                     
+0000a251  VL53L1_init_refspadchar_config_struct          
+0000a28d  __cmpsf2                                       
+0000a28d  __eqsf2                                        
+0000a28d  __lesf2                                        
+0000a28d  __ltsf2                                        
+0000a28d  __nesf2                                        
+0000a2c9  __muldsi3                                      
+0000a305  VL53L1_init_ssc_config_struct                  
+0000a33d  __aeabi_f2iz                                   
+0000a33d  __fixsfsi                                      
+0000a3ad  SYSCFG_DL_BAT_ADC_init                         
+0000a3e1  SYSCFG_DL_TIMER_10ms_init                      
+0000a415  VL53L1X_Test2                                  
+0000a449  VL53L1_GetSequenceStepEnable                   
+0000a47d  VL53L1_SetDeviceAddress                        
+0000a4b1  __TI_cleanup                                   
+0000a4e5  __TI_readmsg                                   
+0000a519  __TI_writemsg                                  
+0000a545  C$$IO$$                                        
+0000a54d  exit                                           
+0000a581  finddevice                                     
+0000a5b5  Uart0_Printf                                   
+0000a5e7  VL53L1_config_low_power_auto_mode              
+0000a73d  main                                           
+0000a76d  my_vl53l1x_callback                            
+0000a79d  VL53L1_calc_encoded_timeout                    
+0000a7cb  VL53L1_set_vhv_loopbound                       
+0000a7f9  Uart0_Send_Char                                
+0000a825  VL53L1_init_version                            
+0000a901  __aeabi_i2d                                    
+0000a901  __floatsidf                                    
+0000a92d  unlink                                         
+0000a959  VL53L1_calc_decoded_timeout_us                 
+0000aa25  Delay_ms                                       
+0000aa4d  OLED_Test1                                     
+0000aa75  Uart_Test2                                     
+0000aa9d  VL53L1_WaitDeviceBooted                        
+0000aaed  lseek                                          
+0000ab15  write                                          
+0000ab3d  _c_int00_noargs                                
+0000ab8b  DL_I2C_setClockConfig                          
+0000abb1  VL53L1_WaitUs                                  
+0000abfd  VL53L1_set_lite_min_count_rate                 
+0000ac21  VL53L1_set_lite_sigma_threshold                
+0000ac45  __aeabi_ui2d                                   
+0000ac45  __floatunsidf                                  
+0000ac69  __aeabi_lmul                                   
+0000ac69  __muldi3                                       
+0000ac8d  IICwriteByte                                   
+0000acaf  VL53L1_calc_timeout_mclks                      
+0000acd1  VL53L1_decode_zone_size                        
+0000acf3  memccpy                                        
+0000ad55  Uart_Init                                      
+0000ad75  VL53L1_calc_pll_period_us                      
+0000ad95  my_vl53l1x_get_distance                        
+0000add3  VL53L1_decode_timeout                          
+0000adf1  __aeabi_llsl                                   
+0000adf1  __ashldi3                                      
+0000ae0f  bsp_IcmGetWhoAmI                               
+0000aef1  DL_SYSCTL_configFCC                            
+0000af7d  DL_Timer_setCaptCompUpdateMethod               
+0000af99  DL_Timer_setClockConfig                        
+0000afb5  VL53L1_encode_zone_size                        
+0000afed  VL53L1_decode_vcsel_period                     
+0000b2a9  DL_Timer_setCaptureCompareOutCtl               
+0000b339  delay_ms                                       
+0000b4d9  VL53L1_WaitMs                                  
+0000b4ed  __aeabi_uldivmod                               
+0000b515  DL_SPI_setClockConfig                          
+0000b527  DL_UART_setClockConfig                         
+0000b539  TI_memcpy_small                                
+0000b54b  __TI_decompress_none                           
+0000b58d  DL_Timer_setCaptureCompareValue                
+0000b59d  IIC_Delay_ms                                   
+0000b5ad  SYSCFG_DL_SYSTICK_init                         
+0000b5bd  SysTick_Handler                                
+0000b5cd  wcslen                                         
+0000b5dd  __TI_zero_init                                 
+0000b5fd  __aeabi_memset                                 
+0000b5fd  __aeabi_memset4                                
+0000b5fd  __aeabi_memset8                                
+0000b635  TI_memset_small                                
+0000b651  Get_ms                                         
+0000b65d  __aeabi_memclr                                 
+0000b65d  __aeabi_memclr4                                
+0000b65d  __aeabi_memclr8                                
+0000b681  malloc                                         
+0000b68d  DL_Common_delayCycles                          
+0000b70d  TIMG0_IRQHandler                               
+0000b715  __aeabi_errno_addr                             
+0000b71d  __aeabi_memcpy                                 
+0000b71d  __aeabi_memcpy4                                
+0000b71d  __aeabi_memcpy8                                
+0000b735  bsp_Icm42688Init                               
+0000b73d  fseek                                          
+0000b745  remove                                         
+0000b76b  abort                                          
+0000b771  ADC0_IRQHandler                                
+0000b771  ADC1_IRQHandler                                
+0000b771  AES_IRQHandler                                 
+0000b771  CANFD0_IRQHandler                              
+0000b771  DAC0_IRQHandler                                
+0000b771  DMA_IRQHandler                                 
+0000b771  Default_Handler                                
+0000b771  GROUP0_IRQHandler                              
+0000b771  HardFault_Handler                              
+0000b771  I2C0_IRQHandler                                
+0000b771  I2C1_IRQHandler                                
+0000b771  NMI_Handler                                    
+0000b771  PendSV_Handler                                 
+0000b771  RTC_IRQHandler                                 
+0000b771  SPI0_IRQHandler                                
+0000b771  SPI1_IRQHandler                                
+0000b771  SVC_Handler                                    
+0000b771  TIMA0_IRQHandler                               
+0000b771  TIMA1_IRQHandler                               
+0000b771  TIMG12_IRQHandler                              
+0000b771  TIMG6_IRQHandler                               
+0000b771  TIMG7_IRQHandler                               
+0000b771  TIMG8_IRQHandler                               
+0000b771  UART0_IRQHandler                               
+0000b771  UART1_IRQHandler                               
+0000b771  UART2_IRQHandler                               
+0000b771  UART3_IRQHandler                               
+0000b774  C$$EXIT                                        
+0000b775  HOSTexit                                       
+0000b77d  Reset_Handler                                  
+0000b791  _system_pre_init                               
+0000b7a0  asc2_2412                                      
+0000c4fc  asc2_1608                                      
+0000caec  asc2_1206                                      
+0000cf60  asc2_0806                                      
+0000d190  __aeabi_ctype_table_                           
+0000d190  __aeabi_ctype_table_C                          
+0000d6d8  __TI_Handler_Table_Base                        
+0000d6e4  __TI_Handler_Table_Limit                       
+0000d6ec  __TI_CINIT_Base                                
+0000d6fc  __TI_CINIT_Limit                               
+0000d6fc  __TI_CINIT_Warm                                
 20200000  __start___llvm_prf_bits                        
 20200000  __start___llvm_prf_cnts                        
 20200000  __stop___llvm_prf_bits                         
 20200000  __stop___llvm_prf_cnts                         
-20200aec  VL53                                           
-20200e90  _CIOBUF_                                       
-20200e90  __CIOBUF_                                      
-20200fb0  gPWM_BUZZERBackup                              
-2020106c  gPWM_SERVOBackup                               
-20201128  __TI_tmpnams                                   
-202011c8  gPWM_MotorBackup                               
-20201268  gUART_3Backup                                  
-20201298  gSPI_1Backup                                   
-202012c0  distance_                                      
-202012cc  parmbuf                                        
-202012d8  _sys_memory                                    
-20201ad8  _ftable                                        
-20201bc8  _device                                        
-20201c40  _stream                                        
-20201c90  Mode_data                                      
-20201cd0  __TI_cleanup_ptr                               
-20201cd4  __TI_dtors_ptr                                 
-20201cd8  MS                                             
-20201cdc  US                                             
-20201ce4  __TI_ft_end                                    
-20201ce8  __aeabi_errno                                  
-20201cec  _lock                                          
-20201cf0  _unlock                                        
-20201cf4  distance1                                      
-20201cf8  distance2                                      
-20201cfc  distance3                                      
+20201c20  VL53_                                          
+2020270c  OLED_GRAM                                      
+20202b8c  VL53                                           
+20202f30  _CIOBUF_                                       
+20202f30  __CIOBUF_                                      
+20203050  gPWM_BUZZERBackup                              
+2020310c  gPWM_SERVOBackup                               
+202031c8  __TI_tmpnams                                   
+20203268  gPWM_MotorBackup                               
+20203308  gUART_3Backup                                  
+20203338  gSPI_1Backup                                   
+20203360  TTangles_gyro                                  
+202033b0  distance_                                      
+202033bc  north                                          
+202033c8  west                                           
+202033d4  parmbuf                                        
+202033dc  exInt                                          
+202033e0  eyInt                                          
+202033e4  ezInt                                          
+202033e8  q0                                             
+202033ec  q1                                             
+202033f0  q2                                             
+202033f4  q3                                             
+202033f8  _sys_memory                                    
+20203bf8  _ftable                                        
+20203ce8  _device                                        
+20203d60  _stream                                        
+20203db0  Mode_data                                      
+20203df0  mygetqval_1                                    
+20203e38  gyro_offset                                    
+20203e44  __TI_cleanup_ptr                               
+20203e48  __TI_dtors_ptr                                 
+20203e4c  CalCount                                       
+20203e58  Kp                                             
+20203e5c  MS                                             
+20203e60  US                                             
+20203e68  __TI_ft_end                                    
+20203e6c  __aeabi_errno                                  
+20203e70  _lock                                          
+20203e74  _unlock                                        
+20203e7c  distance1                                      
+20203e80  distance2                                      
+20203e84  distance3                                      
+20203e91  spi_cs_locked                                  
+20203e92  spi_cs_locked_channel                          
 20207e00  __stack                                        
 20208000  __STACK_END                                    
 ffffffff  __TI_pprof_out_hndl                            
@@ -1393,4 +1716,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                                     
 UNDEFED   _system_post_cinit                             
 
-[352 symbols]
+[438 symbols]

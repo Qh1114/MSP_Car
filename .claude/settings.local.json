@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"D:/模块文件/ICM42688/MSPM0/ICM42688_KEIL/\")",
+      "Read(//d/模块文件/ICM42688/MSPM0/ICM42688_KEIL/**)"
+    ]
+  }
+}

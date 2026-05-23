@@ -141,11 +141,11 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 
 
 
-/* Defines for TIMER_0 */
-#define TIMER_0_INST                                                     (TIMG0)
-#define TIMER_0_INST_IRQHandler                                 TIMG0_IRQHandler
-#define TIMER_0_INST_INT_IRQN                                   (TIMG0_INT_IRQn)
-#define TIMER_0_INST_LOAD_VALUE                                         (19999U)
+/* Defines for TIMER_10ms */
+#define TIMER_10ms_INST                                                  (TIMG0)
+#define TIMER_10ms_INST_IRQHandler                              TIMG0_IRQHandler
+#define TIMER_10ms_INST_INT_IRQN                                (TIMG0_INT_IRQn)
+#define TIMER_10ms_INST_LOAD_VALUE                                      (49999U)
 
 
 
@@ -415,7 +415,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 void SYSCFG_DL_PWM_Motor_init(void);
 void SYSCFG_DL_PWM_SERVO_init(void);
 void SYSCFG_DL_PWM_BUZZER_init(void);
-void SYSCFG_DL_TIMER_0_init(void);
+void SYSCFG_DL_TIMER_10ms_init(void);
 void SYSCFG_DL_I2C_0_init(void);
 void SYSCFG_DL_UART_init(void);
 void SYSCFG_DL_UART_3_init(void);

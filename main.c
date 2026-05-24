@@ -39,12 +39,23 @@
 #include "vl53l1x_Test.h"
 #include "ICM_Test.h"
 #include "OLED_Test.h"
+#include "ADC_Test.h"
+#include "Encoder_Test.h"
+
 int main(void)
 {
     SYSCFG_DL_init();
     Uart_Init();
     SPI_Init();
+    NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
+	DL_Timer_startCounter(TIMER_10ms_INST);
+    
+    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOB_INT_IRQN);
+    NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOA_INT_IRQN);
 
+    Encoder_Test1();
+    ADC_Test2();
+    ADC_Test1();
     ICM42688_Test2();
     ICM42688_Test1();
     OLED_Test1();

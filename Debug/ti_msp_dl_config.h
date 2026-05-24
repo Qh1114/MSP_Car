@@ -321,18 +321,30 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define MOTOR_PMOTOR_BIN2_IOMUX                                  (IOMUX_PINCM51)
 /* Defines for ENA_L: GPIOB.16 with pinCMx 33 on package pin 4 */
 #define ENCODER_ENA_L_PORT                                               (GPIOB)
+// groups represented: ["LASER","ENCODER"]
+// pins affected: ["GPIO2","ENA_L","ENB_L","ENA_R"]
+#define GPIO_MULTIPLE_GPIOB_INT_IRQN                            (GPIOB_INT_IRQn)
+#define GPIO_MULTIPLE_GPIOB_INT_IIDX            (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
+#define ENCODER_ENA_L_IIDX                                  (DL_GPIO_IIDX_DIO16)
 #define ENCODER_ENA_L_PIN                                       (DL_GPIO_PIN_16)
 #define ENCODER_ENA_L_IOMUX                                      (IOMUX_PINCM33)
 /* Defines for ENB_L: GPIOB.2 with pinCMx 15 on package pin 50 */
 #define ENCODER_ENB_L_PORT                                               (GPIOB)
+#define ENCODER_ENB_L_IIDX                                   (DL_GPIO_IIDX_DIO2)
 #define ENCODER_ENB_L_PIN                                        (DL_GPIO_PIN_2)
 #define ENCODER_ENB_L_IOMUX                                      (IOMUX_PINCM15)
 /* Defines for ENA_R: GPIOB.27 with pinCMx 58 on package pin 29 */
 #define ENCODER_ENA_R_PORT                                               (GPIOB)
+#define ENCODER_ENA_R_IIDX                                  (DL_GPIO_IIDX_DIO27)
 #define ENCODER_ENA_R_PIN                                       (DL_GPIO_PIN_27)
 #define ENCODER_ENA_R_IOMUX                                      (IOMUX_PINCM58)
 /* Defines for ENB_R: GPIOA.29 with pinCMx 4 on package pin 36 */
 #define ENCODER_ENB_R_PORT                                               (GPIOA)
+// groups represented: ["LASER","ENCODER"]
+// pins affected: ["GPIO1","GPIO3","ENB_R"]
+#define GPIO_MULTIPLE_GPIOA_INT_IRQN                            (GPIOA_INT_IRQn)
+#define GPIO_MULTIPLE_GPIOA_INT_IIDX            (DL_INTERRUPT_GROUP1_IIDX_GPIOA)
+#define ENCODER_ENB_R_IIDX                                  (DL_GPIO_IIDX_DIO29)
 #define ENCODER_ENB_R_PIN                                       (DL_GPIO_PIN_29)
 #define ENCODER_ENB_R_IOMUX                                       (IOMUX_PINCM4)
 /* Defines for OUT: GPIOB.25 with pinCMx 56 on package pin 27 */
@@ -357,9 +369,6 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define LASER_XSHUT1_IOMUX                                       (IOMUX_PINCM54)
 /* Defines for GPIO1: GPIOA.31 with pinCMx 6 on package pin 39 */
 #define LASER_GPIO1_PORT                                                 (GPIOA)
-// pins affected by this interrupt request:["GPIO1","GPIO3"]
-#define LASER_GPIOA_INT_IRQN                                    (GPIOA_INT_IRQn)
-#define LASER_GPIOA_INT_IIDX                    (DL_INTERRUPT_GROUP1_IIDX_GPIOA)
 #define LASER_GPIO1_IIDX                                    (DL_GPIO_IIDX_DIO31)
 #define LASER_GPIO1_PIN                                         (DL_GPIO_PIN_31)
 #define LASER_GPIO1_IOMUX                                         (IOMUX_PINCM6)
@@ -369,9 +378,6 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define LASER_XSHUT2_IOMUX                                       (IOMUX_PINCM50)
 /* Defines for GPIO2: GPIOB.1 with pinCMx 13 on package pin 48 */
 #define LASER_GPIO2_PORT                                                 (GPIOB)
-// pins affected by this interrupt request:["GPIO2"]
-#define LASER_GPIOB_INT_IRQN                                    (GPIOB_INT_IRQn)
-#define LASER_GPIOB_INT_IIDX                    (DL_INTERRUPT_GROUP1_IIDX_GPIOB)
 #define LASER_GPIO2_IIDX                                     (DL_GPIO_IIDX_DIO1)
 #define LASER_GPIO2_PIN                                          (DL_GPIO_PIN_1)
 #define LASER_GPIO2_IOMUX                                        (IOMUX_PINCM13)

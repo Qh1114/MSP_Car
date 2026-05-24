@@ -89,7 +89,9 @@ main.o: ../main.c \
  C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h \
  C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h \
  C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ICM_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/OLED_Test.h
+ C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/OLED_Test.h \
+ C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ADC_Test.h \
+ C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Encoder_Test.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -179,3 +181,5 @@ C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h:
 C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h:
 C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ICM_Test.h:
 C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/OLED_Test.h:
+C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ADC_Test.h:
+C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Encoder_Test.h:

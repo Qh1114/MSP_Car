@@ -4,6 +4,7 @@
 #include <stdio.h>
 /* XYZ 向量 */
 
+bool cmd_imu = false; // 是否输出 IMU 数据（调试用）
 /* 机体系下的导航系单位向量 */
 xyz_f_t north,west;
 volatile float exInt, eyInt, ezInt;  // 积分误差
@@ -49,8 +50,7 @@ void IMU_init(void)
 		exInt = 0.0;
 		eyInt = 0.0;
 		ezInt = 0.0;
-		NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
-		DL_Timer_startCounter(TIMER_10ms_INST);
+		cmd_imu = true; // 开启 IMU 数据输出（调试用）
 		return;
 	}
 	
@@ -181,9 +181,9 @@ void IMU_AHRSupdate(float gx, float gy, float gz, float ax, float ay, float az, 
   	float q0q0 = q0*q0;
   	float q0q1 = q0*q1;
   	float q0q2 = q0*q2;
-  	float q0q3 = q0*q3;
+  	//float q0q3 = q0*q3;
   	float q1q1 = q1*q1;
-  	float q1q2 = q1*q2;
+  //	float q1q2 = q1*q2;
   	float q1q3 = q1*q3;
   	float q2q2 = q2*q2;   
   	float q2q3 = q2*q3;
@@ -312,6 +312,10 @@ float mygetqval_1[9] = {0,0,0,0,0,0,0,0,10.0f};
 
 void IMU_Callback(void)
 {
+	if(!cmd_imu) {
+		return; // 如果未启用 IMU 输出，则直接返回
+	}
+	
 	// 10ms 更新四元数（结果写入全局 q0~q3）
   	IMU_getValues(mygetqval_1);	 
 	// 陀螺 dps 转 rad/s，并更新 AHRS

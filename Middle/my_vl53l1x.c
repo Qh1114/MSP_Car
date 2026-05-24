@@ -37,9 +37,6 @@ void my_vl53l1x_init(void)
     Delay_ms(5);
     VL53L1Init(&VL53_[2], VL53L1X_I2C_ADDR+6);
     VL53InitParam(&VL53_[2],2);
-
-    NVIC_EnableIRQ(LASER_GPIOA_INT_IRQN);
-    NVIC_EnableIRQ(LASER_GPIOB_INT_IRQN);
 }
 
 void my_vl53l1x_get_distance(int32_t *distance_out, int VL53L1X_ID)

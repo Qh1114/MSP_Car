@@ -2,7 +2,7 @@
 #include "ti_msp_dl_config.h"
 bool spi_cs_locked = false;
 uint8_t spi_cs_locked_channel = 0;
-static volatile spi_device_t spi_devices[] = {
+static spi_device_t spi_devices[] = {
     {ICM_ICM_CS_PORT, ICM_ICM_CS_PIN, false},
     {FLASH_PORT, FLASH_FLASH_CS_PIN, false},
     {OLED_PORT, OLED_OLED_CS_PIN, false}

@@ -216,4 +216,9 @@ int8_t bsp_IcmGetAccelerometer(icm42688RawData_t *accData);
 int8_t bsp_IcmGetGyroscope(icm42688RawData_t *GyroData);
 int8_t bsp_IcmGetRawData(icm42688RealData_t* accData, icm42688RealData_t* GyroData);
 
+void ICM42688_UnBlocking_CallBack(void);
+uint16_t ICM42688_Get_FIFO_Data(uint8_t* buf);
+void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData);
+uint16_t ICM42688_Get_FIFO_Data_Length(void);
+
 #endif

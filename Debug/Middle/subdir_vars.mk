@@ -8,31 +8,55 @@ SHELL = cmd.exe
 C_SRCS += \
 ../Middle/Bat.c \
 ../Middle/IMU.c \
-../Middle/my_vl53l1x.c 
+../Middle/Key.c \
+../Middle/Motor.c \
+../Middle/Uart_Data.c \
+../Middle/my_vl53l1x.c \
+../Middle/servo.c 
 
 C_DEPS += \
 ./Middle/Bat.d \
 ./Middle/IMU.d \
-./Middle/my_vl53l1x.d 
+./Middle/Key.d \
+./Middle/Motor.d \
+./Middle/Uart_Data.d \
+./Middle/my_vl53l1x.d \
+./Middle/servo.d 
 
 OBJS += \
 ./Middle/Bat.o \
 ./Middle/IMU.o \
-./Middle/my_vl53l1x.o 
+./Middle/Key.o \
+./Middle/Motor.o \
+./Middle/Uart_Data.o \
+./Middle/my_vl53l1x.o \
+./Middle/servo.o 
 
 OBJS__QUOTED += \
 "Middle\Bat.o" \
 "Middle\IMU.o" \
-"Middle\my_vl53l1x.o" 
+"Middle\Key.o" \
+"Middle\Motor.o" \
+"Middle\Uart_Data.o" \
+"Middle\my_vl53l1x.o" \
+"Middle\servo.o" 
 
 C_DEPS__QUOTED += \
 "Middle\Bat.d" \
 "Middle\IMU.d" \
-"Middle\my_vl53l1x.d" 
+"Middle\Key.d" \
+"Middle\Motor.d" \
+"Middle\Uart_Data.d" \
+"Middle\my_vl53l1x.d" \
+"Middle\servo.d" 
 
 C_SRCS__QUOTED += \
 "../Middle/Bat.c" \
 "../Middle/IMU.c" \
-"../Middle/my_vl53l1x.c" 
+"../Middle/Key.c" \
+"../Middle/Motor.c" \
+"../Middle/Uart_Data.c" \
+"../Middle/my_vl53l1x.c" \
+"../Middle/servo.c" 
 
 

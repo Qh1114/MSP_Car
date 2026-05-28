@@ -12,13 +12,13 @@ typedef struct
     float z;
 } xyz_f_t;
 extern xyz_f_t north,west;
-extern volatile float yaw[5];   // 航向滤波历史值（度）
+extern volatile float yaw[5];   //处理航向的增值
 extern float motion6[7];
-
-// Mini IMU AHRS 接口
-void IMU_init(void);
-void IMU_getYawPitchRoll(float * ypr);
+//Mini IMU AHRS 解算的API
+void IMU_init(void); //初始化
+void IMU_getYawPitchRoll(float * ypr); //更新姿态
 void IMU_TT_getgyro(float * zsjganda);
+float angle_diff(float current, float target);
 void IMU_Callback(void);
 
 #endif

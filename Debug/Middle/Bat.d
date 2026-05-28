@@ -1,7 +1,7 @@
 # FIXED
 
 Middle/Bat.o: ../Middle/Bat.c ../Middle/Bat.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/ADC.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/ADC.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -86,7 +86,7 @@ Middle/Bat.o: ../Middle/Bat.c ../Middle/Bat.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h
 ../Middle/Bat.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/ADC.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/ADC.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:

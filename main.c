@@ -41,7 +41,8 @@
 #include "OLED_Test.h"
 #include "ADC_Test.h"
 #include "Encoder_Test.h"
-
+#include "TB6612_Test.h"
+#include "Motor_Test.h"
 int main(void)
 {
     SYSCFG_DL_init();
@@ -53,13 +54,26 @@ int main(void)
     NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOB_INT_IRQN);
     NVIC_EnableIRQ(GPIO_MULTIPLE_GPIOA_INT_IRQN);
 
+    NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
+	DL_Timer_startCounter(TIMER_2ms_INST);
+    //VL53L1X_Test2();
+   //TB6612_Test1(); 
+    //Motor_Test2();
+    //Motor_Test1();
+    //Uart_Test3();
+    
+    //ICM42688_Test1();
+    ICM42688_Test3();
+    ICM42688_Test2();
+    
+    Encoder_Test2();
     Encoder_Test1();
     ADC_Test2();
     ADC_Test1();
-    ICM42688_Test2();
-    ICM42688_Test1();
+    
+    
     OLED_Test1();
-    VL53L1X_Test2();
+    
     VL53L1X_Test1();
     //Uart_Test1();
     Uart_Test2();

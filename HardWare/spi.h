@@ -20,5 +20,7 @@ typedef struct {
 
 void SPI_Init(void);
 bool SPI_CS(uint8_t state, spi_channel_t channel);
+bool SPI_TryLock(spi_channel_t channel);
+void SPI_Unlock(spi_channel_t channel);
 
 #endif

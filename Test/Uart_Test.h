@@ -3,4 +3,6 @@
 
 void Uart_Test1(void);
 void Uart_Test2(void);
+void Uart_Test3(void);
+void Uart_Test4(void);
 #endif

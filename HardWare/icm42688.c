@@ -2,9 +2,16 @@
 #include "icm42688.h"
 #include "spi.h"
 #include "ti_msp_dl_config.h"
-
+#include <string.h>
+#include "Delay.h"
+#include "Usart.h"
 static float accSensitivity   = 0.244f;   //加速度的最小分辨率 mg/LSB
 static float gyroSensitivity  = 32.8f;    //陀螺仪的最小分辨率
+
+#define FIFO_BUF_SIZE  400
+uint8_t  FIFO_Buffer[FIFO_BUF_SIZE];
+bool     ICM42688_is_initialized = false;
+uint16_t data_length = 0;
 //static uint8_t s_icm_spi_inited = 0;
 //static uint8_t s_icm_spi_mode = 0; /* 0..3 -> mode0..mode3 */
 
@@ -288,35 +295,61 @@ int8_t bsp_Icm42688RegCfg(void)
     icm42688_write_reg(ICM42688_DEVICE_CONFIG, 0x01); //软复位传感器
     ICM42688DelayMs(100);
 
+    icm42688_write_reg(ICM42688_SIGNAL_PATH_RESET, 0x02); //清空fifo
 
-   // if(reg_val == ICM42688_ID)
-    //{
+    reg_val = icm42688_read_reg(ICM42688_PWR_MGMT0); //读取PWR—MGMT0当前寄存器的值(page72)
+    reg_val &= ~(1 << 5);//使能温度测量
+    reg_val |= (3 << 2);//设置GYRO_MODE  0:关闭 1:待机 2:预留 3:低噪声
+    reg_val |= (3);//设置ACCEL_MODE 0:关闭 1:关闭 2:低功耗 3:低噪声
+    icm42688_write_reg(ICM42688_PWR_MGMT0, reg_val);    
+    ICM42688DelayMs(100); //操作完PWR—MGMT0寄存器后 200us内不能有任何读写寄存器的操作
 
-        bsp_Icm42688GetAres(AFS_4G);
-        icm42688_write_reg(ICM42688_REG_BANK_SEL, 0x00);
-        //reg_val = icm42688_read_reg(ICM42688_ACCEL_CONFIG0);//page74
-        reg_val = (AFS_4G << 5);   //量程 ±2g
-        reg_val |= (AODR_100Hz);     //输出速率 100HZ
-        icm42688_write_reg(ICM42688_ACCEL_CONFIG0, reg_val);
+    bsp_Icm42688GetAres(AFS_4G);
+    //reg_val = icm42688_read_reg(ICM42688_ACCEL_CONFIG0);//page74
+    reg_val = (AFS_4G << 5);        //量程 ±4g
+    reg_val |= (AODR_1000Hz);        //输出速率 100HZ
+    icm42688_write_reg(ICM42688_ACCEL_CONFIG0, reg_val);
 
-        bsp_Icm42688GetGres(GFS_1000DPS);
-        icm42688_write_reg(ICM42688_REG_BANK_SEL, 0x00);
-        //reg_val = icm42688_read_reg(ICM42688_GYRO_CONFIG0);//page73
-        reg_val = (GFS_1000DPS << 5);   //量程 ±1000dps
-        reg_val |= (GODR_100Hz);     //输出速率 100HZ
-        icm42688_write_reg(ICM42688_GYRO_CONFIG0, reg_val);
+    bsp_Icm42688GetGres(GFS_1000DPS);
+    //reg_val = icm42688_read_reg(ICM42688_GYRO_CONFIG0);//page73
+    reg_val = (GFS_1000DPS << 5);   //量程 ±1000dps
+    reg_val |= (GODR_1000Hz);     //输出速率 100HZ
+    icm42688_write_reg(ICM42688_GYRO_CONFIG0, reg_val);
 
-        icm42688_write_reg(ICM42688_REG_BANK_SEL, 0x00);
-        reg_val = icm42688_read_reg(ICM42688_PWR_MGMT0); //读取PWR—MGMT0当前寄存器的值(page72)
-        reg_val &= ~(1 << 5);//使能温度测量
-        reg_val |= ((3) << 2);//设置GYRO_MODE  0:关闭 1:待机 2:预留 3:低噪声
-        reg_val |= (3);//设置ACCEL_MODE 0:关闭 1:关闭 2:低功耗 3:低噪声
-        icm42688_write_reg(ICM42688_PWR_MGMT0, reg_val);
-        ICM42688DelayMs(100); //操作完PWR—MGMT0寄存器后 200us内不能有任何读写寄存器的操作
+    reg_val = 0x00;
+    reg_val |= (1 << 2);    //0:不使用FIFO中断 1:使用FIFO中断
+    icm42688_write_reg(ICM42688_INT_SOURCE0, reg_val); 
 
-        return 0;
-   // }
-   // return -1;
+    reg_val = 0x00;
+    reg_val |= (01 << 6);    //00:不使用FIFO 01:连续使用FIFO 1x:FIFO满即停止采集
+    icm42688_write_reg(ICM42688_FIFO_CONFIG, reg_val);
+
+    reg_val = 0x00;
+    reg_val |= (1 << 6);    //0:每次读取必须读取FIFO所有数据 1:每次读取可以读取部分FIFO数据
+    reg_val |= (1 << 5);    //0:不使用FIFO中断 1:使用FIFO中断
+    reg_val |= (0 << 4);    //0:不使用20位数据 1:使用20位数据 //选择20位数据后，此寄存器后三位的设置无效
+    reg_val |= (1 << 3);    //0:不使用时间戳 1:使用时间戳
+    reg_val |= (1 << 2);    //0:不使用温度数据 1:使用温度数据
+    reg_val |= (1 << 1);    //0:不使用陀螺仪数据 1:使用陀螺仪数据
+    reg_val |= 1;           //0:不使用加速度数据 1:使用加速度数据
+    icm42688_write_reg(ICM42688_FIFO_CONFIG1, reg_val);
+
+    reg_val = 17;    //设置FIFO的水位为1，即FIFO中有17字节数据时就触发中断
+    icm42688_write_reg(ICM42688_FIFO_CONFIG2, reg_val);
+
+    
+    reg_val = 0x00;
+    reg_val |= (1 << 2);        //0:脉冲模式 1:持续模式
+    reg_val |= (1 << 1);        //0:开漏输出 1:推挽输出
+    //reg_val &= 0 ;            //0:低电平有效 1:高电平有效
+    icm42688_write_reg(ICM42688_INT_CONFIG, reg_val);
+
+    icm42688_write_reg(ICM42688_SIGNAL_PATH_RESET, 0x02); //清空fifo
+
+    ICM42688_is_initialized = true; //标记ICM42688已初始化
+
+    return 0; 
+    
 }
 /*******************************************************************************
 * 名    称： bsp_Icm42688Init
@@ -468,4 +501,103 @@ int8_t bsp_IcmGetRawData(icm42688RealData_t* accData, icm42688RealData_t* GyroDa
     return 0;
 }
 
+//uint64_t start_time = 0, end_time = 0;
+void ICM42688_UnBlocking_CallBack(void)
+{
+    //start_time = Get_us();
+    if (!ICM42688_is_initialized) {
+        return;
+    }
 
+    if(data_length != 0)
+    {
+        return;
+    }
+    if (DL_GPIO_readPins(ICM_ICM_INT_PORT, ICM_ICM_INT_PIN)) {
+        return;
+    }
+
+    if (!SPI_TryLock(SPI_ICM42688)) {
+        return;
+    }
+
+    // 读 INT_STATUS 清除中断（独立CS周期）
+    icm_cs_low();
+    icm_spi_transfer_byte(ICM42688_INT_STATUS | 0x80);
+    icm_spi_transfer_byte(0xFF);
+    icm_cs_high();
+
+    // 读 FIFO 数据（新CS周期）
+    icm_cs_low();
+    icm_spi_transfer_byte(ICM42688_FIFO_DATA | 0x80);
+    for(uint16_t i = 0; i < 16; i++)
+    {
+        FIFO_Buffer[i] = icm_spi_transfer_byte(0xFF);
+    }
+    data_length = 16;
+    icm_cs_high();
+    SPI_Unlock(SPI_ICM42688);
+    //end_time = Get_us();
+    //Uart0_Printf("ICM42688 UnBlocking Callback Time: %d us\n", (uint32_t)(end_time - start_time));
+
+}
+
+uint16_t ICM42688_Get_FIFO_Data(uint8_t* buf)
+{
+    if (!ICM42688_is_initialized) {
+        return 0;
+    }
+    if(data_length == 0)
+    {
+        return 0;
+    }
+    NVIC_DisableIRQ(TIMER_2ms_INST_INT_IRQN);
+
+    memcpy(buf, FIFO_Buffer, data_length);
+    data_length = 0;
+    NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
+
+    return 16; //每组数据16字节 (1H+6Accel+6Gyro+2Temp+2Timestamp)
+}
+
+uint16_t ICM42688_Get_FIFO_Data_Length(void)
+{
+    uint16_t data_length;
+
+    uint8_t  fifo_cnt_buf[2];
+    icm42688_read_regs(ICM42688_FIFO_COUNTH, fifo_cnt_buf, 2);
+    data_length = ((uint16_t)fifo_cnt_buf[0] << 8) | fifo_cnt_buf[1];
+
+    return data_length;
+}
+   
+void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData)
+{
+    if (!ICM42688_is_initialized) {
+        return;
+    }
+    if(data_length == 0)
+    {
+        return;
+    }
+    icm42688RawData_t accRaw;
+    icm42688RawData_t gyroRaw;
+    NVIC_DisableIRQ(TIMER_2ms_INST_INT_IRQN);
+    accRaw.x  = ((uint16_t)FIFO_Buffer[1] << 8)  | FIFO_Buffer[2];
+    accRaw.y  = ((uint16_t)FIFO_Buffer[3] << 8)  | FIFO_Buffer[4];
+    accRaw.z  = ((uint16_t)FIFO_Buffer[5] << 8)  | FIFO_Buffer[6];
+    gyroRaw.x = ((uint16_t)FIFO_Buffer[7] << 8)  | FIFO_Buffer[8];
+    gyroRaw.y = ((uint16_t)FIFO_Buffer[9] << 8)  | FIFO_Buffer[10];
+    gyroRaw.z = ((uint16_t)FIFO_Buffer[11] << 8) | FIFO_Buffer[12];   
+    data_length = 0;
+    NVIC_ClearPendingIRQ(TIMER_2ms_INST_INT_IRQN);
+    NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
+
+
+    accData->x = (float)(accRaw.x * accSensitivity);
+    accData->y = (float)(accRaw.y * accSensitivity);
+    accData->z = (float)(accRaw.z * accSensitivity);
+    GyroData->x = (float)(gyroRaw.x * gyroSensitivity);
+    GyroData->y = (float)(gyroRaw.y * gyroSensitivity);
+    GyroData->z = (float)(gyroRaw.z * gyroSensitivity);
+}

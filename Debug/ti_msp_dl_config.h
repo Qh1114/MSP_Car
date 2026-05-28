@@ -89,7 +89,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define PWM_Motor_INST                                                     TIMG6
 #define PWM_Motor_INST_IRQHandler                               TIMG6_IRQHandler
 #define PWM_Motor_INST_INT_IRQN                                 (TIMG6_INT_IRQn)
-#define PWM_Motor_INST_CLK_FREQ                                         80000000
+#define PWM_Motor_INST_CLK_FREQ                                         20000000
 /* GPIO defines for channel 0 */
 #define GPIO_PWM_Motor_C0_PORT                                             GPIOB
 #define GPIO_PWM_Motor_C0_PIN                                     DL_GPIO_PIN_26
@@ -146,6 +146,11 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define TIMER_10ms_INST_IRQHandler                              TIMG0_IRQHandler
 #define TIMER_10ms_INST_INT_IRQN                                (TIMG0_INT_IRQn)
 #define TIMER_10ms_INST_LOAD_VALUE                                      (49999U)
+/* Defines for TIMER_2ms */
+#define TIMER_2ms_INST                                                   (TIMG7)
+#define TIMER_2ms_INST_IRQHandler                               TIMG7_IRQHandler
+#define TIMER_2ms_INST_INT_IRQN                                 (TIMG7_INT_IRQn)
+#define TIMER_2ms_INST_LOAD_VALUE                                        (1999U)
 
 
 
@@ -291,14 +296,14 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 /* Defines for OLED_RES: GPIOB.10 with pinCMx 27 on package pin 62 */
 #define OLED_OLED_RES_PIN                                       (DL_GPIO_PIN_10)
 #define OLED_OLED_RES_IOMUX                                      (IOMUX_PINCM27)
-/* Defines for ICM_CS: GPIOB.21 with pinCMx 49 on package pin 20 */
-#define ICM_ICM_CS_PORT                                                  (GPIOB)
-#define ICM_ICM_CS_PIN                                          (DL_GPIO_PIN_21)
-#define ICM_ICM_CS_IOMUX                                         (IOMUX_PINCM49)
-/* Defines for ICM_INT: GPIOA.30 with pinCMx 5 on package pin 37 */
-#define ICM_ICM_INT_PORT                                                 (GPIOA)
-#define ICM_ICM_INT_PIN                                         (DL_GPIO_PIN_30)
-#define ICM_ICM_INT_IOMUX                                         (IOMUX_PINCM5)
+/* Defines for ICM_CS: GPIOA.30 with pinCMx 5 on package pin 37 */
+#define ICM_ICM_CS_PORT                                                  (GPIOA)
+#define ICM_ICM_CS_PIN                                          (DL_GPIO_PIN_30)
+#define ICM_ICM_CS_IOMUX                                          (IOMUX_PINCM5)
+/* Defines for ICM_INT: GPIOB.21 with pinCMx 49 on package pin 20 */
+#define ICM_ICM_INT_PORT                                                 (GPIOB)
+#define ICM_ICM_INT_PIN                                         (DL_GPIO_PIN_21)
+#define ICM_ICM_INT_IOMUX                                        (IOMUX_PINCM49)
 /* Defines for MOTOR_AIN2: GPIOB.12 with pinCMx 29 on package pin 64 */
 #define MOTOR_MOTOR_AIN2_PORT                                            (GPIOB)
 #define MOTOR_MOTOR_AIN2_PIN                                    (DL_GPIO_PIN_12)
@@ -422,6 +427,7 @@ void SYSCFG_DL_PWM_Motor_init(void);
 void SYSCFG_DL_PWM_SERVO_init(void);
 void SYSCFG_DL_PWM_BUZZER_init(void);
 void SYSCFG_DL_TIMER_10ms_init(void);
+void SYSCFG_DL_TIMER_2ms_init(void);
 void SYSCFG_DL_I2C_0_init(void);
 void SYSCFG_DL_UART_init(void);
 void SYSCFG_DL_UART_3_init(void);

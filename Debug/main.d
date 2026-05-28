@@ -84,14 +84,16 @@ main.o: ../main.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/spi.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ICM_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/OLED_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ADC_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Encoder_Test.h
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Uart_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/vl53l1x_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ICM_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/OLED_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ADC_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Encoder_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/TB6612_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Motor_Test.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -175,11 +177,13 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/spi.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Uart_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/vl53l1x_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ICM_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/OLED_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/ADC_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Test/Encoder_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Uart_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/vl53l1x_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ICM_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/OLED_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ADC_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Encoder_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/TB6612_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Motor_Test.h:

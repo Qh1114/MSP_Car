@@ -1,7 +1,7 @@
 #include "Bat.h"
 #include "ADC.h"
 
-#define RATIO 4.055
+#define RATIO 4.085
 #define ADC_TO_VOLTAGE(raw) ((float)(raw) / 4096.0f / 8.0f * 3.3f * RATIO) // 采样八次
 
 bool cmd_bat = false; 

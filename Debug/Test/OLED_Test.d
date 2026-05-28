@@ -1,7 +1,7 @@
 # FIXED
 
 Test/OLED_Test.o: ../Test/OLED_Test.c ../Test/OLED_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/OLED.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/OLED.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -86,7 +86,7 @@ Test/OLED_Test.o: ../Test/OLED_Test.c ../Test/OLED_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h
 ../Test/OLED_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/OLED.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/OLED.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:

@@ -84,7 +84,7 @@ HardWare/icm42688.o: ../HardWare/icm42688.c ../HardWare/icm42688.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- ../HardWare/spi.h
+ ../HardWare/spi.h ../HardWare/Delay.h ../HardWare/Usart.h
 ../HardWare/icm42688.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
@@ -170,3 +170,5 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 ../HardWare/spi.h:
+../HardWare/Delay.h:
+../HardWare/Usart.h:

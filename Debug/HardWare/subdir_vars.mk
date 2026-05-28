@@ -11,8 +11,10 @@ C_SRCS += \
 ../HardWare/Encoder.c \
 ../HardWare/Interrupt.c \
 ../HardWare/OLED.c \
+../HardWare/PID.c \
 ../HardWare/Usart.c \
 ../HardWare/icm42688.c \
+../HardWare/multi_button.c \
 ../HardWare/spi.c \
 ../HardWare/tb6612.c 
 
@@ -22,8 +24,10 @@ C_DEPS += \
 ./HardWare/Encoder.d \
 ./HardWare/Interrupt.d \
 ./HardWare/OLED.d \
+./HardWare/PID.d \
 ./HardWare/Usart.d \
 ./HardWare/icm42688.d \
+./HardWare/multi_button.d \
 ./HardWare/spi.d \
 ./HardWare/tb6612.d 
 
@@ -33,8 +37,10 @@ OBJS += \
 ./HardWare/Encoder.o \
 ./HardWare/Interrupt.o \
 ./HardWare/OLED.o \
+./HardWare/PID.o \
 ./HardWare/Usart.o \
 ./HardWare/icm42688.o \
+./HardWare/multi_button.o \
 ./HardWare/spi.o \
 ./HardWare/tb6612.o 
 
@@ -44,8 +50,10 @@ OBJS__QUOTED += \
 "HardWare\Encoder.o" \
 "HardWare\Interrupt.o" \
 "HardWare\OLED.o" \
+"HardWare\PID.o" \
 "HardWare\Usart.o" \
 "HardWare\icm42688.o" \
+"HardWare\multi_button.o" \
 "HardWare\spi.o" \
 "HardWare\tb6612.o" 
 
@@ -55,8 +63,10 @@ C_DEPS__QUOTED += \
 "HardWare\Encoder.d" \
 "HardWare\Interrupt.d" \
 "HardWare\OLED.d" \
+"HardWare\PID.d" \
 "HardWare\Usart.d" \
 "HardWare\icm42688.d" \
+"HardWare\multi_button.d" \
 "HardWare\spi.d" \
 "HardWare\tb6612.d" 
 
@@ -66,8 +76,10 @@ C_SRCS__QUOTED += \
 "../HardWare/Encoder.c" \
 "../HardWare/Interrupt.c" \
 "../HardWare/OLED.c" \
+"../HardWare/PID.c" \
 "../HardWare/Usart.c" \
 "../HardWare/icm42688.c" \
+"../HardWare/multi_button.c" \
 "../HardWare/spi.c" \
 "../HardWare/tb6612.c" 
 

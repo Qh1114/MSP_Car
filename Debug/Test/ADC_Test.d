@@ -1,7 +1,7 @@
 # FIXED
 
 Test/ADC_Test.o: ../Test/ADC_Test.c \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/ADC.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/ADC.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -85,11 +85,10 @@ Test/ADC_Test.o: ../Test/ADC_Test.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- ../Test/ADC_Test.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Delay.h \
- C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/Bat.h
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/ADC.h:
+ ../Test/ADC_Test.h C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Bat.h
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/ADC.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -174,6 +173,6 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 ../Test/ADC_Test.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Usart.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/HardWare/Delay.h:
-C:/Users/Qh/workspace_ccstheia/MSP_Car/Middle/Bat.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Bat.h:

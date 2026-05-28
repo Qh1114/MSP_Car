@@ -10,7 +10,6 @@
 
 #include "tb6612.h"
 #include "stdlib.h"
-#include "Bat.h"
 #include "math.h"  // 新增：用于fabsf（浮点数绝对值）
 
 // =============== 配置区 ================
@@ -38,30 +37,33 @@
 static void __SetMotor(GPIO_Regs *in1_port, uint32_t in1_pin,
                        GPIO_Regs *in2_port, uint32_t in2_pin,
                        uint32_t cc_idx,
-                       float speed)
+                       float duty)
 {
-    if (speed > MAX_SPEED) speed = MAX_SPEED;
-    if (speed < -MAX_SPEED) speed = -MAX_SPEED;
-    
-    uint32_t pwm_val = (uint32_t)(fabsf(speed) * (float)PWM_PERIOD / 100.0f);//计算输出PWM值
+    if (duty > MAX_DUTY) duty = MAX_DUTY;
+    if (duty < -MAX_DUTY) duty = -MAX_DUTY;
+
+    uint32_t pwm_val = (uint32_t)(fabsf(duty) * (float)PWM_PERIOD / 100.0f);// 计算 PWM 占空比对应的计数值
     if (pwm_val > PWM_PERIOD) pwm_val = PWM_PERIOD;
 
-    if (speed > 0.0f) {
+    int stby_state = DL_GPIO_readPins(STBY_PORT, STBY_PIN);
+    if (duty > 0.0f) {
         // 正转
         DL_GPIO_setPins(in1_port, in1_pin);
         DL_GPIO_clearPins(in2_port, in2_pin);
-    } else if (speed < 0.0f) {
+        if (!stby_state) {
+            DL_GPIO_setPins(STBY_PORT, STBY_PIN);
+        }
+    } else if (duty < 0.0f) {
         // 反转
         DL_GPIO_clearPins(in1_port, in1_pin);
         DL_GPIO_setPins(in2_port, in2_pin);
-    } else {
-        // 停止（滑行）
-        DL_GPIO_clearPins(in1_port, in1_pin);
-        DL_GPIO_clearPins(in2_port, in2_pin);
-        DL_GPIO_clearPins(STBY_PORT, STBY_PIN);
-    }
+        if (!stby_state) {
+            DL_GPIO_setPins(STBY_PORT, STBY_PIN);
+        }
+    } 
 
-    DL_TimerA_setCaptureCompareValue(PWM_INST, pwm_val, cc_idx);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, pwm_val, cc_idx);
+
 }
 
 // ======== 公共 API ========
@@ -69,25 +71,26 @@ static void __SetMotor(GPIO_Regs *in1_port, uint32_t in1_pin,
 void TB6612_Init(void)
 {
     // 确保 PWM 初始为 0 并设置方向引脚为滑行
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
     TB6612_Coast();
+    DL_Timer_startCounter(PWM_INST);
 }
 
-void TB6612_Forward(float speed)
+void TB6612_Forward(float duty)
 {
-    if (speed > MAX_SPEED) speed = MAX_SPEED;
-    if (speed < 0.0f) speed = 0.0f;
-    TB6612_SetLeftMotor(speed);
-    TB6612_SetRightMotor(speed);
+    if (duty > MAX_DUTY) duty = MAX_DUTY;
+    if (duty < 0.0f) duty = 0.0f;
+    TB6612_SetLeftMotor(duty);
+    TB6612_SetRightMotor(duty);
 }
 
-void TB6612_Backward(float speed)
+void TB6612_Backward(float duty)
 {
-    if (speed > MAX_SPEED) speed = MAX_SPEED;
-    if (speed < 0.0f) speed = 0.0f;
-    TB6612_SetLeftMotor(-speed);
-    TB6612_SetRightMotor(-speed);
+    if (duty > MAX_DUTY) duty = MAX_DUTY;
+    if (duty < 0.0f) duty = 0.0f;
+    TB6612_SetLeftMotor(-duty);
+    TB6612_SetRightMotor(-duty);
 }
 
 void TB6612_Brake(void)
@@ -99,8 +102,8 @@ void TB6612_Brake(void)
     DL_GPIO_setPins(RIGHT_BIN2_PORT, RIGHT_BIN2_PIN);
     DL_GPIO_clearPins(STBY_PORT, STBY_PIN);
 
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
 }
 
 void TB6612_Coast(void)
@@ -112,24 +115,24 @@ void TB6612_Coast(void)
     DL_GPIO_clearPins(RIGHT_BIN2_PORT, RIGHT_BIN2_PIN);
     DL_GPIO_clearPins(STBY_PORT, STBY_PIN);
 
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
-    DL_TimerA_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
+    DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);
 }
 
-void TB6612_SetLeftMotor(float speed)
+void TB6612_SetLeftMotor(float duty)
 {
     __SetMotor(LEFT_AIN1_PORT, LEFT_AIN1_PIN,
                LEFT_AIN2_PORT, LEFT_AIN2_PIN,
                PWMA_CC_IDX,
-               speed);
+               duty);
 }
 
-void TB6612_SetRightMotor(float speed)
+void TB6612_SetRightMotor(float duty)
 {
-    __SetMotor(RIGHT_BIN1_PORT, RIGHT_BIN1_PIN,
-               RIGHT_BIN2_PORT, RIGHT_BIN2_PIN,
+    __SetMotor(RIGHT_BIN2_PORT, RIGHT_BIN2_PIN,
+               RIGHT_BIN1_PORT, RIGHT_BIN1_PIN,
                PWMB_CC_IDX,
-               speed);
+               duty);
 }
 
 

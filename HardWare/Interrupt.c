@@ -9,6 +9,7 @@
 #include "Motor.h"
 #include "multi_button.h"
 #include "icm42688.h"
+#include "IMU_.h"
 float ypr[3];
 uint32_t count=0;
 void GROUP1_IRQHandler(void)
@@ -75,7 +76,8 @@ void TIMER_10ms_INST_IRQHandler(void)
 void TIMER_2ms_INST_IRQHandler(void)
 {
    // start_time = Get_us();
-    ICM42688_UnBlocking_CallBack();
+    //ICM42688_UnBlocking_CallBack();
+    IMU_Update();
     //end_time = Get_us();
     //Uart0_Printf("2ms Callback Time: %d us\n", (uint32_t)(end_time - start_time));
 }

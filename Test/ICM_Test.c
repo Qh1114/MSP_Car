@@ -3,6 +3,7 @@
 #include "Usart.h"
 #include "Delay.h"
 #include "IMU.h"
+#include "IMU_.h"
 void ICM42688_Test1(void)
 {
     int16_t temp = 0;
@@ -55,28 +56,43 @@ void ICM42688_Test2(void)
 void ICM42688_Test3(void)
 {
     bsp_Icm42688Init();
-    // uint8_t values[400] = {0};
+    uint8_t values[400] = {0};
     while (1) 
     {   
     //     uint16_t data_length = ICM42688_Get_FIFO_Data_Length();
     //     Uart0_Printf("ICM42688 FIFO Data Length: %d bytes\r\n", data_length);
     //   ICM42688_UnBlocking_CallBack();
-        // uint16_t data_length = ICM42688_Get_FIFO_Data(values);
-        // if(data_length > 0) {
-        //     Uart0_Printf("ICM42688 FIFO Data Length: %d bytes\r\n", data_length);
-        //     for (uint16_t i = 0; i < data_length; i++) {
-        //         Uart0_Printf("%02X ", values[i]);
-        //         if ((i + 1) % 16 == 0) {
-        //             Uart0_Printf("\r\n");
-        //         }
-        //     }
-        //     Uart0_Printf("\n");
-        // }
-        icm42688RealData_t accRealData;
-        icm42688RealData_t GyroRealData;
-        ICM42688_FIFO_Get_RealData(&accRealData, &GyroRealData);
+        uint16_t data_length = ICM42688_Get_FIFO_Data(values);
+        if(data_length > 0) {
+            Uart0_Printf("ICM42688 FIFO Data Length: %d bytes\r\n", data_length);
+            for (uint16_t i = 0; i < data_length; i++) {
+                Uart0_Printf("%02X ", values[i]);
+                if ((i + 1) % 16 == 0) {
+                    Uart0_Printf("\r\n");
+                }
+            }
+            Uart0_Printf("\n");
+        }
+        // icm42688RealData_t accRealData;
+        // icm42688RealData_t GyroRealData;
+        // uint16_t delta_time;
+        // ICM42688_FIFO_Get_RealData(&accRealData, &GyroRealData, &delta_time);
         // Uart0_Printf("ICM42688 Accelerometer Real Data: %.2f mg, %.2f mg, %.2f mg\r\n", accRealData.x, accRealData.y, accRealData.z);
         // Uart0_Printf("ICM42688 Gyroscope Real Data: %.2f dps, %.2f dps, %.2f dps\r\n", GyroRealData.x, GyroRealData.y, GyroRealData.z);
+        // Uart0_Printf("ICM42688 Delta Time: %d us\r\n", delta_time);
         
+    }
+}
+
+void ICM42688_Test4(void)
+{
+    IMU_init_();
+   // extern uint64_t duration;
+    while (1) 
+    {   
+        float yaw, pitch, roll;
+        IMU_GetOrientation(&yaw, &pitch, &roll);
+        Uart0_Printf("IMU Orientation - Yaw: %.2f°, Pitch: %.2f°, Roll: %.2f°\n", yaw, pitch, roll);
+        //Delay_ms(50);
     }
 }

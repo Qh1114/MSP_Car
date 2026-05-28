@@ -42,11 +42,15 @@ ORDERED_OBJS += \
 "./HardWare/vl53l1x/platform/vl53l1x.o" \
 "./Middle/Bat.o" \
 "./Middle/IMU.o" \
+"./Middle/IMU_.o" \
 "./Middle/Key.o" \
 "./Middle/Motor.o" \
 "./Middle/Uart_Data.o" \
 "./Middle/my_vl53l1x.o" \
 "./Middle/servo.o" \
+"./Middle/Fusion/FusionAhrs.o" \
+"./Middle/Fusion/FusionBias.o" \
+"./Middle/Fusion/FusionCompass.o" \
 "./Test/ADC_Test.o" \
 "./Test/Encoder_Test.o" \
 "./Test/ICM_Test.o" \
@@ -72,6 +76,7 @@ RMDIR := RMDIR /S/Q
 -include HardWare/vl53l1x/core/subdir_vars.mk
 -include HardWare/vl53l1x/platform/subdir_vars.mk
 -include Middle/subdir_vars.mk
+-include Middle/Fusion/subdir_vars.mk
 -include Test/subdir_vars.mk
 -include subdir_rules.mk
 -include APP/subdir_rules.mk
@@ -79,6 +84,7 @@ RMDIR := RMDIR /S/Q
 -include HardWare/vl53l1x/core/subdir_rules.mk
 -include HardWare/vl53l1x/platform/subdir_rules.mk
 -include Middle/subdir_rules.mk
+-include Middle/Fusion/subdir_rules.mk
 -include Test/subdir_rules.mk
 -include objects.mk
 
@@ -190,10 +196,10 @@ MSP_Car.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "main.o" "APP\Drive.o" "HardWare\ADC.o" "HardWare\Delay.o" "HardWare\Encoder.o" "HardWare\Interrupt.o" "HardWare\OLED.o" "HardWare\PID.o" "HardWare\Usart.o" "HardWare\icm42688.o" "HardWare\multi_button.o" "HardWare\spi.o" "HardWare\tb6612.o" "HardWare\vl53l1x\core\vl53l1_api.o" "HardWare\vl53l1x\core\vl53l1_api_calibration.o" "HardWare\vl53l1x\core\vl53l1_api_core.o" "HardWare\vl53l1x\core\vl53l1_api_debug.o" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.o" "HardWare\vl53l1x\core\vl53l1_api_strings.o" "HardWare\vl53l1x\core\vl53l1_core.o" "HardWare\vl53l1x\core\vl53l1_core_support.o" "HardWare\vl53l1x\core\vl53l1_error_strings.o" "HardWare\vl53l1x\core\vl53l1_register_funcs.o" "HardWare\vl53l1x\core\vl53l1_silicon_core.o" "HardWare\vl53l1x\core\vl53l1_wait.o" "HardWare\vl53l1x\platform\IOI2C.o" "HardWare\vl53l1x\platform\vl53l1_platform.o" "HardWare\vl53l1x\platform\vl53l1x.o" "Middle\Bat.o" "Middle\IMU.o" "Middle\Key.o" "Middle\Motor.o" 
-	-$(RM) "Middle\Uart_Data.o" "Middle\my_vl53l1x.o" "Middle\servo.o" "Test\ADC_Test.o" "Test\Encoder_Test.o" "Test\ICM_Test.o" "Test\Motor_Test.o" "Test\OLED_Test.o" "Test\TB6612_Test.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
-	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "main.d" "APP\Drive.d" "HardWare\ADC.d" "HardWare\Delay.d" "HardWare\Encoder.d" "HardWare\Interrupt.d" "HardWare\OLED.d" "HardWare\PID.d" "HardWare\Usart.d" "HardWare\icm42688.d" "HardWare\multi_button.d" "HardWare\spi.d" "HardWare\tb6612.d" "HardWare\vl53l1x\core\vl53l1_api.d" "HardWare\vl53l1x\core\vl53l1_api_calibration.d" "HardWare\vl53l1x\core\vl53l1_api_core.d" "HardWare\vl53l1x\core\vl53l1_api_debug.d" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.d" "HardWare\vl53l1x\core\vl53l1_api_strings.d" "HardWare\vl53l1x\core\vl53l1_core.d" "HardWare\vl53l1x\core\vl53l1_core_support.d" "HardWare\vl53l1x\core\vl53l1_error_strings.d" "HardWare\vl53l1x\core\vl53l1_register_funcs.d" "HardWare\vl53l1x\core\vl53l1_silicon_core.d" "HardWare\vl53l1x\core\vl53l1_wait.d" "HardWare\vl53l1x\platform\IOI2C.d" "HardWare\vl53l1x\platform\vl53l1_platform.d" "HardWare\vl53l1x\platform\vl53l1x.d" "Middle\Bat.d" "Middle\IMU.d" "Middle\Key.d" "Middle\Motor.d" 
-	-$(RM) "Middle\Uart_Data.d" "Middle\my_vl53l1x.d" "Middle\servo.d" "Test\ADC_Test.d" "Test\Encoder_Test.d" "Test\ICM_Test.d" "Test\Motor_Test.d" "Test\OLED_Test.d" "Test\TB6612_Test.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
+	-$(RM) "ti_msp_dl_config.o" "startup_mspm0g350x_ticlang.o" "main.o" "APP\Drive.o" "HardWare\ADC.o" "HardWare\Delay.o" "HardWare\Encoder.o" "HardWare\Interrupt.o" "HardWare\OLED.o" "HardWare\PID.o" "HardWare\Usart.o" "HardWare\icm42688.o" "HardWare\multi_button.o" "HardWare\spi.o" "HardWare\tb6612.o" "HardWare\vl53l1x\core\vl53l1_api.o" "HardWare\vl53l1x\core\vl53l1_api_calibration.o" "HardWare\vl53l1x\core\vl53l1_api_core.o" "HardWare\vl53l1x\core\vl53l1_api_debug.o" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.o" "HardWare\vl53l1x\core\vl53l1_api_strings.o" "HardWare\vl53l1x\core\vl53l1_core.o" "HardWare\vl53l1x\core\vl53l1_core_support.o" "HardWare\vl53l1x\core\vl53l1_error_strings.o" "HardWare\vl53l1x\core\vl53l1_register_funcs.o" "HardWare\vl53l1x\core\vl53l1_silicon_core.o" "HardWare\vl53l1x\core\vl53l1_wait.o" "HardWare\vl53l1x\platform\IOI2C.o" "HardWare\vl53l1x\platform\vl53l1_platform.o" "HardWare\vl53l1x\platform\vl53l1x.o" "Middle\Bat.o" "Middle\IMU.o" "Middle\IMU_.o" "Middle\Key.o" 
+	-$(RM) "Middle\Motor.o" "Middle\Uart_Data.o" "Middle\my_vl53l1x.o" "Middle\servo.o" "Middle\Fusion\FusionAhrs.o" "Middle\Fusion\FusionBias.o" "Middle\Fusion\FusionCompass.o" "Test\ADC_Test.o" "Test\Encoder_Test.o" "Test\ICM_Test.o" "Test\Motor_Test.o" "Test\OLED_Test.o" "Test\TB6612_Test.o" "Test\Uart_Test.o" "Test\vl53l1x_Test.o" 
+	-$(RM) "ti_msp_dl_config.d" "startup_mspm0g350x_ticlang.d" "main.d" "APP\Drive.d" "HardWare\ADC.d" "HardWare\Delay.d" "HardWare\Encoder.d" "HardWare\Interrupt.d" "HardWare\OLED.d" "HardWare\PID.d" "HardWare\Usart.d" "HardWare\icm42688.d" "HardWare\multi_button.d" "HardWare\spi.d" "HardWare\tb6612.d" "HardWare\vl53l1x\core\vl53l1_api.d" "HardWare\vl53l1x\core\vl53l1_api_calibration.d" "HardWare\vl53l1x\core\vl53l1_api_core.d" "HardWare\vl53l1x\core\vl53l1_api_debug.d" "HardWare\vl53l1x\core\vl53l1_api_preset_modes.d" "HardWare\vl53l1x\core\vl53l1_api_strings.d" "HardWare\vl53l1x\core\vl53l1_core.d" "HardWare\vl53l1x\core\vl53l1_core_support.d" "HardWare\vl53l1x\core\vl53l1_error_strings.d" "HardWare\vl53l1x\core\vl53l1_register_funcs.d" "HardWare\vl53l1x\core\vl53l1_silicon_core.d" "HardWare\vl53l1x\core\vl53l1_wait.d" "HardWare\vl53l1x\platform\IOI2C.d" "HardWare\vl53l1x\platform\vl53l1_platform.d" "HardWare\vl53l1x\platform\vl53l1x.d" "Middle\Bat.d" "Middle\IMU.d" "Middle\IMU_.d" "Middle\Key.d" 
+	-$(RM) "Middle\Motor.d" "Middle\Uart_Data.d" "Middle\my_vl53l1x.d" "Middle\servo.d" "Middle\Fusion\FusionAhrs.d" "Middle\Fusion\FusionBias.d" "Middle\Fusion\FusionCompass.d" "Test\ADC_Test.d" "Test\Encoder_Test.d" "Test\ICM_Test.d" "Test\Motor_Test.d" "Test\OLED_Test.d" "Test\TB6612_Test.d" "Test\Uart_Test.d" "Test\vl53l1x_Test.d" 
 	-@echo ' '
 
 .PHONY: all clean dependents

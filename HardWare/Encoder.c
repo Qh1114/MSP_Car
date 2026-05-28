@@ -1,5 +1,5 @@
 #include "Encoder.h"
-
+#include "Delay.h"
 #define  PULSE_PER_REVOLUTION 1060.0f  // 每转一圈的脉冲数，根据实际编码器规格调整
 
 volatile int64_t encoder_count_l = 0 , encoder_count_r = 0;

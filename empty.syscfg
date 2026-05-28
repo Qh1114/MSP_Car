@@ -372,7 +372,7 @@ TIMER2.timerMode          = "PERIODIC";
 TIMER2.interrupts         = ["ZERO"];
 TIMER2.timerClkDiv        = 4;
 TIMER2.interruptPriority  = "1";
-TIMER2.timerPeriod        = "0.1ms";
+TIMER2.timerPeriod        = "2ms";
 TIMER2.peripheral.$assign = "TIMG7";
 
 UART1.$name                            = "UART";

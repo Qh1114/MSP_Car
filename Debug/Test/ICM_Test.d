@@ -87,7 +87,8 @@ Test/ICM_Test.o: ../Test/ICM_Test.c ../Test/ICM_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU.h
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU_.h
 ../Test/ICM_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/icm42688.h:
 ti_msp_dl_config.h:
@@ -176,3 +177,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU_.h:

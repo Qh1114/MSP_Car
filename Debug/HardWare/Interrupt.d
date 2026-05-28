@@ -90,7 +90,8 @@ HardWare/Interrupt.o: ../HardWare/Interrupt.c \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Bat.h ../HardWare/Delay.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Motor.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/PID.h \
- ../HardWare/multi_button.h ../HardWare/icm42688.h
+ ../HardWare/multi_button.h ../HardWare/icm42688.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU_.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -185,3 +186,4 @@ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Motor.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/PID.h:
 ../HardWare/multi_button.h:
 ../HardWare/icm42688.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU_.h:

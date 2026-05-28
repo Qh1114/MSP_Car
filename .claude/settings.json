@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(domain:github.com)",
       "WebFetch(domain:blog.csdn.net)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(ls \"C:/Users/Qh/Desktop/Fusion-main/\")",
+      "Read(//c/Users/Qh/Desktop/Fusion-main/**)"
     ]
   }
 }

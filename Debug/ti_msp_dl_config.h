@@ -150,7 +150,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define TIMER_2ms_INST                                                   (TIMG7)
 #define TIMER_2ms_INST_IRQHandler                               TIMG7_IRQHandler
 #define TIMER_2ms_INST_INT_IRQN                                 (TIMG7_INT_IRQn)
-#define TIMER_2ms_INST_LOAD_VALUE                                        (1999U)
+#define TIMER_2ms_INST_LOAD_VALUE                                       (39999U)
 
 
 

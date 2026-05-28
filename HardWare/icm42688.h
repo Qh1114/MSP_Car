@@ -218,7 +218,8 @@ int8_t bsp_IcmGetRawData(icm42688RealData_t* accData, icm42688RealData_t* GyroDa
 
 void ICM42688_UnBlocking_CallBack(void);
 uint16_t ICM42688_Get_FIFO_Data(uint8_t* buf);
-void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData);
+void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData, uint16_t* delta_time);
 uint16_t ICM42688_Get_FIFO_Data_Length(void);
+void ICM42688_Getoffset(float* accOffset_out, float* gyroOffset_out);
 
 #endif

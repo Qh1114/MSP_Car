@@ -61,9 +61,10 @@ int main(void)
     //Motor_Test2();
     //Motor_Test1();
     //Uart_Test3();
-    
+    ICM42688_Test4();
+     ICM42688_Test3();   
     //ICM42688_Test1();
-    ICM42688_Test3();
+   
     ICM42688_Test2();
     
     Encoder_Test2();

@@ -674,7 +674,7 @@ static const DL_TimerG_ClockConfig gTIMER_2msClockConfig = {
 
 /*
  * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
- * TIMER_2ms_INST_LOAD_VALUE = (0.1ms * 20000000 Hz) - 1
+ * TIMER_2ms_INST_LOAD_VALUE = (2ms * 20000000 Hz) - 1
  */
 static const DL_TimerG_TimerConfig gTIMER_2msTimerConfig = {
     .period     = TIMER_2ms_INST_LOAD_VALUE,

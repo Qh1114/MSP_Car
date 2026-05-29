@@ -7,11 +7,6 @@
    {
       "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
       "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
-      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/APP/Drive.c"
-   },
-   {
-      "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
-      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
       "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/ADC.c"
    },
    {
@@ -147,11 +142,6 @@
    {
       "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
       "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
-      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU.c"
-   },
-   {
-      "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
-      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
       "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.c"
    },
    {
@@ -237,6 +227,21 @@
    {
       "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
       "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
-      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU_.c"
+      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/APP/Drive.c"
+   },
+   {
+      "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/IMU.c"
+   },
+   {
+      "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Key_Test.c"
+   },
+   {
+      "directory" : "C:/Users/Qh/Desktop/ccs/MSP_Car/Debug",
+      "command"   : "clang++ -D__MSPM0G3507__ -D__USE_SYSCONFIG__ -I\"C:/Users/Qh/Desktop/ccs/MSP_Car\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Debug\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source/third_party/CMSIS/Core/Include\" -I\"C:/TI/mspm0_sdk_2_10_00_04/source\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Middle\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/Test\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/platform\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/vl53l1x/core\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare\" -I\"C:/Users/Qh/Desktop/ccs/MSP_Car/APP\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/armv7em-ti-none-eabihf/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c++/v1\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib/clang/18/include\" -isystem\"D:/TI/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/include/c\" -xc",
+      "file"      : "C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Drive_Test.c"
    }
 ]

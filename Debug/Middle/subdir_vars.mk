@@ -8,7 +8,6 @@ SHELL = cmd.exe
 C_SRCS += \
 ../Middle/Bat.c \
 ../Middle/IMU.c \
-../Middle/IMU_.c \
 ../Middle/Key.c \
 ../Middle/Motor.c \
 ../Middle/Uart_Data.c \
@@ -18,7 +17,6 @@ C_SRCS += \
 C_DEPS += \
 ./Middle/Bat.d \
 ./Middle/IMU.d \
-./Middle/IMU_.d \
 ./Middle/Key.d \
 ./Middle/Motor.d \
 ./Middle/Uart_Data.d \
@@ -28,7 +26,6 @@ C_DEPS += \
 OBJS += \
 ./Middle/Bat.o \
 ./Middle/IMU.o \
-./Middle/IMU_.o \
 ./Middle/Key.o \
 ./Middle/Motor.o \
 ./Middle/Uart_Data.o \
@@ -38,7 +35,6 @@ OBJS += \
 OBJS__QUOTED += \
 "Middle\Bat.o" \
 "Middle\IMU.o" \
-"Middle\IMU_.o" \
 "Middle\Key.o" \
 "Middle\Motor.o" \
 "Middle\Uart_Data.o" \
@@ -48,7 +44,6 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "Middle\Bat.d" \
 "Middle\IMU.d" \
-"Middle\IMU_.d" \
 "Middle\Key.d" \
 "Middle\Motor.d" \
 "Middle\Uart_Data.d" \
@@ -58,7 +53,6 @@ C_DEPS__QUOTED += \
 C_SRCS__QUOTED += \
 "../Middle/Bat.c" \
 "../Middle/IMU.c" \
-"../Middle/IMU_.c" \
 "../Middle/Key.c" \
 "../Middle/Motor.c" \
 "../Middle/Uart_Data.c" \

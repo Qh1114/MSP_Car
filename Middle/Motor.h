@@ -14,7 +14,5 @@ void Motor_Start(void);
 void Motor_Stop(void);
 void Motor_Callback(void);
 
-void Motor_Straight(float speed);
-void Motor_Turn(float speed, float turn_rate);
 
 #endif

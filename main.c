@@ -33,6 +33,7 @@
 #include "ti_msp_dl_config.h"
 #include "Usart.h"
 #include "spi.h"
+#include "Key.h"
 
 
 #include "Uart_Test.h"
@@ -43,11 +44,14 @@
 #include "Encoder_Test.h"
 #include "TB6612_Test.h"
 #include "Motor_Test.h"
+#include "Key_Test.h"
+#include "Drive_Test.h"
 int main(void)
 {
     SYSCFG_DL_init();
     Uart_Init();
     SPI_Init();
+    Key_Init();
     NVIC_EnableIRQ(TIMER_10ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_10ms_INST);
     
@@ -56,13 +60,21 @@ int main(void)
 
     NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_2ms_INST);
+
+    
+    TB6612_Test1(); 
+    Drive_Test3();
+    //Drive_Test1();
+    Drive_Test2();
+    Key_Test();
+
     //VL53L1X_Test2();
-   //TB6612_Test1(); 
     //Motor_Test2();
     //Motor_Test1();
     //Uart_Test3();
+    ICM42688_Test5();
     ICM42688_Test4();
-     ICM42688_Test3();   
+    ICM42688_Test3();   
     //ICM42688_Test1();
    
     ICM42688_Test2();

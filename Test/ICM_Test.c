@@ -3,7 +3,8 @@
 #include "Usart.h"
 #include "Delay.h"
 #include "IMU.h"
-#include "IMU_.h"
+#include "OLED.h"
+#include <stdio.h>
 void ICM42688_Test1(void)
 {
     int16_t temp = 0;
@@ -46,10 +47,10 @@ void ICM42688_Test2(void)
 {
     IMU_init();
     while (1) 
-    {   extern uint32_t count;
-        extern float ypr[3];
-        Uart0_Printf("%.2f, %.2f, %.2f\n", ypr[0], ypr[1], ypr[2]);
-        Delay_ms(50);
+    {   //extern uint32_t count;
+        //extern float ypr[3];
+        // Uart0_Printf("%.2f, %.2f, %.2f\n", ypr[0], ypr[1], ypr[2]);
+        // Delay_ms(50);
     }
 }
 
@@ -86,7 +87,7 @@ void ICM42688_Test3(void)
 
 void ICM42688_Test4(void)
 {
-    IMU_init_();
+    IMU_init();
    // extern uint64_t duration;
     while (1) 
     {   
@@ -94,5 +95,25 @@ void ICM42688_Test4(void)
         IMU_GetOrientation(&yaw, &pitch, &roll);
         Uart0_Printf("IMU Orientation - Yaw: %.2f°, Pitch: %.2f°, Roll: %.2f°\n", yaw, pitch, roll);
         //Delay_ms(50);
+    }
+}
+
+void ICM42688_Test5(void)
+{
+    IMU_init();
+    OLED_Init();
+    char Buffer[20];
+    while (1) 
+    {   
+        float yaw, pitch, roll;
+        IMU_GetOrientation(&yaw, &pitch, &roll);
+        snprintf((char*)Buffer, sizeof(Buffer), "Y:%.2f", yaw);
+        OLED_ShowString(0, 0, Buffer, 16, 1);
+        snprintf((char*)Buffer, sizeof(Buffer), "P:%.2f", pitch);
+        OLED_ShowString(0, 16, Buffer, 16, 1);
+        snprintf((char*)Buffer, sizeof(Buffer), "R:%.2f", roll);
+        OLED_ShowString(0, 32, Buffer, 16, 1);
+        OLED_Refresh();
+        Delay_ms(50);
     }
 }

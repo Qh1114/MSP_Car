@@ -60,6 +60,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_PWM_Motor_init();
     SYSCFG_DL_PWM_SERVO_init();
     SYSCFG_DL_PWM_BUZZER_init();
+    SYSCFG_DL_CAPTURE_0_init();
     SYSCFG_DL_TIMER_10ms_init();
     SYSCFG_DL_TIMER_2ms_init();
     SYSCFG_DL_I2C_0_init();
@@ -74,6 +75,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
 	gPWM_MotorBackup.backupRdy 	= false;
 	gPWM_SERVOBackup.backupRdy 	= false;
 	gPWM_BUZZERBackup.backupRdy 	= false;
+
 	gTIMER_2msBackup.backupRdy 	= false;
 	gUART_3Backup.backupRdy 	= false;
 	gSPI_1Backup.backupRdy 	= false;
@@ -119,6 +121,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_reset(PWM_Motor_INST);
     DL_TimerA_reset(PWM_SERVO_INST);
     DL_TimerA_reset(PWM_BUZZER_INST);
+    DL_TimerG_reset(CAPTURE_0_INST);
     DL_TimerG_reset(TIMER_10ms_INST);
     DL_TimerG_reset(TIMER_2ms_INST);
     DL_I2C_reset(I2C_0_INST);
@@ -135,6 +138,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
     DL_TimerG_enablePower(PWM_Motor_INST);
     DL_TimerA_enablePower(PWM_SERVO_INST);
     DL_TimerA_enablePower(PWM_BUZZER_INST);
+    DL_TimerG_enablePower(CAPTURE_0_INST);
     DL_TimerG_enablePower(TIMER_10ms_INST);
     DL_TimerG_enablePower(TIMER_2ms_INST);
     DL_I2C_enablePower(I2C_0_INST);
@@ -163,6 +167,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_enableOutput(GPIO_PWM_SERVO_C3_PORT, GPIO_PWM_SERVO_C3_PIN);
     DL_GPIO_initPeripheralOutputFunction(GPIO_PWM_BUZZER_C0_IOMUX,GPIO_PWM_BUZZER_C0_IOMUX_FUNC);
     DL_GPIO_enableOutput(GPIO_PWM_BUZZER_C0_PORT, GPIO_PWM_BUZZER_C0_PIN);
+
+    DL_GPIO_initPeripheralInputFunction(GPIO_CAPTURE_0_C0_IOMUX,GPIO_CAPTURE_0_C0_IOMUX_FUNC);
 
     DL_GPIO_initPeripheralInputFunctionFeatures(GPIO_I2C_0_IOMUX_SDA,
         GPIO_I2C_0_IOMUX_SDA_FUNC, DL_GPIO_INVERSION_DISABLE,
@@ -275,18 +281,24 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(BUTTON_BUTTON1_IOMUX);
+    DL_GPIO_initDigitalInputFeatures(BUTTON_BUTTON1_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(BUTTON_BUTTON2_IOMUX);
+    DL_GPIO_initDigitalInputFeatures(BUTTON_BUTTON2_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(BUTTON_BUTTON3_IOMUX);
+    DL_GPIO_initDigitalInputFeatures(BUTTON_BUTTON3_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(BUTTON_BUTTON4_IOMUX);
+    DL_GPIO_initDigitalInputFeatures(BUTTON_BUTTON4_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
     DL_GPIO_clearPins(GPIOA, MOTOR_MOTOR_STBY_PIN |
-		GRAYSCALE_AD2_PIN |
-		BUTTON_BUTTON1_PIN |
-		BUTTON_BUTTON2_PIN);
+		GRAYSCALE_AD2_PIN);
     DL_GPIO_setPins(GPIOA, LED_LED_1_PIN |
 		ICM_ICM_CS_PIN |
 		MOTOR_MOTOR_BIN1_PIN |
@@ -296,9 +308,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		MOTOR_MOTOR_STBY_PIN |
 		MOTOR_MOTOR_BIN1_PIN |
 		GRAYSCALE_AD2_PIN |
-		LASER_XSHUT1_PIN |
-		BUTTON_BUTTON1_PIN |
-		BUTTON_BUTTON2_PIN);
+		LASER_XSHUT1_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIOA, DL_GPIO_PIN_7_EDGE_FALL);
     DL_GPIO_setUpperPinsPolarity(GPIOA, DL_GPIO_PIN_29_EDGE_RISE_FALL |
 		DL_GPIO_PIN_31_EDGE_FALL);
@@ -313,9 +323,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		OLED_OLED_RES_PIN |
 		GRAYSCALE_OUT_PIN |
 		GRAYSCALE_AD0_PIN |
-		GRAYSCALE_AD1_PIN |
-		BUTTON_BUTTON3_PIN |
-		BUTTON_BUTTON4_PIN);
+		GRAYSCALE_AD1_PIN);
     DL_GPIO_setPins(GPIOB, FLASH_FLASH_CS_PIN |
 		OLED_OLED_CS_PIN |
 		MOTOR_MOTOR_AIN2_PIN |
@@ -334,9 +342,7 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		GRAYSCALE_AD0_PIN |
 		GRAYSCALE_AD1_PIN |
 		LASER_XSHUT2_PIN |
-		LASER_XSHUT3_PIN |
-		BUTTON_BUTTON3_PIN |
-		BUTTON_BUTTON4_PIN);
+		LASER_XSHUT3_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIOB, DL_GPIO_PIN_2_EDGE_RISE_FALL |
 		DL_GPIO_PIN_1_EDGE_FALL);
     DL_GPIO_setUpperPinsPolarity(GPIOB, DL_GPIO_PIN_16_EDGE_RISE_FALL |
@@ -622,6 +628,42 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_BUZZER_init(void) {
 
 }
 
+
+
+/*
+ * Timer clock configuration to be sourced by BUSCLK /  (40000000 Hz)
+ * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
+ *   40000000 Hz = 40000000 Hz / (1 * (0 + 1))
+ */
+static const DL_TimerG_ClockConfig gCAPTURE_0ClockConfig = {
+    .clockSel    = DL_TIMER_CLOCK_BUSCLK,
+    .divideRatio = DL_TIMER_CLOCK_DIVIDE_1,
+    .prescale = 0U
+};
+
+/*
+ * Timer load value (where the counter starts from) is calculated as (timerPeriod * timerClockFreq) - 1
+ * CAPTURE_0_INST_LOAD_VALUE = (0 ms * 40000000 Hz) - 1
+ */
+static const DL_TimerG_CaptureConfig gCAPTURE_0CaptureConfig = {
+    .captureMode    = DL_TIMER_CAPTURE_MODE_EDGE_TIME,
+    .period         = CAPTURE_0_INST_LOAD_VALUE,
+    .startTimer     = DL_TIMER_STOP,
+    .edgeCaptMode   = DL_TIMER_CAPTURE_EDGE_DETECTION_MODE_RISING,
+    .inputChan      = DL_TIMER_INPUT_CHAN_0,
+    .inputInvMode   = DL_TIMER_CC_INPUT_INV_NOINVERT,
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_CAPTURE_0_init(void) {
+
+    DL_TimerG_setClockConfig(CAPTURE_0_INST,
+        (DL_TimerG_ClockConfig *) &gCAPTURE_0ClockConfig);
+
+    DL_TimerG_initCaptureMode(CAPTURE_0_INST,
+        (DL_TimerG_CaptureConfig *) &gCAPTURE_0CaptureConfig);
+    DL_TimerG_enableClock(CAPTURE_0_INST);
+
+}
 
 
 /*

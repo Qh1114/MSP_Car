@@ -7,8 +7,10 @@
 #include "Usart.h"
 static float accSensitivity   = 0.244f;   //加速度的最小分辨率 mg/LSB
 static float gyroSensitivity  = 32.8f;    //陀螺仪的最小分辨率
+
 #define ICM42688_OFFSET_SAMPLE_COUNT 100
 #define FIFO_BUF_SIZE  400
+
 uint8_t  FIFO_Buffer[FIFO_BUF_SIZE];
 bool     ICM42688_is_initialized = false;
 uint16_t data_length = 0;
@@ -344,8 +346,6 @@ int8_t bsp_Icm42688RegCfg(void)
     //reg_val &= 0 ;            //0:低电平有效 1:高电平有效
     icm42688_write_reg(ICM42688_INT_CONFIG, reg_val);
 
-    //icm42688_write_reg(ICM42688_TMST_CONFIG, 0x37);
-
     icm42688_write_reg(ICM42688_SIGNAL_PATH_RESET, 0x02); //清空fifo
 
 
@@ -504,47 +504,6 @@ int8_t bsp_IcmGetRawData(icm42688RealData_t* accData, icm42688RealData_t* GyroDa
     return 0;
 }
 
-//uint64_t start_time = 0, end_time = 0;
-void ICM42688_UnBlocking_CallBack(void)
-{
-    //start_time = Get_us();
-    if (!ICM42688_is_initialized) {
-        return;
-    }
-
-    if(data_length != 0)
-    {
-        return;
-    }
-    if (DL_GPIO_readPins(ICM_ICM_INT_PORT, ICM_ICM_INT_PIN)) {
-        return;
-    }
-
-    if (!SPI_TryLock(SPI_ICM42688)) {
-        return;
-    }
-
-    // 读 INT_STATUS 清除中断（独立CS周期）
-    icm_cs_low();
-    icm_spi_transfer_byte(ICM42688_INT_STATUS | 0x80);
-    icm_spi_transfer_byte(0xFF);
-    icm_cs_high();
-
-    // 读 FIFO 数据（新CS周期）
-    icm_cs_low();
-    icm_spi_transfer_byte(ICM42688_FIFO_DATA | 0x80);
-    for(uint16_t i = 0; i < 16; i++)
-    {
-        FIFO_Buffer[i] = icm_spi_transfer_byte(0xFF);
-    }
-    data_length = 16;
-    icm_cs_high();
-    SPI_Unlock(SPI_ICM42688);
-    //end_time = Get_us();
-    //Uart0_Printf("ICM42688 UnBlocking Callback Time: %d us\n", (uint32_t)(end_time - start_time));
-
-}
-
 uint16_t ICM42688_Get_FIFO_Data(uint8_t* buf)
 {
     if (!ICM42688_is_initialized) {
@@ -574,56 +533,7 @@ uint16_t ICM42688_Get_FIFO_Data_Length(void)
     return data_length;
 }
    
-uint16_t last_timestamp = 0;
-bool timestamp_initialized = false;
-//@brief 从FIFO中获取加速度和陀螺仪的实际物理值，并计算时间戳差值
-//注意：调用此函数前应先调用ICM42688_Get_FIFO_Data_Length()确认FIFO中有数据
-//@param accData: 输出参数，存储加速度数据 GyroData: 输出参数，存储陀螺仪数据 delta_time: 输出参数，存储当前数据与上次数据的时间戳差值（单位：us）
-//返回值：无
-void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData,uint16_t* delta_time)
-{
-    if (!ICM42688_is_initialized) {
-        return;
-    }
-    if(data_length == 0)
-    {
-        return;
-    }
-    icm42688RawData_t accRaw;
-    icm42688RawData_t gyroRaw;
-    // NVIC_DisableIRQ(TIMER_2ms_INST_INT_IRQN);
-    accRaw.x  = ((uint16_t)FIFO_Buffer[1] << 8)  | FIFO_Buffer[2];
-    accRaw.y  = ((uint16_t)FIFO_Buffer[3] << 8)  | FIFO_Buffer[4];
-    accRaw.z  = ((uint16_t)FIFO_Buffer[5] << 8)  | FIFO_Buffer[6];
-    gyroRaw.x = ((uint16_t)FIFO_Buffer[7] << 8)  | FIFO_Buffer[8];
-    gyroRaw.y = ((uint16_t)FIFO_Buffer[9] << 8)  | FIFO_Buffer[10];
-    gyroRaw.z = ((uint16_t)FIFO_Buffer[11] << 8) | FIFO_Buffer[12];   
 
-    uint16_t timestamp = ((uint16_t)FIFO_Buffer[14] << 8) | FIFO_Buffer[15];
-    if(!timestamp_initialized) {
-        last_timestamp = timestamp;
-        timestamp_initialized = true;
-        *delta_time = 10000; //第一次读取时，假设与上次数据的时间戳差值为10000us（即10ms）
-    }else {
-        if(timestamp >= last_timestamp) {
-            *delta_time = timestamp - last_timestamp;
-        } else {
-            *delta_time = (0xFFFF - last_timestamp) + timestamp + 1; //处理时间戳溢出
-        }
-    }
-    last_timestamp = timestamp;
-    data_length = 0;
-    // NVIC_ClearPendingIRQ(TIMER_2ms_INST_INT_IRQN);
-    // NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
-
-
-    accData->x = (float)(accRaw.x * accSensitivity);
-    accData->y = (float)(accRaw.y * accSensitivity);
-    accData->z = (float)(accRaw.z * accSensitivity);
-    GyroData->x = (float)(gyroRaw.x * gyroSensitivity);
-    GyroData->y = (float)(gyroRaw.y * gyroSensitivity);
-    GyroData->z = (float)(gyroRaw.z * gyroSensitivity);
-}
 
 void ICM42688_Getoffset(float* accOffset_out, float* gyroOffset_out)
 {
@@ -635,14 +545,13 @@ void ICM42688_Getoffset(float* accOffset_out, float* gyroOffset_out)
     icm42688RealData_t gyro = {0};
     icm42688RealData_t accSum = {0};
     icm42688RealData_t gyroSum = {0};
-    uint16_t dummy_dt;
     for(uint16_t i = 0; i < ICM42688_OFFSET_SAMPLE_COUNT; i++)
     {
         // 等待并读取数据，用data_length判断是否真的读到了
         while (data_length < 16) {
             ICM42688_UnBlocking_CallBack();
         }
-        ICM42688_FIFO_Get_RealData(&acc, &gyro, &dummy_dt);
+        ICM42688_FIFO_Get_RealData(&acc, &gyro);
         accSum.x += acc.x;
         accSum.y += acc.y;
         accSum.z += acc.z;
@@ -656,4 +565,57 @@ void ICM42688_Getoffset(float* accOffset_out, float* gyroOffset_out)
     gyroOffset_out[0] = gyroSum.x / ICM42688_OFFSET_SAMPLE_COUNT;
     gyroOffset_out[1] = gyroSum.y / ICM42688_OFFSET_SAMPLE_COUNT;
     gyroOffset_out[2] = gyroSum.z / ICM42688_OFFSET_SAMPLE_COUNT;
+}
+
+//@brief 从FIFO中获取加速度和陀螺仪的实际物理值，并计算时间戳差值
+//注意：调用此函数前应先调用ICM42688_Get_FIFO_Data_Length()确认FIFO中有数据
+//@param accData: 输出参数，存储加速度数据 GyroData: 输出参数，存储陀螺仪数据 delta_time: 输出参数，存储当前数据与上次数据的时间戳差值（单位：us）
+//返回值：无
+void ICM42688_FIFO_Get_RealData(icm42688RealData_t* accData, icm42688RealData_t* GyroData)
+{
+    if (!ICM42688_is_initialized)   return;
+    icm42688RawData_t accRaw;
+    icm42688RawData_t gyroRaw;
+    accRaw.x  = ((uint16_t)FIFO_Buffer[1] << 8)  | FIFO_Buffer[2];
+    accRaw.y  = ((uint16_t)FIFO_Buffer[3] << 8)  | FIFO_Buffer[4];
+    accRaw.z  = ((uint16_t)FIFO_Buffer[5] << 8)  | FIFO_Buffer[6];
+    gyroRaw.x = ((uint16_t)FIFO_Buffer[7] << 8)  | FIFO_Buffer[8];
+    gyroRaw.y = ((uint16_t)FIFO_Buffer[9] << 8)  | FIFO_Buffer[10];
+    gyroRaw.z = ((uint16_t)FIFO_Buffer[11] << 8) | FIFO_Buffer[12];   
+    data_length = 0;
+
+    accData->x = (float)(accRaw.x * accSensitivity);
+    accData->y = (float)(accRaw.y * accSensitivity);
+    accData->z = (float)(accRaw.z * accSensitivity);
+    GyroData->x = (float)(gyroRaw.x * gyroSensitivity);
+    GyroData->y = (float)(gyroRaw.y * gyroSensitivity);
+    GyroData->z = (float)(gyroRaw.z * gyroSensitivity);
+}
+
+void ICM42688_UnBlocking_CallBack(void)
+{
+    if (!ICM42688_is_initialized) return;
+
+    if(data_length != 0)        return;
+    
+    if (DL_GPIO_readPins(ICM_ICM_INT_PORT, ICM_ICM_INT_PIN))return;
+
+    if (!SPI_TryLock(SPI_ICM42688))  return;
+
+    // 读 INT_STATUS 清除中断（独立CS周期）
+    icm_cs_low();
+    icm_spi_transfer_byte(ICM42688_INT_STATUS | 0x80);
+    icm_spi_transfer_byte(0xFF);
+    icm_cs_high();
+
+    // 读 FIFO 数据（新CS周期）
+    icm_cs_low();
+    icm_spi_transfer_byte(ICM42688_FIFO_DATA | 0x80);
+    for(uint16_t i = 0; i < 16; i++)
+    {
+        FIFO_Buffer[i] = icm_spi_transfer_byte(0xFF);
+    }
+    data_length = 16;
+    icm_cs_high();
+    SPI_Unlock(SPI_ICM42688);
 }

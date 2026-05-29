@@ -49,11 +49,18 @@ bool SPI_CS(uint8_t state, spi_channel_t channel)
 
 bool SPI_TryLock(spi_channel_t channel)
 {
+    // 关中断保证检查和赋值是原子的，防止主程序和ISR同时拿到锁
+    uint32_t primask = __get_PRIMASK();
+    __disable_irq();
+
     if (spi_cs_locked) {
+        if (!(primask & 1)) __enable_irq();
         return false;
     }
     spi_cs_locked = true;
     spi_cs_locked_channel = channel;
+
+    if (!(primask & 1)) __enable_irq(); // 从ISR调用时不要错误开中断
     return true;
 }
 

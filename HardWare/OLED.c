@@ -34,13 +34,13 @@ void OLED_DisplayTurn(u8 i)
 }
 
 void OLED_WR_Byte(u8 dat,u8 cmd)
-{	
-	while(SPI_CS(1, SPI_OLED)==false); //等待SPI总线空闲
+{
+	while(!SPI_TryLock(SPI_OLED));   //获取SPI锁，防止ISR抢占
+	SPI_CS(1, SPI_OLED);
 	if(cmd)
 	  OLED_DC_Set();
-	else 
-	  OLED_DC_Clr();		  
-//	OLED_CS_Clr();
+	else
+	  OLED_DC_Clr();
 	//发送数据
     DL_SPI_transmitData8(SPI_1_INST, dat);
     //等待SPI总线空闲
@@ -49,9 +49,9 @@ void OLED_WR_Byte(u8 dat,u8 cmd)
         //等待SPI总线空闲
     while(DL_SPI_isBusy(SPI_1_INST));
 
-//	OLED_CS_Set();
 	SPI_CS(0, SPI_OLED);
-	OLED_DC_Set();   	  
+	SPI_Unlock(SPI_OLED);           //释放锁
+	OLED_DC_Set();
 }
 
 // Turn on OLED output.

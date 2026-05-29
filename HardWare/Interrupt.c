@@ -1,7 +1,6 @@
 #include "ti_msp_dl_config.h"
 #include "my_vl53l1x.h"
 #include "Usart.h"
-#include "IMU.h"
 #include "ADC.h"
 #include "Encoder.h"
 #include "Bat.h"
@@ -9,9 +8,9 @@
 #include "Motor.h"
 #include "multi_button.h"
 #include "icm42688.h"
-#include "IMU_.h"
-float ypr[3];
-uint32_t count=0;
+#include "IMU.h"
+#include "Drive.h"
+
 void GROUP1_IRQHandler(void)
 {
     uint32_t gpioA = DL_GPIO_getEnabledInterruptStatus(GPIOA, LASER_GPIO1_PIN | LASER_GPIO3_PIN | ENCODER_ENB_R_PIN);
@@ -62,24 +61,19 @@ void GROUP1_IRQHandler(void)
 void TIMER_10ms_INST_IRQHandler(void)
 {
     ////start_time = Get_us();
-    //IMU_Callback();
     Bat_Callback();
     Encoder_10ms_Callback();
+    Drive_Callback();
     Motor_Callback();
     button_ticks();
-    //IMU_getYawPitchRoll(ypr);
     //count++;
     //end_time = Get_us();
     //Uart0_Printf("10ms Callback Time: %u us\n", (uint32_t)(end_time - start_time));
 }
-//uint64_t start_time = 0, end_time = 0;
+
 void TIMER_2ms_INST_IRQHandler(void)
 {
-   // start_time = Get_us();
-    //ICM42688_UnBlocking_CallBack();
-    IMU_Update();
-    //end_time = Get_us();
-    //Uart0_Printf("2ms Callback Time: %d us\n", (uint32_t)(end_time - start_time));
+    IMU_Callback();
 }
 
 void ADC0_IRQHandler(void)

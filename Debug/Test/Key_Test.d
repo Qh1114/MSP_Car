@@ -1,7 +1,7 @@
 # FIXED
 
-Middle/IMU_.o: ../Middle/IMU_.c \
- C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/icm42688.h \
+Test/Key_Test.o: ../Test/Key_Test.c ../Test/Key_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
  ti_msp_dl_config.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h \
@@ -85,17 +85,9 @@ Middle/IMU_.o: ../Middle/IMU_.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/Fusion.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionAhrs.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionConvention.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionMath.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionBias.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionCompass.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionModel.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionRemap.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h ../Middle/IMU_.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h
-C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/icm42688.h:
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h
+../Test/Key_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -179,14 +171,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/Fusion.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionAhrs.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionConvention.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionMath.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionBias.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionCompass.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionModel.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Fusion/FusionRemap.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
-../Middle/IMU_.h:
-C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Delay.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h:

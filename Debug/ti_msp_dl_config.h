@@ -141,10 +141,25 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 
 
 
+/* Defines for CAPTURE_0 */
+#define CAPTURE_0_INST                                                   (TIMG0)
+#define CAPTURE_0_INST_IRQHandler                               TIMG0_IRQHandler
+#define CAPTURE_0_INST_INT_IRQN                                 (TIMG0_INT_IRQn)
+#define CAPTURE_0_INST_LOAD_VALUE                                           (0U)
+/* GPIO defines for channel 0 */
+#define GPIO_CAPTURE_0_C0_PORT                                             GPIOA
+#define GPIO_CAPTURE_0_C0_PIN                                     DL_GPIO_PIN_23
+#define GPIO_CAPTURE_0_C0_IOMUX                                  (IOMUX_PINCM53)
+#define GPIO_CAPTURE_0_C0_IOMUX_FUNC                 IOMUX_PINCM53_PF_TIMG0_CCP0
+
+
+
+
+
 /* Defines for TIMER_10ms */
-#define TIMER_10ms_INST                                                  (TIMG0)
-#define TIMER_10ms_INST_IRQHandler                              TIMG0_IRQHandler
-#define TIMER_10ms_INST_INT_IRQN                                (TIMG0_INT_IRQn)
+#define TIMER_10ms_INST                                                  (TIMG8)
+#define TIMER_10ms_INST_IRQHandler                              TIMG8_IRQHandler
+#define TIMER_10ms_INST_INT_IRQN                                (TIMG8_INT_IRQn)
 #define TIMER_10ms_INST_LOAD_VALUE                                      (49999U)
 /* Defines for TIMER_2ms */
 #define TIMER_2ms_INST                                                   (TIMG7)
@@ -426,6 +441,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 void SYSCFG_DL_PWM_Motor_init(void);
 void SYSCFG_DL_PWM_SERVO_init(void);
 void SYSCFG_DL_PWM_BUZZER_init(void);
+void SYSCFG_DL_CAPTURE_0_init(void);
 void SYSCFG_DL_TIMER_10ms_init(void);
 void SYSCFG_DL_TIMER_2ms_init(void);
 void SYSCFG_DL_I2C_0_init(void);

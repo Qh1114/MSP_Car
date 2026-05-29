@@ -96,11 +96,11 @@ void TB6612_Backward(float duty)
 void TB6612_Brake(void)
 {
     // 刹车：AIN1=1, AIN2=1
+    DL_GPIO_clearPins(STBY_PORT, STBY_PIN);
     DL_GPIO_setPins(LEFT_AIN1_PORT, LEFT_AIN1_PIN);
     DL_GPIO_setPins(LEFT_AIN2_PORT, LEFT_AIN2_PIN);
     DL_GPIO_setPins(RIGHT_BIN1_PORT, RIGHT_BIN1_PIN);
     DL_GPIO_setPins(RIGHT_BIN2_PORT, RIGHT_BIN2_PIN);
-    DL_GPIO_clearPins(STBY_PORT, STBY_PIN);
 
     DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMA_CC_IDX);
     DL_TimerG_setCaptureCompareValue(PWM_INST, 0, PWMB_CC_IDX);

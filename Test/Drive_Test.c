@@ -36,7 +36,7 @@ bool pid_mode = false;
 uint8_t menu_index = 0;
 float Kp_Step = 0.1f, Ki_Step = 0.01f, Kd_Step = 0.01f;
 uint8_t Goal_Angle_Step = 10;
-uint8_t set_state = 0;      //0:Striaght;1:Turn
+uint8_t set_state = 1;      //0:Striaght;1:Turn
 
 static void Drive_Test_Set(void)
 {
@@ -206,19 +206,24 @@ void Drive_Test3(void)
         switch(menu_index)
         {
             case 0:
-                OLED_ShowString(0, 0, "Goal Angle", 16, 0);
+                sprintf(str, "Goal Angle");
+                OLED_ShowString(0, 0, str, 16, 0);
                 break;
             case 1:
-                OLED_ShowString(0, 16, "Kp", 16, 0);
+                sprintf(str, "Kp");
+                OLED_ShowString(0, 16, str, 16, 0);
                 break;
             case 2:
-                OLED_ShowString(0, 32, "Ki", 16, 0);
+                sprintf(str, "Ki");
+                OLED_ShowString(0, 32, str, 16, 0);
                 break;
             case 3:
-                OLED_ShowString(0, 48, "Kd", 16, 0);
+                sprintf(str, "Kd");
+                OLED_ShowString(0, 48, str, 16, 0);
                 break;
         }
         OLED_Refresh();
-        
+
     }
 }
+

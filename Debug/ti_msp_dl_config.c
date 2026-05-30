@@ -255,7 +255,9 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_PULL_UP,
 		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
-    DL_GPIO_initDigitalOutput(GRAYSCALE_OUT_IOMUX);
+    DL_GPIO_initDigitalInputFeatures(GRAYSCALE_OUT_IOMUX,
+		 DL_GPIO_INVERSION_DISABLE, DL_GPIO_RESISTOR_NONE,
+		 DL_GPIO_HYSTERESIS_DISABLE, DL_GPIO_WAKEUP_DISABLE);
 
     DL_GPIO_initDigitalOutput(GRAYSCALE_AD0_IOMUX);
 
@@ -321,7 +323,6 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		LASER_GPIO3_PIN);
     DL_GPIO_clearPins(GPIOB, OLED_OLED_DC_PIN |
 		OLED_OLED_RES_PIN |
-		GRAYSCALE_OUT_PIN |
 		GRAYSCALE_AD0_PIN |
 		GRAYSCALE_AD1_PIN);
     DL_GPIO_setPins(GPIOB, FLASH_FLASH_CS_PIN |
@@ -338,7 +339,6 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		MOTOR_MOTOR_AIN2_PIN |
 		MOTOR_MOTOR_AIN1_PIN |
 		MOTOR_PMOTOR_BIN2_PIN |
-		GRAYSCALE_OUT_PIN |
 		GRAYSCALE_AD0_PIN |
 		GRAYSCALE_AD1_PIN |
 		LASER_XSHUT2_PIN |
@@ -526,21 +526,21 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_Motor_init(void) {
 
 }
 /*
- * Timer clock configuration to be sourced by  / 1 (80000000 Hz)
+ * Timer clock configuration to be sourced by  / 1 (32768 Hz)
  * timerClkFreq = (timerClkSrc / (timerClkDivRatio * (timerClkPrescale + 1)))
- *   80000000 Hz = 80000000 Hz / (1 * (0 + 1))
+ *   32768 Hz = 32768 Hz / (1 * (0 + 1))
  */
 static const DL_TimerA_ClockConfig gPWM_SERVOClockConfig = {
-    .clockSel = DL_TIMER_CLOCK_BUSCLK,
+    .clockSel = DL_TIMER_CLOCK_LFCLK,
     .divideRatio = DL_TIMER_CLOCK_DIVIDE_1,
     .prescale = 0U
 };
 
 static const DL_TimerA_PWMConfig gPWM_SERVOConfig = {
-    .pwmMode = DL_TIMER_PWM_MODE_EDGE_ALIGN,
-    .period = 1000,
+    .pwmMode = DL_TIMER_PWM_MODE_EDGE_ALIGN_UP,
+    .period = 655,
     .isTimerWithFourCC = true,
-    .startTimer = DL_TIMER_STOP,
+    .startTimer = DL_TIMER_START,
 };
 
 SYSCONFIG_WEAK void SYSCFG_DL_PWM_SERVO_init(void) {
@@ -559,21 +559,21 @@ SYSCONFIG_WEAK void SYSCFG_DL_PWM_SERVO_init(void) {
 		DL_TIMERA_CAPTURE_COMPARE_0_INDEX);
 
     DL_TimerA_setCaptCompUpdateMethod(PWM_SERVO_INST, DL_TIMER_CC_UPDATE_METHOD_IMMEDIATE, DL_TIMERA_CAPTURE_COMPARE_0_INDEX);
-    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 1000, DL_TIMER_CC_0_INDEX);
+    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 0, DL_TIMER_CC_0_INDEX);
 
     DL_TimerA_setCaptureCompareOutCtl(PWM_SERVO_INST, DL_TIMER_CC_OCTL_INIT_VAL_LOW,
 		DL_TIMER_CC_OCTL_INV_OUT_DISABLED, DL_TIMER_CC_OCTL_SRC_FUNCVAL,
 		DL_TIMERA_CAPTURE_COMPARE_1_INDEX);
 
     DL_TimerA_setCaptCompUpdateMethod(PWM_SERVO_INST, DL_TIMER_CC_UPDATE_METHOD_IMMEDIATE, DL_TIMERA_CAPTURE_COMPARE_1_INDEX);
-    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 1000, DL_TIMER_CC_1_INDEX);
+    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 0, DL_TIMER_CC_1_INDEX);
 
     DL_TimerA_setCaptureCompareOutCtl(PWM_SERVO_INST, DL_TIMER_CC_OCTL_INIT_VAL_LOW,
 		DL_TIMER_CC_OCTL_INV_OUT_DISABLED, DL_TIMER_CC_OCTL_SRC_FUNCVAL,
 		DL_TIMERA_CAPTURE_COMPARE_3_INDEX);
 
     DL_TimerA_setCaptCompUpdateMethod(PWM_SERVO_INST, DL_TIMER_CC_UPDATE_METHOD_IMMEDIATE, DL_TIMERA_CAPTURE_COMPARE_3_INDEX);
-    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 1000, DL_TIMER_CC_3_INDEX);
+    DL_TimerA_setCaptureCompareValue(PWM_SERVO_INST, 0, DL_TIMER_CC_3_INDEX);
 
     DL_TimerA_enableClock(PWM_SERVO_INST);
 

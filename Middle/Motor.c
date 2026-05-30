@@ -29,28 +29,40 @@ void Motor_Init(void)
 void Motor_SetSpeed(MotorType motor, float speed)
 {
     if (motor == MOTOR_LEFT) {
-        if(fabsf(speed) < 330.0f) {
-            PID_SetK(&pid_left, 0.006f, 0.5f, 0.0f); // 死区处理
+        if(fabsf(speed) < 30.0f) {
+            PID_SetK(&pid_left, 0.03f, 0.5f, 0.0f); // 死区处理
+        }else if(fabsf(speed) < 200.0f) {
+            PID_SetK(&pid_left, 0.03f, 0.5f, 0.000001); // 死区处理
+        }else if(fabsf(speed) < 400.0f) {
+            PID_SetK(&pid_left, 0.04f, 0.6f, 0.000001); // 中速
         }else if(fabsf(speed) < 500.0f) {
-            PID_SetK(&pid_left, 0.011f, 0.45f, 0.0f); // 中速
-        }else if(fabsf(speed) < 700.0f) {
-            PID_SetK(&pid_left, 0.01f, 0.75f, 0.0f); // 高速
+            PID_SetK(&pid_left, 0.045f, 0.68f, 0.000001); // 高速
+        }else if(fabsf(speed) < 650.0f) {
+            PID_SetK(&pid_left, 0.045f, 0.8f, 0.000001f); // 高速
+        }else if(fabsf(speed) < 800.0f) {
+            PID_SetK(&pid_left, 0.05f, 1.0f, 0.000001f); // 高速
         }else {
-            PID_SetK(&pid_left, 0.013f, 0.8f, 0.0f); // 超高速
+            PID_SetK(&pid_left, 0.05f, 1.2f, 0.000005f); // 超高速
         }
         PID_SetGoal(&pid_left, speed);
         Goal_Speed_Left = speed;
         cmd_left_speed = true;
     } 
     if (motor == MOTOR_RIGHT) {
-        if(fabsf(speed) < 330.0f) {
-            PID_SetK(&pid_right, 0.006f, 0.5f, 0.0f); // 死区处理
+        if(fabsf(speed) < 30.0f) {
+            PID_SetK(&pid_right, 0.03f, 0.5f, 0.0); // 死区处理
+        }else if(fabsf(speed) < 200.0f) {
+            PID_SetK(&pid_right, 0.03f, 0.5f, 0.000001); // 死区处理
+        }else if(fabsf(speed) < 400.0f) {
+            PID_SetK(&pid_right, 0.04f, 0.6f, 0.000001); // 中速
         }else if(fabsf(speed) < 500.0f) {
-            PID_SetK(&pid_right, 0.011f, 0.45f, 0.0f); // 中速
-        }else if(fabsf(speed) < 700.0f) {
-            PID_SetK(&pid_right, 0.01f, 0.75f, 0.0f); // 高速
+            PID_SetK(&pid_right, 0.045f, 0.68f, 0.000001); // 高速
+        }else if(fabsf(speed) < 650.0f) {
+            PID_SetK(&pid_right, 0.045f, 0.8f, 0.000001); // 高速
+        }else if(fabsf(speed) < 800.0f) {
+            PID_SetK(&pid_right, 0.05f, 1.0f, 0.000001); // 高速
         }else {
-            PID_SetK(&pid_right, 0.013f, 0.8f, 0.0f); // 高速
+            PID_SetK(&pid_right, 0.05f, 1.2f, 0.000005f); // 超高速
         }
         PID_SetGoal(&pid_right, speed);
         Goal_Speed_Right = speed;

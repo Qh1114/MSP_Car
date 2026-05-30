@@ -87,6 +87,7 @@ main.o: ../main.c \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Grayscale.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Uart_Test.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/vl53l1x_Test.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ICM_Test.h \
@@ -96,7 +97,9 @@ main.o: ../main.c \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/TB6612_Test.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Motor_Test.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Key_Test.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Drive_Test.h
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Drive_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Grayscale_Test.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Servo_Test.h
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/DeviceFamily.h:
@@ -183,6 +186,7 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Grayscale.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Uart_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/vl53l1x_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/ICM_Test.h:
@@ -193,3 +197,5 @@ C:/Users/Qh/Desktop/ccs/MSP_Car/Test/TB6612_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Motor_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Key_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Drive_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Grayscale_Test.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Test/Servo_Test.h:

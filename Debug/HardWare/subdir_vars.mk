@@ -9,6 +9,7 @@ C_SRCS += \
 ../HardWare/ADC.c \
 ../HardWare/Delay.c \
 ../HardWare/Encoder.c \
+../HardWare/Grayscale.c \
 ../HardWare/Interrupt.c \
 ../HardWare/OLED.c \
 ../HardWare/PID.c \
@@ -22,6 +23,7 @@ C_DEPS += \
 ./HardWare/ADC.d \
 ./HardWare/Delay.d \
 ./HardWare/Encoder.d \
+./HardWare/Grayscale.d \
 ./HardWare/Interrupt.d \
 ./HardWare/OLED.d \
 ./HardWare/PID.d \
@@ -35,6 +37,7 @@ OBJS += \
 ./HardWare/ADC.o \
 ./HardWare/Delay.o \
 ./HardWare/Encoder.o \
+./HardWare/Grayscale.o \
 ./HardWare/Interrupt.o \
 ./HardWare/OLED.o \
 ./HardWare/PID.o \
@@ -48,6 +51,7 @@ OBJS__QUOTED += \
 "HardWare\ADC.o" \
 "HardWare\Delay.o" \
 "HardWare\Encoder.o" \
+"HardWare\Grayscale.o" \
 "HardWare\Interrupt.o" \
 "HardWare\OLED.o" \
 "HardWare\PID.o" \
@@ -61,6 +65,7 @@ C_DEPS__QUOTED += \
 "HardWare\ADC.d" \
 "HardWare\Delay.d" \
 "HardWare\Encoder.d" \
+"HardWare\Grayscale.d" \
 "HardWare\Interrupt.d" \
 "HardWare\OLED.d" \
 "HardWare\PID.d" \
@@ -74,6 +79,7 @@ C_SRCS__QUOTED += \
 "../HardWare/ADC.c" \
 "../HardWare/Delay.c" \
 "../HardWare/Encoder.c" \
+"../HardWare/Grayscale.c" \
 "../HardWare/Interrupt.c" \
 "../HardWare/OLED.c" \
 "../HardWare/PID.c" \

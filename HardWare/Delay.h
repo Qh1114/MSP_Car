@@ -1,6 +1,7 @@
 #ifndef __DELAY_H__
 #define __DELAY_H__
 
+#include "ti_msp_dl_config.h"
 #define PERIODIC_R(T) static uint32_t lastTick = 0; \
                     if (Get_ms() - lastTick < T) \
                     { \

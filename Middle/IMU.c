@@ -24,7 +24,14 @@ void IMU_init(void)
     FusionAhrsInitialise(&ahrs);
     bsp_Icm42688Init();
 
-    ICM42688_Getoffset(&accelerometerOffset, &gyroscopeOffset); //获取初始偏移值
+    float offset[6];
+    ICM42688_Getoffset(&offset[0], &offset[3]); //获取初始偏移值
+    gyroscopeOffset.axis.x = offset[3];
+    gyroscopeOffset.axis.y = offset[4];
+    gyroscopeOffset.axis.z = offset[5];
+    accelerometerOffset.axis.x = offset[0] / 1000.0f; // mg → g
+    accelerometerOffset.axis.y = offset[1] / 1000.0f;
+    accelerometerOffset.axis.z = offset[2] / 1000.0f;
 
     const FusionAhrsSettings settings = {
         .convention = FusionConventionNwu,
@@ -77,15 +84,13 @@ void IMU_Callback(void)
     while (data_length >= 16) {
         icm42688RealData_t accData;
         icm42688RealData_t gyroData;
-        uint16_t delta_time;
-        float delta_time_s;
         FusionVector accelerometer = {.array = {0.0f, 0.0f, 1.0f}};
         FusionVector gyroscope = {.array = {0.0f, 0.0f, 0.0f}};
         ICM42688_FIFO_Get_RealData(&accData, &gyroData);
 
-        accelerometer.axis.x = accData.x / 1000.0f; // 将mg转换为g
-        accelerometer.axis.y = accData.y / 1000.0f;
-        accelerometer.axis.z = accData.z / 1000.0f;
+        accelerometer.axis.x = accData.x ; 
+        accelerometer.axis.y = accData.y ;
+        accelerometer.axis.z = accData.z ;
         gyroscope.axis.x = gyroData.x;
         gyroscope.axis.y = gyroData.y;
         gyroscope.axis.z = gyroData.z;

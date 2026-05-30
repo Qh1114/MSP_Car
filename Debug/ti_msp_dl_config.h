@@ -107,7 +107,7 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 #define PWM_SERVO_INST                                                     TIMA0
 #define PWM_SERVO_INST_IRQHandler                               TIMA0_IRQHandler
 #define PWM_SERVO_INST_INT_IRQN                                 (TIMA0_INT_IRQn)
-#define PWM_SERVO_INST_CLK_FREQ                                         80000000
+#define PWM_SERVO_INST_CLK_FREQ                                            32768
 /* GPIO defines for channel 0 */
 #define GPIO_PWM_SERVO_C0_PORT                                             GPIOA
 #define GPIO_PWM_SERVO_C0_PIN                                      DL_GPIO_PIN_0
@@ -142,24 +142,24 @@ bool SYSCFG_DL_SYSCTL_SYSPLL_init(void);
 
 
 /* Defines for CAPTURE_0 */
-#define CAPTURE_0_INST                                                   (TIMG0)
-#define CAPTURE_0_INST_IRQHandler                               TIMG0_IRQHandler
-#define CAPTURE_0_INST_INT_IRQN                                 (TIMG0_INT_IRQn)
+#define CAPTURE_0_INST                                                   (TIMG8)
+#define CAPTURE_0_INST_IRQHandler                               TIMG8_IRQHandler
+#define CAPTURE_0_INST_INT_IRQN                                 (TIMG8_INT_IRQn)
 #define CAPTURE_0_INST_LOAD_VALUE                                           (0U)
 /* GPIO defines for channel 0 */
 #define GPIO_CAPTURE_0_C0_PORT                                             GPIOA
-#define GPIO_CAPTURE_0_C0_PIN                                     DL_GPIO_PIN_23
-#define GPIO_CAPTURE_0_C0_IOMUX                                  (IOMUX_PINCM53)
-#define GPIO_CAPTURE_0_C0_IOMUX_FUNC                 IOMUX_PINCM53_PF_TIMG0_CCP0
+#define GPIO_CAPTURE_0_C0_PIN                                     DL_GPIO_PIN_21
+#define GPIO_CAPTURE_0_C0_IOMUX                                  (IOMUX_PINCM46)
+#define GPIO_CAPTURE_0_C0_IOMUX_FUNC                 IOMUX_PINCM46_PF_TIMG8_CCP0
 
 
 
 
 
 /* Defines for TIMER_10ms */
-#define TIMER_10ms_INST                                                  (TIMG8)
-#define TIMER_10ms_INST_IRQHandler                              TIMG8_IRQHandler
-#define TIMER_10ms_INST_INT_IRQN                                (TIMG8_INT_IRQn)
+#define TIMER_10ms_INST                                                  (TIMG0)
+#define TIMER_10ms_INST_IRQHandler                              TIMG0_IRQHandler
+#define TIMER_10ms_INST_INT_IRQN                                (TIMG0_INT_IRQn)
 #define TIMER_10ms_INST_LOAD_VALUE                                      (49999U)
 /* Defines for TIMER_2ms */
 #define TIMER_2ms_INST                                                   (TIMG7)

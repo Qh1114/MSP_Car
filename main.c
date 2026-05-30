@@ -34,6 +34,7 @@
 #include "Usart.h"
 #include "spi.h"
 #include "Key.h"
+#include "Grayscale.h"
 
 
 #include "Uart_Test.h"
@@ -46,6 +47,8 @@
 #include "Motor_Test.h"
 #include "Key_Test.h"
 #include "Drive_Test.h"
+#include "Grayscale_Test.h"
+#include "Servo_Test.h"
 int main(void)
 {
     SYSCFG_DL_init();
@@ -60,19 +63,23 @@ int main(void)
 
     NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_2ms_INST);
-
-    
-    TB6612_Test1(); 
+    Servo_Test();
+    //ICM42688_Test5();    
+    // Grayscale_Test1();
+    // Grayscale_Test2();
+    // VL53L1X_Test2();
     Drive_Test3();
+    Motor_Test2();
+    TB6612_Test1(); 
+    
     //Drive_Test1();
     Drive_Test2();
     Key_Test();
 
-    //VL53L1X_Test2();
-    //Motor_Test2();
+    //
     //Motor_Test1();
     //Uart_Test3();
-    ICM42688_Test5();
+ 
     ICM42688_Test4();
     ICM42688_Test3();   
     //ICM42688_Test1();

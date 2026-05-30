@@ -1,10 +1,6 @@
-#include "servo.h"
+#include "Servo.h"
 #include "ti_msp_dl_config.h"
 
-// void Servo_Init(void)
-// {
-//     SYSCFG_DL_SERVO_PWM_init();
-// }
 
 void Servo_SetPosition(ServoId servo_id, float duty)
 {

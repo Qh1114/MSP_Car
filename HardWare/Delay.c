@@ -42,7 +42,7 @@ uint64_t Get_us(void)
 
     uint32_t us_in_ms = elapsed_ticks / ticks_per_us;
 
-    return ms1 * 1000u + us_in_ms;
+    return (uint64_t)ms1 * 1000u + us_in_ms;
 }
 
 //系统计时

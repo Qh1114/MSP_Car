@@ -13,9 +13,9 @@ void Drive_Init(void)
 {
     Motor_Init();
     IMU_init();
-    PID_Init(&pid_straight_drive, 20.0f, 0.0f, 1.1f);
+    PID_Init(&pid_straight_drive, 4.0f, 0.0f, 0.0f);
     PID_SetLimit(&pid_straight_drive, 1000.0f, -1000.0f, 200.0f, -200.0f);
-    PID_Init(&pid_angle_drive, 4.0f, 0.0f, 0.0f);
+    PID_Init(&pid_angle_drive, 10.0f, 0.0f, 0.39f);
     PID_SetLimit(&pid_angle_drive, 1000.0f, -1000.0f, 200.0f, -200.0f);
     Goal_Straight_Angle = 0.0f;
     Goal_Turn_Angle = 0.0f;
@@ -81,15 +81,13 @@ void Drive_Callback(void)
         if(angle_tick >= 3) {
             float current_angle = IMU_GetYaw();
             float angle_error = CalculateAngleError(Goal_Turn_Angle, current_angle);
-            if(fabsf(angle_error) < 7.0f) {
-                // 角度误差较小，减小PID输出以避免过度调整
-                PID_SetLimit(&pid_angle_drive, 500.0f, -500.0f, 100.0f, -100.0f);
-                PID_SetK(&pid_angle_drive, 8.0f, 0.0f, 0.5f); // 减小kp以降低响应速度
-            } else {
-                // 角度误差较大，恢复正常PID输出范围
-                PID_SetLimit(&pid_angle_drive, 1000.0f, -1000.0f, 200.0f, -200.0f);
-                PID_SetK(&pid_angle_drive, 20.0f, 0.0f, 1.12f); // 增加kp以提高响应速度
-            }
+            // if(fabsf(angle_error) < 7.0f) {
+            //     PID_SetK(&pid_angle_drive, 8.0f, 0.0f, 0.4f);
+            // } else if(fabsf(angle_error) < 15.0f) {
+            //     PID_SetK(&pid_angle_drive, 12.0f, 0.0f, 0.7f);
+            // } else {
+            //     PID_SetK(&pid_angle_drive, 16.0f, 0.0f, 1.12f);
+            // }
             float correction = PID_Compute(&pid_angle_drive, angle_error);
             Motor_SetSpeed(MOTOR_LEFT, -correction);
             Motor_SetSpeed(MOTOR_RIGHT, correction);
@@ -102,8 +100,8 @@ void Drive_Callback(void)
             float current_angle = IMU_GetYaw();
             float angle_error = CalculateAngleError(Goal_Straight_Angle, current_angle);
             float correction = PID_Compute(&pid_straight_drive, angle_error);
-            Motor_SetSpeed(MOTOR_LEFT, speed + correction);
-            Motor_SetSpeed(MOTOR_RIGHT, speed - correction);
+            Motor_SetSpeed(MOTOR_LEFT, speed - correction);
+            Motor_SetSpeed(MOTOR_RIGHT, speed + correction);
             straight_tick = 0;
         }
     }

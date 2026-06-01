@@ -30,7 +30,7 @@ void Drive_Test2(void)
     }
 }
 
-float Kp = 1.0f, Ki = 0.0f, Kd = 0.0f;
+float Kp = 10.0f, Ki = 0.0f, Kd = 0.0f;
 int Goal_Angle = 0;
 bool pid_mode = false;
 uint8_t menu_index = 0;

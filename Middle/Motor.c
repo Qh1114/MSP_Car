@@ -18,8 +18,8 @@ void Motor_Init(void)
     Bat_Init();
     PID_Init(&pid_left, 0.01f, 0.0f, 0.0f);
     PID_Init(&pid_right, 0.01f, 0.0f, 0.0f);
-    PID_SetLimit(&pid_left, 7.0f, -7.0f, 2.0f, -2.0f);
-    PID_SetLimit(&pid_right, 7.0f, -7.0f, 2.0f, -2.0f);
+    PID_SetLimit(&pid_left, 7.0f, -7.0f, 5.0f, -5.0f);
+    PID_SetLimit(&pid_right, 7.0f, -7.0f, 5.0f, -5.0f);
     Goal_Speed_Left = 0.0f;
     Goal_Speed_Right = 0.0f;
     cmd_right_speed = false;
@@ -29,41 +29,86 @@ void Motor_Init(void)
 void Motor_SetSpeed(MotorType motor, float speed)
 {
     if (motor == MOTOR_LEFT) {
+        // if(fabsf(speed) < 100.0f) {
+        //     PID_SetK(&pid_left, 0.02f, 0.2f, 0.0); 
+        // }else if(fabsf(speed) < 250.0f) {
+        //     PID_SetK(&pid_left, 0.025f, 0.15f, 0.0);
+        // }else if(fabsf(speed) < 350.0f) {
+        //     PID_SetK(&pid_left, 0.025f, 0.18f, 0.0);
+        // }else if(fabsf(speed) < 450.0f) {
+        //     PID_SetK(&pid_left, 0.025f, 0.23f, 0.0);
+        // }else if(fabsf(speed) < 600.0f) {
+        //     PID_SetK(&pid_left, 0.025f, 0.3f, 0.0);
+        // }else if(fabsf(speed) < 800.0f) {
+        //     PID_SetK(&pid_left, 0.025f, 0.4f, 0.0);
+        // }else {
+        //     PID_SetK(&pid_left, 0.025f, 0.45f, 0.0);
+        // }
         if(fabsf(speed) < 30.0f) {
-            PID_SetK(&pid_left, 0.03f, 0.5f, 0.0f); // 死区处理
-        }else if(fabsf(speed) < 200.0f) {
-            PID_SetK(&pid_left, 0.03f, 0.5f, 0.000001); // 死区处理
+            PID_SetK(&pid_left, 0.03f, 0.3f, 0.0); // 死区处理
+        }else if(fabsf(speed) < 250.0f) {
+            PID_SetK(&pid_left, 0.02f, 0.2f, 0.0); // 死区处理
         }else if(fabsf(speed) < 400.0f) {
-            PID_SetK(&pid_left, 0.04f, 0.6f, 0.000001); // 中速
+            PID_SetK(&pid_left, 0.01f, 0.25f, 0.0); // 中速
         }else if(fabsf(speed) < 500.0f) {
-            PID_SetK(&pid_left, 0.045f, 0.68f, 0.000001); // 高速
-        }else if(fabsf(speed) < 650.0f) {
-            PID_SetK(&pid_left, 0.045f, 0.8f, 0.000001f); // 高速
+            PID_SetK(&pid_left, 0.01f, 0.3f, 0.0); // 高速
+        }else if(fabsf(speed) < 600.0f) {
+            PID_SetK(&pid_left, 0.01f, 0.35f, 0.0); // 高速
         }else if(fabsf(speed) < 800.0f) {
-            PID_SetK(&pid_left, 0.05f, 1.0f, 0.000001f); // 高速
+            PID_SetK(&pid_left, 0.01f, 0.43f, 0.0); // 高速
         }else {
-            PID_SetK(&pid_left, 0.05f, 1.2f, 0.000005f); // 超高速
+            PID_SetK(&pid_left, 0.01f, 0.5f, 0.0f); // 超高速
         }
         PID_SetGoal(&pid_left, speed);
         Goal_Speed_Left = speed;
         cmd_left_speed = true;
     } 
     if (motor == MOTOR_RIGHT) {
+        // if(fabsf(speed) < 100.0f) {
+        //     PID_SetK(&pid_right, 0.02f, 0.2f, 0.0);
+        // }else if(fabsf(speed) < 250.0f) {
+        //     PID_SetK(&pid_right, 0.025f, 0.15f, 0.0);
+        // }else if(fabsf(speed) < 350.0f) {
+        //     PID_SetK(&pid_right, 0.025f, 0.18f, 0.0);   
+        // }else if(fabsf(speed) < 450.0f) {
+        //     PID_SetK(&pid_right, 0.025f, 0.23f, 0.0);
+        // }else if(fabsf(speed) < 600.0f) {
+        //     PID_SetK(&pid_right, 0.025f, 0.3f, 0.0);    
+        // }else if(fabsf(speed) < 800.0f) {
+        //     PID_SetK(&pid_right, 0.025f, 0.4f, 0.0);
+        // }else {
+        //     PID_SetK(&pid_right, 0.025f, 0.45f, 0.0);
+        // }
         if(fabsf(speed) < 30.0f) {
-            PID_SetK(&pid_right, 0.03f, 0.5f, 0.0); // 死区处理
-        }else if(fabsf(speed) < 200.0f) {
-            PID_SetK(&pid_right, 0.03f, 0.5f, 0.000001); // 死区处理
+            PID_SetK(&pid_right, 0.03f, 0.3f, 0.0); // 死区处理
+        }else if(fabsf(speed) < 250.0f) {
+            PID_SetK(&pid_right, 0.02f, 0.2f, 0.0); // 死区处理
         }else if(fabsf(speed) < 400.0f) {
-            PID_SetK(&pid_right, 0.04f, 0.6f, 0.000001); // 中速
+            PID_SetK(&pid_right, 0.01f, 0.25f, 0.0); // 中速
         }else if(fabsf(speed) < 500.0f) {
-            PID_SetK(&pid_right, 0.045f, 0.68f, 0.000001); // 高速
-        }else if(fabsf(speed) < 650.0f) {
-            PID_SetK(&pid_right, 0.045f, 0.8f, 0.000001); // 高速
+            PID_SetK(&pid_right, 0.01f, 0.3f, 0.0); // 高速
+        }else if(fabsf(speed) < 600.0f) {
+            PID_SetK(&pid_right, 0.01f, 0.35f, 0.0); // 高速
         }else if(fabsf(speed) < 800.0f) {
-            PID_SetK(&pid_right, 0.05f, 1.0f, 0.000001); // 高速
+            PID_SetK(&pid_right, 0.01f, 0.43f, 0.0); // 高速
         }else {
-            PID_SetK(&pid_right, 0.05f, 1.2f, 0.000005f); // 超高速
+            PID_SetK(&pid_right, 0.01f, 0.5f, 0.0f); // 超高速
         }
+        // if(fabsf(speed) < 30.0f) {
+        //     PID_SetK(&pid_right, 0.03f, 0.5f, 0.0); // 死区处理
+        // }else if(fabsf(speed) < 200.0f) {
+        //     PID_SetK(&pid_right, 0.03f, 0.5f, 0.000001); // 死区处理
+        // }else if(fabsf(speed) < 400.0f) {
+        //     PID_SetK(&pid_right, 0.04f, 0.6f, 0.000001); // 中速
+        // }else if(fabsf(speed) < 500.0f) {
+        //     PID_SetK(&pid_right, 0.045f, 0.68f, 0.000001); // 高速
+        // }else if(fabsf(speed) < 650.0f) {
+        //     PID_SetK(&pid_right, 0.045f, 0.8f, 0.000001); // 高速
+        // }else if(fabsf(speed) < 800.0f) {
+        //     PID_SetK(&pid_right, 0.05f, 1.0f, 0.000001); // 高速
+        // }else {
+        //     PID_SetK(&pid_right, 0.05f, 1.2f, 0.000005f); // 超高速
+        // }
         PID_SetGoal(&pid_right, speed);
         Goal_Speed_Right = speed;
         cmd_right_speed = true;

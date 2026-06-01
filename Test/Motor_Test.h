@@ -3,5 +3,6 @@
 
 void Motor_Test1(void);
 void Motor_Test2(void);
+void Motor_Test3(void);
 
 #endif

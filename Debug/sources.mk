@@ -125,5 +125,6 @@ HardWare/vl53l1x/core \
 HardWare/vl53l1x/platform \
 Middle \
 Middle/Fusion \
+Task \
 Test \
 

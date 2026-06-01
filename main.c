@@ -31,6 +31,10 @@
  */
 
 #include "ti_msp_dl_config.h"
+#include "Menu.h"
+
+
+
 #include "Usart.h"
 #include "spi.h"
 #include "Key.h"
@@ -52,6 +56,9 @@
 int main(void)
 {
     SYSCFG_DL_init();
+
+    //Menu_Pre();
+    
     Uart_Init();
     SPI_Init();
     Key_Init();
@@ -63,40 +70,45 @@ int main(void)
 
     NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_2ms_INST);
-    Servo_Test();
+    //Uart_Test2();
+    //Encoder_Test2();
+    // VL53L1X_Test2();
+    //   Servo_Test();
     //ICM42688_Test5();    
     // Grayscale_Test1();
     // Grayscale_Test2();
-    // VL53L1X_Test2();
+    // // 
+    //Motor_Test3();
+    //Motor_Test2();
     Drive_Test3();
-    Motor_Test2();
-    TB6612_Test1(); 
+    // Motor_Test2();
+    // TB6612_Test1(); 
     
-    //Drive_Test1();
-    Drive_Test2();
-    Key_Test();
+    // //Drive_Test1();
+    //Drive_Test2();
+    // Key_Test();
 
-    //
-    //Motor_Test1();
-    //Uart_Test3();
+    // //
+    // //Motor_Test1();
+    // //Uart_Test3();
  
-    ICM42688_Test4();
-    ICM42688_Test3();   
-    //ICM42688_Test1();
+    // ICM42688_Test4();
+    // ICM42688_Test3();   
+    // //ICM42688_Test1();
    
-    ICM42688_Test2();
+    // ICM42688_Test2();
     
-    Encoder_Test2();
-    Encoder_Test1();
-    ADC_Test2();
-    ADC_Test1();
+    // 
+    // Encoder_Test1();
+    // ADC_Test2();
+    // ADC_Test1();
     
     
-    OLED_Test1();
+    // OLED_Test1();
     
-    VL53L1X_Test1();
-    //Uart_Test1();
-    Uart_Test2();
+    // VL53L1X_Test1();
+    // //Uart_Test1();
+    // Uart_Test2();
     while (1) {
         
     }

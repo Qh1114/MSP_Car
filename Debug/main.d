@@ -84,6 +84,7 @@ main.o: ../main.c \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Task/Menu.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h \
@@ -183,6 +184,7 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Task/Menu.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/spi.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Key.h:

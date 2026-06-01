@@ -13,7 +13,7 @@
 #endif
 
 //param struct for vl53l1x mode option, in manual 6.2 
-typedef __packed struct
+typedef struct
 {
 	FixPoint1616_t signalLimit;    //Signal,related to reflected amplitude 
 	FixPoint1616_t sigmaLimit;     //Sigmal, related to distance mm
@@ -22,7 +22,7 @@ typedef __packed struct
 																 //between two consecutive measurements.
 	uint8_t preRangeVcselPeriod ;  //VCSEL pulse cycle
 	uint8_t finalRangeVcselPeriod ;//VCSEL pulse cycle period
-}mode_data;
+} __attribute__((packed)) mode_data;
 
 
 VL53L1_Error VL53L1Init(VL53L1_Dev_t* pDev,uint8_t Slave_Address);

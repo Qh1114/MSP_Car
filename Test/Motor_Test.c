@@ -107,3 +107,38 @@ void Motor_Test2(void)
         Delay_ms(5);
     }
 }
+
+void Motor_Test3(void)
+{
+    Uart0_Printf("Motor Test3\n");
+    Motor_Init();
+    float Buff[10];
+    float goal_speed_l = 0.0f, goal_speed_r = 0.0f;
+    float speed_l, speed_r;
+    float Kp = 0.01f, Ki = 0.0f, Kd = 0.0f;
+    float Bat_Voltage;
+    int64_t count_l, count_r;
+    while(1) {
+        Encoder_AngleSpeed_Get(&speed_l, &speed_r);
+        Encoder_Count_Get(&count_l, &count_r);
+        uint8_t length = Uart0_Receive_Command(Buff);
+        Bat_Voltage = Bat_Read();
+        if(length == 2) {
+            goal_speed_l = Buff[0]*100;
+            goal_speed_r = Buff[1]*100;
+            Motor_SetSpeed(MOTOR_LEFT, goal_speed_l);
+            Motor_SetSpeed(MOTOR_RIGHT, goal_speed_r);
+        }else if(length == 1) {
+            if(Buff[0] == -1.0f) {
+                Motor_Stop();
+            }
+        }else if(length == 3) {
+            Kp = Buff[0]/100;
+            Ki = Buff[1];
+            Kd = Buff[2]/100;
+            Motor_SetK(Kp, Ki, Kd);
+        } 
+        Uart0_Printf("%f,%f,%f,%f,%f,%f,%f,%d,%d\n", goal_speed_l, goal_speed_r, speed_l, speed_r,Bat_Voltage, Kp, Ki, Kd, (int32_t)count_l, (int32_t)count_r);
+        Delay_ms(5);
+    }
+}

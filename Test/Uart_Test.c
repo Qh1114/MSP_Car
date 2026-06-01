@@ -17,7 +17,7 @@ void Uart_Test2(void)
     Uart0_Printf("Uart Test2\n");
     while(1)
     {
-        Uart0_Printf("Time: %u\n", Get_us());
+        Uart0_Printf("Time: %u\n", (uint32_t)Get_us());
         Delay_ms(100);
     }
 }

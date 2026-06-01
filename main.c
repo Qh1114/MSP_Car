@@ -57,7 +57,7 @@ int main(void)
 {
     SYSCFG_DL_init();
 
-    //Menu_Pre();
+    Menu_Pre();
     
     Uart_Init();
     SPI_Init();
@@ -71,6 +71,7 @@ int main(void)
     NVIC_EnableIRQ(TIMER_2ms_INST_INT_IRQN);
 	DL_Timer_startCounter(TIMER_2ms_INST);
     //Uart_Test2();
+    //Encoder_Test3();
     //Encoder_Test2();
     // VL53L1X_Test2();
     //   Servo_Test();
@@ -79,6 +80,7 @@ int main(void)
     // Grayscale_Test2();
     // // 
     //Motor_Test3();
+    //TB6612_Test2();
     //Motor_Test2();
     Drive_Test3();
     // Motor_Test2();

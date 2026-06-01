@@ -138,7 +138,7 @@ void Motor_Test3(void)
             Kd = Buff[2]/100;
             Motor_SetK(Kp, Ki, Kd);
         } 
-        Uart0_Printf("%f,%f,%f,%f,%f,%f,%f,%d,%d\n", goal_speed_l, goal_speed_r, speed_l, speed_r,Bat_Voltage, Kp, Ki, Kd, (int32_t)count_l, (int32_t)count_r);
+        Uart0_Printf("%f,%f,%f,%f,%f,%f,%f,%f,%d,%d\n", goal_speed_l, goal_speed_r, speed_l, speed_r,Bat_Voltage, Kp, Ki, Kd, (int32_t)count_l, (int32_t)count_r);
         Delay_ms(5);
     }
 }

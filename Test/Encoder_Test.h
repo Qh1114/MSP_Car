@@ -3,5 +3,6 @@
 
 void Encoder_Test1(void);
 void Encoder_Test2(void);
+void Encoder_Test3(void);
 
 #endif

@@ -85,7 +85,8 @@ Test/Encoder_Test.o: ../Test/Encoder_Test.c ../Test/Encoder_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
  C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Encoder.h \
- C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/tb6612.h
 ../Test/Encoder_Test.h:
 ti_msp_dl_config.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/devices/msp/msp.h:
@@ -172,3 +173,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Encoder.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/Usart.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/tb6612.h:

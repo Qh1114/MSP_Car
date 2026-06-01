@@ -84,7 +84,8 @@ Test/TB6612_Test.o: ../Test/TB6612_Test.c ../Test/TB6612_Test.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h \
  C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h \
- C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h
+ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h \
+ C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Uart_Data.h
 ../Test/TB6612_Test.h:
 C:/Users/Qh/Desktop/ccs/MSP_Car/HardWare/tb6612.h:
 ti_msp_dl_config.h:
@@ -170,3 +171,4 @@ C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_vref.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/dl_wwdt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_interrupt.h:
 C:/TI/mspm0_sdk_2_10_00_04/source/ti/driverlib/m0p/dl_systick.h:
+C:/Users/Qh/Desktop/ccs/MSP_Car/Middle/Uart_Data.h:

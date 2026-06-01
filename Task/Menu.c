@@ -154,19 +154,20 @@ void Menu2_Task1(void)
         if(Task1_cmd) {
             if(first_entry) {
                 first_entry = false;
-                float initial_yaw = IMU_GetYaw();
-                Drive_Straight(300, initial_yaw);
-                Delay_ms(2000);
-                Drive_Stop();
-                Delay_ms(500);
-                float Turn_angle = initial_yaw + 90;
-                if(Turn_angle >= 180) {
-                    Turn_angle -= 360;
-                }else if(Turn_angle < -180) {
-                    Turn_angle += 360;
-                }
-                Drive_Turn(Turn_angle);
             }
+            float initial_yaw = IMU_GetYaw();
+            Drive_Straight(300, initial_yaw);
+            Delay_ms(2000);
+            Drive_Stop();
+            Delay_ms(50);
+            float Turn_angle = initial_yaw + 90;
+            if(Turn_angle >= 180) {
+                Turn_angle -= 360;
+            }else if(Turn_angle < -180) {
+                Turn_angle += 360;
+            }
+            Drive_Turn(Turn_angle);
+            Delay_ms(1000);
         }else {
             PERIODIC_C(50);
             OLED_Clear();

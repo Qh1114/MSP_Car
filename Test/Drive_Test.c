@@ -34,7 +34,7 @@ float Kp = 15.0f, Ki = 0.0f, Kd = 0.0f;
 int Goal_Angle = 0;
 bool pid_mode = false;
 uint8_t menu_index = 0;
-float Kp_Step = 0.1f, Ki_Step = 0.01f, Kd_Step = 0.01f;
+float Kp_Step = 1.0f, Ki_Step = 0.01f, Kd_Step = 0.01f;
 uint8_t Goal_Angle_Step = 10;
 uint8_t set_state = 0;      //0:Striaght;1:Turn
 

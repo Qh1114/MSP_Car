@@ -13,9 +13,9 @@ void Drive_Init(void)
 {
     Motor_Init();
     IMU_init();
-    PID_Init(&pid_straight_drive, 4.0f, 0.0f, 0.0f);
+    PID_Init(&pid_straight_drive, 25.0f, 0.0f, 0.05f);
     PID_SetLimit(&pid_straight_drive, 1000.0f, -1000.0f, 200.0f, -200.0f);
-    PID_Init(&pid_angle_drive, 15.0f, 0.0f, 0.13f);
+    PID_Init(&pid_angle_drive, 20.0f, 0.0f, 0.0f);
     PID_SetLimit(&pid_angle_drive, 1000.0f, -1000.0f, 200.0f, -200.0f);
     Goal_Straight_Angle = 0.0f;
     Goal_Turn_Angle = 0.0f;
@@ -78,7 +78,7 @@ void Drive_Callback(void)
     if(cmd_angle_drive)
     {
         angle_tick++;
-        if(angle_tick >= 3) {
+        if(angle_tick >= 5) {
             float current_angle = IMU_GetYaw();
             float angle_error = CalculateAngleError(Goal_Turn_Angle, current_angle);
             // if(fabsf(angle_error) < 7.0f) {

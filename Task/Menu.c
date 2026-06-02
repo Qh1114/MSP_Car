@@ -120,6 +120,10 @@ void Menu2_Task1(void)
     uint8_t menu_index = 1;
     char Oled_str[2][20] = {"<-", "Off"};
     bool first_entry = true;
+
+    float initial_yaw = 0.0f;
+    float yaw[4] = {0.0f};
+    uint8_t Task1_step = 0;
     while(1) {
         Key = Key_Num_Get();
         if(Key == 1) {
@@ -131,9 +135,13 @@ void Menu2_Task1(void)
                 if(Task1_cmd) {
                     Task1_cmd = false;
                     Drive_Stop();
+                    first_entry = true;
+                    Task1_step = 0;
                     sprintf(Oled_str[1], "Off");
                 }else {
                     Task1_cmd = true;
+                    first_entry = true;
+                    Task1_step = 0;
                     sprintf(Oled_str[1], "On");
                 }
                 OLED_Clear();
@@ -154,19 +162,25 @@ void Menu2_Task1(void)
         if(Task1_cmd) {
             if(first_entry) {
                 first_entry = false;
+                initial_yaw = IMU_GetYaw();
+                yaw[0] = initial_yaw;
+                yaw[1] = initial_yaw + 90;
+                yaw[2] = initial_yaw + 180;
+                yaw[3] = initial_yaw - 90;
+                for(int i = 0; i < 4; i++) {
+                    if(yaw[i] >= 180) {
+                        yaw[i] -= 360;
+                    }else if(yaw[i] < -180) {
+                        yaw[i] += 360;
+                    }
+                }
             }
-            float initial_yaw = IMU_GetYaw();
-            Drive_Straight(300, initial_yaw);
+            Drive_Straight(300, yaw[Task1_step % 4]);
             Delay_ms(2000);
             Drive_Stop();
             Delay_ms(50);
-            float Turn_angle = initial_yaw + 90;
-            if(Turn_angle >= 180) {
-                Turn_angle -= 360;
-            }else if(Turn_angle < -180) {
-                Turn_angle += 360;
-            }
-            Drive_Turn(Turn_angle);
+            Task1_step = (Task1_step + 1) % 4;
+            Drive_Turn(yaw[Task1_step]);
             Delay_ms(1000);
         }else {
             PERIODIC_C(50);

@@ -18,8 +18,8 @@ void Motor_Init(void)
     TB6612_Init();
     Encoder_Init();
     Bat_Init();
-    PID_Init(&pid_left, 0.05f, 0.5f, 0.0015f);
-    PID_Init(&pid_right, 0.05f, 0.5f, 0.0015f);
+    PID_Init(&pid_left, 0.05f, 0.5f, 0.001f);
+    PID_Init(&pid_right, 0.05f, 0.5f, 0.001f);
     PID_SetLimit(&pid_left, 7.0f, -7.0f, 5.0f, -5.0f);
     PID_SetLimit(&pid_right, 7.0f, -7.0f, 5.0f, -5.0f);
     Goal_Speed_Left = 0.0f;

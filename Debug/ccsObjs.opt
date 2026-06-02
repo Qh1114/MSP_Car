@@ -3,6 +3,7 @@
 "./main.o"
 "./APP/Drive.o"
 "./APP/Laser_Distance.o"
+"./APP/Maze.o"
 "./HardWare/ADC.o"
 "./HardWare/Delay.o"
 "./HardWare/Encoder.o"
